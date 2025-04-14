@@ -1,4 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GPA Calculator with OCR Grade Extraction
+
+This project includes a GPA calculator and tools to extract course data from NTNU grade papers using OCR (Optical Character Recognition).
+
+## Grade Paper Extraction
+
+The project includes tools to extract course data from NTNU grade papers using Tesseract.js OCR:
+
+```
+# Save a transcript image (interactive)
+node scripts/save-transcript-image.js
+
+# Extract grades from the saved image
+node scripts/extract-grades-from-image.js
+
+# For demonstration, load example data from the grade paper
+node scripts/preload-transcript-data.js
+```
+
+For more details, see the [scripts README](scripts/README.md).
+
+## Example Extracted Data
+
+From the example grade paper, the following courses were extracted:
+
+```
+HMS0002 - HMS-kurs for 1. årsstudenter (2022 høst): Bestått, 0 credits
+IDATT1001 - Programmering 1 (2022 høst): B, 10 credits
+IMAT1001 - Matematiske metoder 1 (2022 høst): A, 10 credits
+INGT1001 - Ingeniørfaglig innføringsemne (2022 høst): Bestått, 10 credits
+IDATT1002 - Systemutvikling (2023 vår): C, 10 credits
+IDATT2001 - Programmering 2 (2023 vår): C, 10 credits
+IMAT2021 - Matematiske metoder 2 for Dataingeniør (2023 vår): C, 10 credits
+```
+
+## Requirements
+
+- Node.js
+- Tesseract.js (included in dependencies)
+- Next.js (for the web application)
+
+## Installation
+
+```bash
+npm install
+```
+
+## Development
+
+```bash
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+## License
+
+This project is licensed under the MIT License.
 
 ## Getting Started
 

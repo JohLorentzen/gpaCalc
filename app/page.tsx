@@ -1,103 +1,223 @@
-import Image from "next/image";
+"use client"
+import { useState } from 'react';
+import Navbar from '@/components/Navbar';
+import { Button } from '@/components/ui/button';
+import FileDropZone from '@/components/FileDropZone';
+import GradeDisplay from '@/components/GradeDisplay';
+import { Grades } from '@/types/Course';
+import { GradeResult } from '@/lib/parser';
 
-export default function Home() {
+const Page = () => {
+  const [gradeData, setGradeData] = useState<Grades | null>(null);
+
+  // Original file upload handler - keeping for reference
+  /* const handleFileUpload = async (file: File) => {
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const response = await fetch('/api/ocr', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to process the file');
+      }
+
+      const apiResponse = await response.json();
+      handleApiResponse(apiResponse);
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+  }; */
+
+  const handleProcessedGrade = (_average: number, details?: GradeResult) => {
+    if (details) {
+      const courses = details.entries.map(entry => ({
+        courseCode: entry.courseCode,
+        courseName: entry.courseName,
+        term: entry.term,
+        credits: entry.credits,
+        grade: entry.grade,
+      }));
+
+      const gradesData: Grades = {
+        average: details.average,
+        totalCredits: details.totalCredits,
+        courses: courses
+      };
+
+      console.log("Converting GradeResult to Grades:", gradesData);
+      setGradeData(gradesData);
+    }
+  };
+
+  /* Keeping this for reference in case we need to handle raw API responses
+  const handleApiResponse = (apiResponse: { rawText: string }) => {
+    const jsonMatch = apiResponse.rawText.match(/```json\s*([\s\S]*?)\s*```/);
+    
+    if (jsonMatch && jsonMatch[1]) {
+      try {
+        const coursesJson = JSON.parse(jsonMatch[1]);
+        
+        interface CourseJSON {
+          course: string;
+          title: string;
+          term: string;
+          credits: string;
+          grade: string;
+        }
+        
+        const courses = coursesJson.map((course: CourseJSON) => ({
+          courseCode: course.course,
+          courseName: course.title,
+          term: course.term,
+          credits: course.credits === '-' ? 0 : Number(course.credits),
+          grade: course.grade,
+        }));
+
+        const totalCredits = courses.reduce((acc: number, course: { credits: number }) => 
+          acc + (isNaN(course.credits) ? 0 : course.credits), 0);
+          
+        const totalWeightedGrades = courses.reduce((acc: number, course: { grade: string, credits: number }) => {
+          const gradeValue = getNumericGrade(course.grade);
+          return acc + (gradeValue * (isNaN(course.credits) ? 0 : course.credits));
+        }, 0);
+        
+        const average = totalCredits ? totalWeightedGrades / totalCredits : 0;
+
+        const gradeData: Grades = {
+          courses,
+          average,
+          totalCredits,
+        };
+
+        setGradeData(gradeData);
+      } catch (error) {
+        console.error('Error parsing JSON:', error);
+      }
+    } else {
+      console.error('No JSON data found in the response');
+    }
+  }; */
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
+      <Navbar />
+      
+      {/* Hero Section */}
+      <section className="pt-24 pb-16 md:pt-32 md:pb-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            <div className="lg:w-1/2">
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                Kalkuler ditt Universitets <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">snitt</span>
+              </h1>
+              <p className="text-lg text-foreground/80 mb-8">
+                Last opp ditt Universitets/Høyskole karakterutskrift og få dine emner og gjennomsnittskarakter beregnet på sekunder.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" variant="karakterkalk" className="bg-gradient-to-r from-primary to-secondary">
+                  Kom i gang
+                </Button>
+                <Button size="lg" variant="karakterkalkOutline">
+                  Lær mer
+                </Button>
+              </div>
+            </div>
+            
+            <div className="lg:w-1/2 relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl blur-3xl opacity-30"></div>
+              <div className="relative bg-card text-card-foreground rounded-2xl shadow-xl p-8 border border-border">
+                <h2 className="text-2xl font-semibold mb-6 text-center">
+                  Last opp ditt Universitets/Høyskole karakterutskrift
+                </h2>
+                <FileDropZone onFileProcessed={handleProcessedGrade} />
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Results Section */}
+      {gradeData && (
+        <section className="py-16 px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Dine resultater</h2>
+            <GradeDisplay gradeData={gradeData} />
+          </div>
+        </section>
+      )}
+      
+      {/* Features Section */}
+      <section className="py-16 px-6 bg-muted">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4">Hvordan det fungerer</h2>
+          <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+            KarakterKalk gjør det enkelt og intuitivt å beregne din gjennomsnittskarakter
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-card text-card-foreground p-6 rounded-xl shadow-sm border border-border hover:shadow-md transition-all">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <span className="text-xl font-bold text-primary">1</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Last opp karakterutskrift</h3>
+              <p className="text-muted-foreground">
+                Dra og slipp ditt Universitets/Høyskole karakterutskrift i bildeformat.
+              </p>
+            </div>
+            
+            <div className="bg-card text-card-foreground p-6 rounded-xl shadow-sm border border-border hover:shadow-md transition-all">
+              <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+                <span className="text-xl font-bold text-secondary">2</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Øyeblikkelig analyse</h3>
+              <p className="text-muted-foreground">
+                Vår KI-teknologi henter ut karakterene dine og beregner snittet umiddelbart.
+              </p>
+            </div>
+            
+            <div className="bg-card text-card-foreground p-6 rounded-xl shadow-sm border border-border hover:shadow-md transition-all">
+              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                <span className="text-xl font-bold text-accent">3</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Se resultater</h3>
+              <p className="text-muted-foreground">
+                Se dine emner, studiepoeng og gjennomsnittskarakter i en oversiktlig tabell.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Footer */}
+      <footer className="py-8 px-6 bg-card text-card-foreground dark:bg-muted">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-4 md:mb-0">
+              <h2 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">KarakterKalk</h2>
+              <p className="text-sm text-muted-foreground">© 2025 KarakterKalk. Alle rettigheter reservert.</p>
+            </div>
+            <div className="flex gap-6">
+              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Personvern</a>
+              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Vilkår</a>
+              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Kontakt</a>
+            </div>
+          </div>
+        </div>
       </footer>
+      
+      <div className="mt-12 text-center">
+        <p className="text-sm text-muted-foreground">
+          Dette programmet bruker OpenAI for OCR og behandler karakterutskriftet ditt sikkert.
+          <br />
+          All behandling skjer sikkert - dine karakterutskriftdata sendes ikke til uautoriserte servere.
+        </p>
+      </div>
     </div>
   );
-}
+};
+
+export default Page;

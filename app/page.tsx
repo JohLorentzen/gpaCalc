@@ -1,14 +1,72 @@
 "use client"
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import Navbar from '@/components/Navbar';
-import { Button } from '@/components/ui/button';
 import FileDropZone from '@/components/FileDropZone';
 import GradeDisplay from '@/components/GradeDisplay';
 import { Grades } from '@/types/Course';
 import { GradeResult } from '@/lib/parser';
+import { AuroraText } from "@/components/magicui/aurora-text";
+
+// Loading animation component
+const LoadingAnimation = () => {
+  return (
+    <section className="py-16 px-6">
+      <div className="max-w-xl mx-auto">
+        <div className="bg-card text-card-foreground rounded-2xl shadow-xl p-8 border border-border">
+          <div className="flex flex-col items-center justify-center gap-6">
+            <div className="w-20 h-20 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div>
+            <div className="text-center">
+              <h3 className="text-xl font-semibold mb-2">Behandler karakterutskrift</h3>
+              <p className="text-muted-foreground">
+                Dette kan ta litt tid mens vi analyserer bildet ditt og henter ut karakterene
+              </p>
+            </div>
+            
+            <div className="w-full space-y-3 mt-4">
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-muted-foreground">OCR-behandling</span>
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+              </div>
+              <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
+                <div className="h-full bg-primary animate-gradient-x" style={{ width: "66%" }}></div>
+              </div>
+              
+              <div className="flex justify-between items-center mt-2">
+                <span className="text-sm text-muted-foreground">Analyserer karakterer</span>
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+              </div>
+              <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
+                <div className="h-full bg-primary animate-gradient-x" style={{ width: "33%" }}></div>
+              </div>
+              
+              <div className="flex justify-between items-center mt-2">
+                <span className="text-sm text-muted-foreground">Beregner gjennomsnitt</span>
+                <div className="w-2 h-2 rounded-full bg-muted"></div>
+              </div>
+              <div className="w-full h-2 bg-muted rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Results component wrapped in suspense
+const ResultsSection = ({ gradeData }: { gradeData: Grades }) => {
+  return (
+    <section className="py-16 px-6">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-8">Dine resultater</h2>
+        <GradeDisplay gradeData={gradeData} />
+      </div>
+    </section>
+  );
+};
 
 const Page = () => {
   const [gradeData, setGradeData] = useState<Grades | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Original file upload handler - keeping for reference
   /* const handleFileUpload = async (file: File) => {
@@ -33,6 +91,7 @@ const Page = () => {
   }; */
 
   const handleProcessedGrade = (_average: number, details?: GradeResult) => {
+    setIsLoading(false);
     if (details) {
       const courses = details.entries.map(entry => ({
         courseCode: entry.courseCode,
@@ -51,6 +110,11 @@ const Page = () => {
       console.log("Converting GradeResult to Grades:", gradesData);
       setGradeData(gradesData);
     }
+  };
+
+  // Modified FileDropZone callback to handle loading state
+  const handleFileProcessingStart = () => {
+    setIsLoading(true);
   };
 
   /* Keeping this for reference in case we need to handle raw API responses
@@ -112,19 +176,11 @@ const Page = () => {
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
             <div className="lg:w-1/2">
               <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-                Kalkuler ditt Universitets <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">snitt</span>
+                Kalkuler ditt Universitets <AuroraText className='gradient-text'>snitt</AuroraText>
               </h1>
               <p className="text-lg text-foreground/80 mb-8">
                 Last opp ditt Universitets/Høyskole karakterutskrift og få dine emner og gjennomsnittskarakter beregnet på sekunder.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" variant="karakterkalk" className="bg-gradient-to-r from-primary to-secondary">
-                  Kom i gang
-                </Button>
-                <Button size="lg" variant="karakterkalkOutline">
-                  Lær mer
-                </Button>
-              </div>
             </div>
             
             <div className="lg:w-1/2 relative">
@@ -133,22 +189,30 @@ const Page = () => {
                 <h2 className="text-2xl font-semibold mb-6 text-center">
                   Last opp ditt Universitets/Høyskole karakterutskrift
                 </h2>
-                <FileDropZone onFileProcessed={handleProcessedGrade} />
+                <FileDropZone 
+                  onFileProcessed={handleProcessedGrade}
+                  onProcessingStart={handleFileProcessingStart}
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Results Section */}
-      {gradeData && (
-        <section className="py-16 px-6">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8">Dine resultater</h2>
-            <GradeDisplay gradeData={gradeData} />
-          </div>
-        </section>
-      )}
+      {/* Results Section with Suspense */}
+      {isLoading ? (
+        <div className="animate-fade-in">
+          <Suspense fallback={<div className="py-16 flex justify-center">Laster inn...</div>}>
+            <LoadingAnimation />
+          </Suspense>
+        </div>
+      ) : gradeData ? (
+        <div className="animate-fade-in">
+          <Suspense fallback={<div className="py-16 flex justify-center">Laster resultater...</div>}>
+            <ResultsSection gradeData={gradeData} />
+          </Suspense>
+        </div>
+      ) : null}
       
       {/* Features Section */}
       <section className="py-16 px-6 bg-muted">
@@ -201,21 +265,13 @@ const Page = () => {
               <p className="text-sm text-muted-foreground">© 2025 KarakterKalk. Alle rettigheter reservert.</p>
             </div>
             <div className="flex gap-6">
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Personvern</a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Vilkår</a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Kontakt</a>
+              <a href="#" className="btn-link">Personvern</a>
+              <a href="#" className="btn-link">Vilkår</a>
+              <a href="#" className="btn-link">Kontakt</a>
             </div>
           </div>
         </div>
       </footer>
-      
-      <div className="mt-12 text-center">
-        <p className="text-sm text-muted-foreground">
-          Dette programmet bruker OpenAI for OCR og behandler karakterutskriftet ditt sikkert.
-          <br />
-          All behandling skjer sikkert - dine karakterutskriftdata sendes ikke til uautoriserte servere.
-        </p>
-      </div>
     </div>
   );
 };

@@ -10,19 +10,19 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "btn-primary",
-        destructive: "btn-destructive",
-        outline: "btn-outline",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline: "gradient-border",
         secondary: "btn-secondary",
-        ghost: "btn-ghost",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "btn-link",
-        karakterkalk: "btn-gradient",
-        karakterkalkOutline: "btn-outline-primary",
+        primary: "btn-primary",
+        gradient: "btn-primary",
       },
       size: {
-        default: "btn-md",
+        default: "",
         sm: "btn-sm",
         lg: "btn-lg",
-        icon: "btn-icon",
+        icon: "h-10 w-10 p-0",
       },
     },
     defaultVariants: {

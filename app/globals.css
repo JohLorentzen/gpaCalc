@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
 @tailwind utilities;
 
 @layer base {
@@ -102,74 +104,240 @@
     --sidebar-border: 217.2 32.6% 17.5%;
     --sidebar-ring: 235 84% 65%;
   }
-}
-@theme inline {
-  /* Base colors */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  
-  /* Card colors */
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  
-  /* Popover colors */
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  
-  /* Primary colors */
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary-hover: var(--primary-hover, var(--primary));
-  --color-primary-active: var(--primary-active, var(--primary));
-  
-  /* Secondary colors */
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary-hover: var(--secondary-hover, var(--secondary));
-  --color-secondary-active: var(--secondary-active, var(--secondary));
-  
-  /* Muted colors */
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  
-  /* Accent colors */
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  
-  /* Destructive colors */
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-destructive-hover: var(--destructive-hover, var(--destructive));
-  --color-destructive-active: var(--destructive-active, var(--destructive));
-  
-  /* Border, input and ring colors */
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  
-  /* Confirmation colors (if defined in your theme) */
-  --color-confirmation: var(--confirmation, var(--accent));
-  --color-confirmation-hover: var(--confirmation-hover, var(--confirmation, var(--accent)));
-  --color-confirmation-foreground: var(--confirmation-foreground, var(--accent-foreground));
-  
-  /* Sidebar colors */
-  --color-sidebar-background: var(--sidebar-background);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  
-  /* Text colors (for compatibility) */
-  --color-text: var(--text, var(--foreground));
-  --color-text-muted: var(--text-muted, var(--muted-foreground));
-  
-  /* Radius value */
-  --radius: var(--radius);
+
+  /* Animation keyframes */
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes gradient-x {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-gradient-x {
+    animation: gradient-x 3s ease infinite;
+    background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--primary)) 100%);
+    background-size: 200% 100%;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
 }
 
+@layer utilities {
+  /* Gradient utilities */
+  .gradient-primary {
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+  
+  .gradient-text {
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-border {
+    position: relative;
+    border: double 2px transparent;
+    background-image: linear-gradient(white, white), 
+                      linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  .dark .gradient-border {
+    background-image: linear-gradient(hsl(var(--card)), hsl(var(--card))), 
+                      linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+
+  /* Shadow utilities */
+  .shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Hover animation utilities */
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+}
+
+@layer components {
+  /* Button base styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+    disabled:opacity-50 disabled:pointer-events-none;
+    height: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: var(--radius);
+  }
+
+  .btn-sm {
+    height: 2.25rem;
+    border-radius: calc(var(--radius) - 2px);
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-lg {
+    height: 2.75rem;
+    border-radius: calc(var(--radius) + 2px);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-size: 1rem;
+  }
+
+  /* Primary button with gradient background */
+  .btn-primary {
+    @apply gradient-primary text-primary-foreground hover-lift;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-primary:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, hsl(var(--primary-hover)), hsl(var(--secondary-hover)));
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .btn-primary:hover:before {
+    opacity: 1;
+  }
+
+  /* Secondary button with gradient border */
+  .btn-secondary {
+    @apply gradient-border bg-background text-foreground hover-lift;
+  }
+
+  .btn-secondary:hover {
+    @apply shadow-md;
+    background-color: hsla(var(--muted), 0.5);
+  }
+
+  /* Link styled as secondary button */
+  a.btn-link {
+    @apply gradient-border bg-background text-foreground inline-flex items-center justify-center 
+    rounded-md text-sm font-medium transition-colors hover-lift;
+    height: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+  }
+
+  a.btn-link:hover {
+    @apply shadow-sm;
+    background-color: hsla(var(--muted), 0.5);
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-card text-card-foreground rounded-lg border border-border shadow-sm overflow-hidden;
+  }
+
+  .card-hover {
+    @apply transition-shadow duration-200;
+  }
+
+  .card-hover:hover {
+    @apply shadow-md;
+  }
+
+  /* File drop zone */
+  .file-drop-zone {
+    @apply border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center gap-4 transition-all;
+  }
+
+  .file-drop-zone.dragging {
+    @apply border-primary bg-primary/5;
+  }
+
+  .file-drop-zone:hover:not(.dragging) {
+    @apply border-secondary/50 bg-secondary/5;
+  }
+
+  .file-drop-zone.success {
+    @apply border-confirmation/50 bg-confirmation/5;
+  }
+
+  .file-drop-zone.error {
+    @apply border-destructive/50 bg-destructive/5;
+  }
+
+  /* Navbar */
+  .navbar {
+    @apply w-full px-6 py-4 flex items-center justify-between bg-background/90 backdrop-blur-md fixed top-0 z-50 border-b border-border/80;
+  }
+
+  .navbar-brand {
+    @apply text-xl font-bold gradient-text;
+  }
+
+  .navbar-links {
+    @apply flex gap-4 items-center;
+  }
+}
 
 @layer base {
   * {
@@ -184,287 +352,102 @@
   }
 }
 
-/* Component-Specific Styles */
+@theme inline {
+  /* Base colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 
-/* Navbar */
-.navbar {
-  width: 100%;
-  padding: 1rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: hsla(var(--background), 0.9);
-  backdrop-filter: blur(8px);
-  position: fixed;
-  top: 0;
-  z-index: 50;
-  border-bottom: 1px solid hsla(var(--border), 0.8);
-}
+  /* Card colors */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
 
-.navbar-brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+  /* Popover colors */
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
 
-.navbar-links {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
+  /* Primary colors */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover, var(--primary));
+  --color-primary-active: var(--primary-active, var(--primary));
 
-/* Button Styles */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  border-radius: var(--radius);
-  font-size: 0.875rem;
-  font-weight: 500;
-  height: 2.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  transition: all 0.2s;
-  cursor: pointer;
-}
+  /* Secondary colors */
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-hover: var(--secondary-hover, var(--secondary));
+  --color-secondary-active: var(--secondary-active, var(--secondary));
 
-.btn:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px hsla(var(--background)), 0 0 0 4px hsla(var(--ring));
-}
+  /* Muted colors */
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
 
-.btn:disabled {
-  opacity: 0.5;
-  pointer-events: none;
-}
+  /* Accent colors */
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
 
-.btn-sm {
-  height: 2.25rem;
-  border-radius: calc(var(--radius) - 2px);
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
+  /* Destructive colors */
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-hover: var(--destructive-hover, var(--destructive));
+  --color-destructive-active: var(--destructive-active, var(--destructive));
 
-.btn-lg {
-  height: 2.75rem;
-  border-radius: calc(var(--radius) + 2px);
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
+  /* Border, input and ring colors */
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
-.btn-icon {
-  height: 2.5rem;
-  width: 2.5rem;
-  padding: 0;
-}
+  /* Confirmation colors (if defined in your theme) */
+  --color-confirmation: var(--confirmation, var(--accent));
+  --color-confirmation-hover: var(--confirmation-hover, var(--confirmation, var(--accent)));
+  --color-confirmation-foreground: var(--confirmation-foreground, var(--accent-foreground));
 
-/* Button Variants */
-.btn-default {
-  background-color: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
-}
-.btn-default:hover {
-  background-color: hsla(var(--primary), 0.9);
-}
+  /* Sidebar colors */
+  --color-sidebar-background: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 
-.btn-destructive {
-  background-color: hsl(var(--destructive));
-  color: hsl(var(--destructive-foreground));
-}
-.btn-destructive:hover {
-  background-color: hsla(var(--destructive), 0.9);
-}
+  /* Text colors (for compatibility) */
+  --color-text: var(--text, var(--foreground));
+  --color-text-muted: var(--text-muted, var(--muted-foreground));
 
-.btn-outline {
-  background-color: transparent;
-  border: 1px solid hsl(var(--input));
-}
-.btn-outline:hover {
-  background-color: hsl(var(--accent));
-  color: hsl(var(--accent-foreground));
-}
-
-.btn-outline-primary {
-  background-color: transparent;
-  border: 2px solid hsl(var(--primary));
-  color: hsl(var(--primary));
-  font-weight: 600;
-  transition: all 0.2s;
-}
-.btn-outline-primary:hover {
-  background-color: hsla(var(--primary), 0.1);
-}
-
-.btn-secondary {
-  background-color: hsl(var(--secondary));
-  color: hsl(var(--secondary-foreground));
-}
-.btn-secondary:hover {
-  background-color: hsla(var(--secondary), 0.8);
-}
-
-.btn-ghost {
-  background-color: transparent;
-}
-.btn-ghost:hover {
-  background-color: hsl(var(--accent));
-  color: hsl(var(--accent-foreground));
-}
-
-.btn-link {
-  background-color: transparent;
-  color: hsl(var(--primary));
-  text-decoration: none;
-  height: auto;
-  padding: 0;
-}
-.btn-link:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.btn-karakterkalk {
-  background-color: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
-  font-weight: 600;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: all 0.2s;
-}
-.btn-karakterkalk:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transform: translateY(-2px);
-}
-
-.btn-karakterkalk-outline {
-  background-color: transparent;
-  border: 2px solid hsl(var(--primary));
-  color: hsl(var(--primary));
-  font-weight: 600;
-  transition: all 0.2s;
-}
-.btn-karakterkalk-outline:hover {
-  background-color: hsla(var(--primary), 0.1);
-}
-
-/* Gradient Buttons */
-.btn-gradient {
-  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
-  color: hsl(var(--primary-foreground));
-  font-weight: 600;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: all 0.2s;
-}
-.btn-gradient:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transform: translateY(-2px);
-}
-
-/* Card Styles */
-.card {
-  background-color: hsl(var(--card));
-  color: hsl(var(--card-foreground));
-  border-radius: var(--radius);
-  border: 1px solid hsla(var(--border), 0.5);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  overflow: hidden;
-}
-
-.card-hover:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: all 0.2s ease;
-}
-
-.card-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.card-content {
-  padding: 1.5rem;
-}
-
-/* File Drop Zone */
-.file-drop-zone {
-  border: 2px dashed hsla(var(--border), 0.8);
-  border-radius: var(--radius);
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  transition: all 0.2s ease;
-}
-
-.file-drop-zone.dragging {
-  border-color: hsl(var(--primary));
-  background-color: hsla(var(--primary), 0.05);
-}
-
-.file-drop-zone:hover:not(.dragging) {
-  border-color: hsla(var(--secondary), 0.5);
-  background-color: hsla(var(--secondary), 0.05);
-}
-
-.file-drop-zone.success {
-  border-color: hsla(var(--confirmation), 0.5);
-  background-color: hsla(var(--confirmation), 0.05);
-}
-
-.file-drop-zone.error {
-  border-color: hsla(var(--destructive), 0.5);
-  background-color: hsla(var(--destructive), 0.05);
-}
-
-/* Spinner */
-.spinner {
-  width: 4rem;
-  height: 4rem;
-  border: 4px solid hsla(var(--primary), 0.3);
-  border-top-color: hsl(var(--primary));
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Text Styles */
-.gradient-text {
-  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.text-muted {
-  color: hsl(var(--muted-foreground));
-}
-
-/* Utility Classes */
-.rounded-full {
-  border-radius: 9999px;
-}
-
-.shadow-sm {
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-
-.shadow-md {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.shadow-lg {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.shadow-none {
-  box-shadow: none;
+  /* Radius value */
+  --radius: var(--radius);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --animate-aurora: aurora 8s ease-in-out infinite alternate;
+  @keyframes aurora {
+  0% {
+    backgroundPosition: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);
+    }
+  25% {
+    backgroundPosition: 50% 100%;
+    transform: rotate(5deg) scale(1.1);
+    }
+  50% {
+    backgroundPosition: 100% 50%;
+    transform: rotate(-3deg) scale(0.95);
+    }
+  75% {
+    backgroundPosition: 50% 0%;
+    transform: rotate(3deg) scale(1.05);
+    }
+  100% {
+    backgroundPosition: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);
+    }
+  }
 }

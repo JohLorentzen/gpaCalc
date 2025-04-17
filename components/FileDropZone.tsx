@@ -7,9 +7,10 @@ import { GradeResult } from '@/lib/parser';
 
 interface FileDropZoneProps {
   onFileProcessed: (average: number, details?: GradeResult) => void;
+  onProcessingStart?: () => void;
 }
 
-const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed }) => {
+const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessingStart }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -32,6 +33,10 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed }) => {
     setIsProcessing(true);
     setError(null);
     setProcessingStage('Starter OCR-behandling...');
+    
+    if (onProcessingStart) {
+      onProcessingStart();
+    }
     
     try {
       // Check file type
@@ -161,7 +166,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed }) => {
               <p className="text-sm text-destructive mb-4">{error}</p>
             </div>
             <Button 
-              variant="outline"
+              variant="secondary"
               className="mt-2"
               onClick={handleButtonClick}
             >
@@ -178,7 +183,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed }) => {
               <p className="text-sm text-muted-foreground">{(file.size / 1024).toFixed(2)} KB</p>
             </div>
             <Button 
-              variant="outline"
+              variant="secondary"
               className="mt-2"
               onClick={handleButtonClick}
             >
@@ -195,7 +200,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed }) => {
               <p className="text-muted-foreground mb-4">eller klikk for å bla</p>
             </div>
             <Button 
-              variant="karakterkalk"
+              variant="primary"
               className="flex items-center gap-2"
               onClick={handleButtonClick}
             >

@@ -193,7 +193,8 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
         ) : (
           <>
             <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center">
-              <Image className="w-8 h-8 text-secondary" />
+              {/* eslint-disable-next-line jsx-a11y/alt-text */}
+              <Image className="w-8 h-8 text-secondary" aria-hidden="true" />
             </div>
             <div className="text-center">
               <h3 className="text-lg font-semibold text-foreground mb-1">Slipp ditt Universitets/Høyskole karakterutskrift her</h3>

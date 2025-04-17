@@ -56,55 +56,6 @@
     --sidebar-ring: 235 84% 65%;  /* Match primary */
   }
 
-  .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
-
-    --card: 224 71% 8%;
-    --card-foreground: 213 31% 91%;
-
-    --popover: 224 71% 4%;
-    --popover-foreground: 213 31% 91%;
-
-    --primary: 235 84% 65%;  /* Keep vibrant blue */
-    --primary-foreground: 210 40% 98%;
-    --primary-hover: 235 84% 70%;
-    --primary-active: 235 84% 75%;
-
-    --secondary: 263 70% 63%;  /* Keep vibrant purple */
-    --secondary-foreground: 210 40% 98%;
-    --secondary-hover: 263 70% 68%;
-    --secondary-active: 263 70% 73%;
-
-    --muted: 223 47% 11%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 221 83% 65%;  /* Keep vibrant accent */
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 50.6%;
-    --destructive-foreground: 210 40% 98%;
-    --destructive-hover: 0 62.8% 55.6%;
-    --destructive-active: 0 62.8% 60.6%;
-
-    --confirmation: 142 71% 45%;
-    --confirmation-foreground: 210 40% 98%;
-    --confirmation-hover: 142 71% 50%;
-
-    --border: 222 47% 15%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 235 84% 65%;
-
-    --sidebar-background: 224 71% 4%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 235 84% 65%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217.2 32.6% 17.5%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217.2 32.6% 17.5%;
-    --sidebar-ring: 235 84% 65%;
-  }
-
   /* Animation keyframes */
   @keyframes spin {
     to {
@@ -159,57 +110,63 @@
   .animate-fade-in {
     animation: fade-in 0.5s ease-out;
   }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --card: 224 71% 8%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 235 84% 65%;  /* Keep vibrant blue */
+    --primary-foreground: 210 40% 98%;
+    --primary-hover: 235 84% 70%;
+    --primary-active: 235 84% 75%;
+
+    --secondary: 263 70% 63%;  /* Keep vibrant purple */
+    --secondary-foreground: 210 40% 98%;
+    --secondary-hover: 263 70% 68%;
+    --secondary-active: 263 70% 73%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 221 83% 65%;  /* Keep vibrant accent */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 210 40% 98%;
+    --destructive-hover: 0 62.8% 55.6%;
+    --destructive-active: 0 62.8% 60.6%;
+
+    --confirmation: 142 71% 45%;
+    --confirmation-foreground: 210 40% 98%;
+    --confirmation-hover: 142 71% 50%;
+
+    --border: 222 47% 15%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 235 84% 65%;
+
+    --sidebar-background: 224 71% 4%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 235 84% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 235 84% 65%;
+  }
 }
 
-@layer utilities {
-  /* Gradient utilities */
-  .gradient-primary {
-    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
-  }
-  
-  .gradient-text {
-    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .gradient-border {
-    position: relative;
-    border: double 2px transparent;
-    background-image: linear-gradient(white, white), 
-                      linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-  }
-
-  .dark .gradient-border {
-    background-image: linear-gradient(hsl(var(--card)), hsl(var(--card))), 
-                      linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
-  }
-
-  /* Shadow utilities */
-  .shadow-sm {
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  }
-
-  .shadow-md {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  }
-
-  .shadow-lg {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  }
-
-  /* Hover animation utilities */
-  .hover-lift {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  }
+/* Custom gradient utilities */
+.gradient-text {
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 @layer components {
@@ -242,43 +199,28 @@
 
   /* Primary button with gradient background */
   .btn-primary {
-    @apply gradient-primary text-primary-foreground hover-lift;
+    @apply bg-gradient-to-r from-primary to-secondary text-primary-foreground shadow-sm hover:shadow-md transition-all;
     position: relative;
     z-index: 1;
   }
 
-  .btn-primary:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to right, hsl(var(--primary-hover)), hsl(var(--secondary-hover)));
-    border-radius: inherit;
-    opacity: 0;
-    transition: opacity 0.2s ease;
+  .btn-primary:hover {
+    @apply translate-y-[-2px];
   }
 
-  .btn-primary:hover:before {
-    opacity: 1;
-  }
-
-  /* Secondary button with gradient border */
+  /* Secondary button with custom styling */
   .btn-secondary {
-    @apply gradient-border bg-background text-foreground hover-lift;
+    @apply bg-background text-foreground border-2 border-primary/30 shadow-sm hover:shadow-md hover:bg-muted/50 transition-all;
   }
 
   .btn-secondary:hover {
-    @apply shadow-md;
-    background-color: hsla(var(--muted), 0.5);
+    @apply translate-y-[-2px];
   }
 
   /* Link styled as secondary button */
   a.btn-link {
-    @apply gradient-border bg-background text-foreground inline-flex items-center justify-center 
-    rounded-md text-sm font-medium transition-colors hover-lift;
+    @apply bg-background text-foreground border-2 border-primary/30 inline-flex items-center justify-center 
+    rounded-md text-sm font-medium transition-colors shadow-sm hover:shadow-md hover:bg-muted/50 transition-all;
     height: 2.5rem;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -287,8 +229,7 @@
   }
 
   a.btn-link:hover {
-    @apply shadow-sm;
-    background-color: hsla(var(--muted), 0.5);
+    @apply translate-y-[-2px];
   }
 
   /* Card styles */
@@ -331,7 +272,11 @@
   }
 
   .navbar-brand {
-    @apply text-xl font-bold gradient-text;
+    @apply text-xl font-bold;
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .navbar-links {

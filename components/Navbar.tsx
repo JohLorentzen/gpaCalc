@@ -8,14 +8,14 @@ const Navbar = () => {
         KarakterKalk
       </div>
       <div className="navbar-links">
-        <button className="btn btn-ghost text-muted">
+        <button className="btn btn-secondary">
           Hvordan det fungerer
         </button>
-        <button className="btn btn-ghost text-muted">
+        <button className="btn btn-secondary">
           Om oss
         </button>
         <ModeToggle />
-        <button className="btn btn-gradient">
+        <button className="btn btn-primary">
           Logg inn
         </button>
       </div>

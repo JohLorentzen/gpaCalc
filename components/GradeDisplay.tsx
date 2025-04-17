@@ -20,11 +20,11 @@ const GradeDisplay = ({ gradeData }: { gradeData: Grades }) => {
     {
       name: 'GPA',
       value: gpa,
-      color: gpa >= 3.5 ? '#4CAF50' : '#F44336' // Green if >= 3.5, Red if < 3.5
+      color: gpa >= 2.5 ? '#4CAF50' : '#F44336' 
     }
   ];
 
-  const CHART_COLORS = [gpa >= 3.5 ? '#4CAF50' : '#F44336'];
+  const CHART_COLORS = [gpa >= 2.5 ? '#4CAF50' : '#F44336'];
 
   return (
     <div className="w-full max-w-2xl mx-auto mt-8 animate-fade-in">

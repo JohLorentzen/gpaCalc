@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
         {
           role: "user",
           content: [
-            { type: "input_text", text: "I want a json list of all the courses and grades in the image. Return ONLY valid JSON without any explanations. The schema should be an array of objects with {course, title, term, credits, grade} properties." },
+            { type: "input_text", text: "I want a JSON list of all the courses and grades from this transcript image. Be accurate about term/semester information and credit values. Handle both English and Norwegian transcripts. For pass/fail courses, use 'Pass'/'Passed' or 'Fail'/'Failed' consistently. Return ONLY valid JSON without any explanations. The schema should be an array of objects with {course, title, term, credits, grade} properties. If credits are not available, use null." },
             {
               type: "input_image",
               image_url: `data:image/jpeg;base64,${base64Image}`,
@@ -104,9 +104,10 @@ export async function POST(req: NextRequest) {
       
       // Normalize grade values for different formats
       let normalizedGrade = course.grade;
-      if (['Bestått', 'Godkjent'].includes(course.grade)) {
+      // Handle English and Norwegian pass/fail variations
+      if (['Bestått', 'Godkjent', 'Pass', 'Passed', 'P'].includes(course.grade)) {
         normalizedGrade = 'Pass';
-      } else if (['Ikke bestått', 'ikke godkjent', 'Ikke godkjent'].includes(course.grade)) {
+      } else if (['Ikke bestått', 'ikke godkjent', 'Ikke godkjent', 'Fail', 'Failed', 'F'].includes(course.grade)) {
         normalizedGrade = 'F'; // Count as failed
       }
       
@@ -179,11 +180,16 @@ function getGradeValue(grade: string): number {
     case 'D': return 2.0;
     case 'E': return 1.0;
     case 'F': return 0.0;
+    // Pass grades in various languages
     case 'Pass': 
+    case 'Passed':
+    case 'P':
     case 'Bestått': 
     case 'Godkjent': 
       return -1; // Pass grades don't affect GPA
+    // Fail grades in various languages
     case 'Fail':
+    case 'Failed':
     case 'Ikke bestått': 
     case 'Ikke godkjent':
     case 'ikke godkjent':

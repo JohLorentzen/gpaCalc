@@ -1,17 +1,19 @@
 import React from 'react';
 import { ModeToggle } from "@/components/ui/mode-toggle";
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <div className="navbar-brand">
+      <Link href="/" className="navbar-brand">
         UNIGPACALC
-      </div>
+      </Link>
       <div className="navbar-links">
         <ModeToggle />
       </div>
     </nav>
   );
 };
+
 
 export default Navbar;

@@ -220,6 +220,9 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
             <p className="text-xs text-muted-foreground mt-2">
               Støtter Universitets/Høyskole karakterutskriftsbilder eller skjermbilder (JPG, PNG, JPEG)
             </p>
+            <p className="text-xs text-muted-foreground mt-1">
+              Støtter både norske og engelske karakterutskrifter med bestått/passed emner
+            </p>
           </>
         )}
       </div>

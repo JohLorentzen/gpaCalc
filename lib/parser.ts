@@ -25,8 +25,20 @@ function getGradeValue(grade: string): number {
     case 'D': return 2.0;
     case 'E': return 1.0;
     case 'F': return 0.0;
-    case 'Bestått': return -1; // Pass/fail courses don't affect GPA
-    case 'Ikke bestått': return 0.0;
+    // Pass grades
+    case 'Pass':
+    case 'Passed':
+    case 'P':
+    case 'Bestått': 
+    case 'Godkjent': 
+      return -1; // Pass/fail courses don't affect GPA
+    // Fail grades
+    case 'Fail':
+    case 'Failed':
+    case 'Ikke bestått': 
+    case 'Ikke godkjent':
+    case 'ikke godkjent':
+      return 0.0;
     default: return 0.0;
   }
 }
@@ -44,8 +56,8 @@ export function parseGrades(text: string): GradeResult {
   
   // NTNU pattern: courseCode, courseName, term, studiepoeng, grade
   for (let i = 0; i < lines.length; i++) {
-    // Look for lines that start with course codes (e.g., HMS0002, IDATT1001)
-    const courseCodeMatch = lines[i].match(/([A-Z]{3,5}\d{4})/);
+    // Look for lines that start with course codes (e.g., HMS0002, IDATT1001, CS101)
+    const courseCodeMatch = lines[i].match(/([A-Z]{2,5}\d{3,4})/);
     
     if (courseCodeMatch) {
       const courseCode = courseCodeMatch[1];
@@ -57,13 +69,16 @@ export function parseGrades(text: string): GradeResult {
       // Next line might contain term, credits, and grade
       if (i + 1 < lines.length) {
         const nextLine = lines[i + 1];
-        const termMatch = nextLine.match(/(\d{4}\s+(?:høst|vår))/i);
-        const creditsMatch = nextLine.match(/(\d+)/);
-        const gradeMatch = nextLine.match(/([ABCDEF]|Bestått|Ikke bestått)/i);
+        // Handle both Norwegian and English date formats
+        const termMatch = nextLine.match(/(\d{4}\s+(?:høst|vår|spring|fall|autumn|summer|winter))/i) 
+          || nextLine.match(/((?:Spring|Fall|Autumn|Summer|Winter)\s+\d{4})/i);
+        const creditsMatch = nextLine.match(/(\d+(?:\.\d+)?)/); // Handle decimal credits too
+        // Handle different grade formats
+        const gradeMatch = nextLine.match(/([ABCDEF]|Pass(?:ed)?|Fail(?:ed)?|Bestått|Godkjent|Ikke\s+bestått|ikke\s+godkjent)/i);
         
-        if (termMatch && creditsMatch) {
-          const term = termMatch[1];
-          const credits = parseInt(creditsMatch[1], 10);
+        if ((termMatch || nextLine.includes('semester')) && creditsMatch) {
+          const term = termMatch ? termMatch[1] : 'Unknown';
+          const credits = parseFloat(creditsMatch[1]);
           const grade = gradeMatch ? gradeMatch[1] : 'Unknown';
           const gradeValue = getGradeValue(grade);
           

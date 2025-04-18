@@ -232,7 +232,7 @@ const Page = () => {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4">Hvordan det fungerer</h2>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-            KarakterKalk gjør det enkelt og intuitivt å beregne din gjennomsnittskarakter
+            Unigpacalc gjør det enkelt og intuitivt å beregne din gjennomsnittskarakter
           </p>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -274,8 +274,8 @@ const Page = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <h2 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">KarakterKalk</h2>
-              <p className="text-sm text-muted-foreground">© 2024 KarakterKalk. Alle rettigheter reservert.</p>
+              <h2 className="text-xl font-bold text-gradient-text">Unigpacalc</h2>
+              <p className="text-sm text-muted-foreground">© 2024 Unigpacalc. Alle rettigheter reservert.</p>
             </div>
             <div className="flex gap-6">
               <a href="/personvern" className="text-foreground/80 hover:text-primary">Personvern</a>

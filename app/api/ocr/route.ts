@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
 
     // Send image to OpenAI API
     const response = await openai.responses.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4.1-nano-2025-04-14",
       input: [
         {
           role: "user",
@@ -91,8 +91,16 @@ export async function POST(req: NextRequest) {
     // Process the courses to calculate GPA
     const processedCourses = jsonData.map(course => {
       // Handle different credit formats and convert to number
-      const creditsStr = typeof course.credits === 'string' ? course.credits.trim() : '';
-      const credits = creditsStr === '' || creditsStr === '-' ? 0 : parseFloat(creditsStr);
+      const creditsRaw = course.credits;
+      console.log(`Processing course: ${course.course}, raw credits: ${creditsRaw}, type: ${typeof creditsRaw}`);
+      
+      // Handle null, undefined, empty string, or dash
+      let credits = 0;
+      if (creditsRaw !== null && creditsRaw !== undefined && creditsRaw !== '' && creditsRaw !== '-') {
+        credits = typeof creditsRaw === 'string' ? parseFloat(creditsRaw) : Number(creditsRaw);
+      }
+      
+      console.log(`After conversion: credits = ${credits}, type: ${typeof credits}, isNaN: ${isNaN(credits)}`);
       
       // Normalize grade values for different formats
       let normalizedGrade = course.grade;
@@ -115,7 +123,7 @@ export async function POST(req: NextRequest) {
         countableCredits += credits;
       }
       
-      return {
+      const processedCourse = {
         courseCode: course.course,
         courseName: course.title,
         term: course.term,
@@ -124,13 +132,19 @@ export async function POST(req: NextRequest) {
         gradeValue: gradeValue,
         includedInGpa: validForGpa
       };
+      
+      console.log(`Final processed course: ${processedCourse.courseCode}, credits: ${processedCourse.credits}, type: ${typeof processedCourse.credits}`);
+      return processedCourse;
     });
     
     // Calculate GPA
     const average = countableCredits > 0 ? totalGradePoints / countableCredits : 0;
     
-    // Return data in the format expected by the client
-    return NextResponse.json({
+    // Recalculate total credits by summing all processed entries
+    totalCredits = processedCourses.reduce((sum, course) => sum + (course.credits || 0), 0);
+    
+    // Final response data object
+    const responseData = {
       success: true,
       result: {
         entries: processedCourses,
@@ -138,7 +152,14 @@ export async function POST(req: NextRequest) {
         totalCredits,
         totalGradePoints
       }
-    });
+    };
+    
+    // Debug the final response data
+    console.log("Final API response data:", JSON.stringify(responseData, null, 2));
+    console.log("Total credits:", totalCredits, "type:", typeof totalCredits);
+    
+    // Return data in the format expected by the client
+    return NextResponse.json(responseData);
     
   } catch (error) {
     console.error('OCR processing error:', error);

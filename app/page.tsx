@@ -93,13 +93,26 @@ const Page = () => {
   const handleProcessedGrade = (_average: number, details?: GradeResult) => {
     setIsLoading(false);
     if (details) {
-      const courses = details.entries.map(entry => ({
-        courseCode: entry.courseCode,
-        courseName: entry.courseName,
-        term: entry.term,
-        credits: entry.credits,
-        grade: entry.grade,
-      }));
+      console.log("API Response details:", JSON.stringify(details, null, 2));
+      
+      const courses = details.entries.map(entry => {
+        console.log(`Processing entry: ${entry.courseCode}, credits: ${entry.credits}, type: ${typeof entry.credits}`);
+        
+        // Ensure credits is always a valid number
+        let credits = 0;
+        if (entry.credits !== null && entry.credits !== undefined) {
+          credits = typeof entry.credits === 'string' ? parseFloat(entry.credits) : Number(entry.credits);
+          if (isNaN(credits)) credits = 0;
+        }
+        
+        return {
+          courseCode: entry.courseCode,
+          courseName: entry.courseName,
+          term: entry.term,
+          credits: credits,
+          grade: entry.grade,
+        };
+      });
 
       const gradesData: Grades = {
         average: details.average,
@@ -262,12 +275,12 @@ const Page = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <h2 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">KarakterKalk</h2>
-              <p className="text-sm text-muted-foreground">© 2025 Unigpacalc. Alle rettigheter reservert.</p>
+              <p className="text-sm text-muted-foreground">© 2024 KarakterKalk. Alle rettigheter reservert.</p>
             </div>
             <div className="flex gap-6">
-              <a href="#" className="btn-link">Personvern</a>
-              <a href="#" className="btn-link">Vilkår</a>
-              <a href="#" className="btn-link">Kontakt</a>
+              <a href="/personvern" className="text-foreground/80 hover:text-primary">Personvern</a>
+              <a href="/vilkar" className="text-foreground/80 hover:text-primary">Vilkår</a>
+              <a href="/kontakt" className="text-foreground/80 hover:text-primary">Kontakt</a>
             </div>
           </div>
         </div>

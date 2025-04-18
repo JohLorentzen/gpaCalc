@@ -5,16 +5,21 @@ import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts';
 import { getLetterGrade } from '@/lib/gradeCalculator';
 import { Grades } from '@/types/Course';
 import { Progress } from '@radix-ui/react-progress';
+import { cn } from '@/lib/utils';
 
 const GradeDisplay = ({ gradeData }: { gradeData: Grades }) => {
-  // Calculate GPA
-  const totalWeightedGrades = gradeData.courses.reduce((acc, course) => {
-    const gradeValue = getNumericGrade(course.grade);
-    return acc + (gradeValue * (course.credits || 0));
-  }, 0);
-
-  const totalCredits = gradeData.courses.reduce((acc, course) => acc + (course.credits || 0), 0);
-  const gpa = totalCredits ? totalWeightedGrades / totalCredits : 0;
+  // Use the values from the API response directly
+  console.log("GradeDisplay received data:", JSON.stringify(gradeData, null, 2));
+  
+  // Debug individual course credits
+  gradeData.courses.forEach((course, index) => {
+    console.log(`Course ${index}: ${course.courseName}, credits: ${course.credits}, type: ${typeof course.credits}`);
+  });
+  
+  console.log(`Total credits from API: ${gradeData.totalCredits}`);
+  const gpa = gradeData.average || 0;
+  const totalCredits = gradeData.totalCredits !== undefined && gradeData.totalCredits !== null ? 
+    Number(gradeData.totalCredits) : 0;
 
   const chartData = [
     {
@@ -29,9 +34,29 @@ const GradeDisplay = ({ gradeData }: { gradeData: Grades }) => {
   return (
     <div className="w-full max-w-2xl mx-auto mt-8 animate-fade-in">
       <Tabs defaultValue="summary" className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="summary">Oppsummering</TabsTrigger>
-          <TabsTrigger value="details">Detaljer</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 p-1 rounded-xl bg-muted">
+          <TabsTrigger 
+            value="summary" 
+            className={cn(
+              "rounded-lg text-sm font-medium transition-all py-2.5 text-foreground/90",
+              "hover:bg-muted/70 hover:text-foreground",
+              "data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary",
+              "data-[state=active]:text-white data-[state=active]:shadow-md"
+            )}
+          >
+            Oppsummering
+          </TabsTrigger>
+          <TabsTrigger 
+            value="details" 
+            className={cn(
+              "rounded-lg text-sm font-medium transition-all py-2.5 text-foreground/90",
+              "hover:bg-muted/70 hover:text-foreground", 
+              "data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary",
+              "data-[state=active]:text-white data-[state=active]:shadow-md"
+            )}
+          >
+            Detaljer
+          </TabsTrigger>
         </TabsList>
         
         <TabsContent value="summary" className="mt-4">
@@ -103,33 +128,38 @@ const GradeDisplay = ({ gradeData }: { gradeData: Grades }) => {
               
               <Table>
                 <TableHeader>
-                  <TableRow>
-                    <TableHead className="w-[50%]">Emnenavn</TableHead>
-                    <TableHead className="text-center">Studiepoeng</TableHead>
-                    <TableHead className="text-center">Karakter</TableHead>
+                  <TableRow className="bg-muted/50">
+                    <TableHead className="w-[50%] font-semibold">Emnenavn</TableHead>
+                    <TableHead className="text-center font-semibold">Studiepoeng</TableHead>
+                    <TableHead className="text-center font-semibold">Karakter</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {gradeData.courses.map((course, index) => (
-                    <TableRow key={index}>
-                      <TableCell className="font-medium">{course.courseName}</TableCell>
-                      <TableCell className="text-center">{course.credits}</TableCell>
-                      <TableCell className="text-center font-semibold" style={{ 
-                        color: ['A', 'B', 'C', 'D', 'E', 'F'].includes(course.grade || '') 
-                          ? getNumericGrade(course.grade) >= 3.5 ? '#4CAF50' : '#F44336' 
-                          : undefined 
-                      }}>
-                        {course.grade}
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                  {gradeData.courses.map((course, index) => {
+                    // Ensure credits is always displayed as a valid number
+                    const displayCredits = course.credits === null || course.credits === undefined ? 0 : Number(course.credits);
+                    
+                    return (
+                      <TableRow key={index} className="hover:bg-muted/30 transition-colors">
+                        <TableCell className="font-medium">{course.courseName}</TableCell>
+                        <TableCell className="text-center">{displayCredits}</TableCell>
+                        <TableCell className="text-center font-semibold" style={{ 
+                          color: ['A', 'B', 'C', 'D', 'E', 'F'].includes(course.grade || '') 
+                            ? getNumericGrade(course.grade) >= 3.5 ? '#4CAF50' : '#F44336' 
+                            : undefined 
+                        }}>
+                          {course.grade}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
                 </TableBody>
               </Table>
               
-              <div className="mt-6 p-4 rounded-lg bg-muted border border-border">
+              <div className="mt-6 p-4 rounded-lg bg-gradient-to-r from-primary/10 to-secondary/10 border border-border">
                 <div className="flex justify-between items-center">
                   <span className="font-medium text-foreground">Totale studiepoeng:</span>
-                  <span className="font-semibold">{totalCredits}</span>
+                  <span className="font-semibold text-lg">{totalCredits}</span>
                 </div>
               </div>
             </CardContent>

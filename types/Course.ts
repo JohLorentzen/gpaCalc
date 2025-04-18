@@ -2,7 +2,7 @@ type course = {
     courseCode?: string;
     courseName?: string;
     term?: string;
-    credits?: number;
+    credits: number;
     grade?: string;
   };
   

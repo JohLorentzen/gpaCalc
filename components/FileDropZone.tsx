@@ -77,6 +77,14 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
         throw new Error("Ingen karakterdata kunne ekstraheres fra bildet. Vennligst sjekk formatet og prøv igjen.");
       }
       
+      console.log("Raw API response:", JSON.stringify(data, null, 2));
+      
+      // Log details of each entry
+      data.result.entries.forEach((entry, index) => {
+        console.log(`Entry ${index}:`, entry);
+        console.log(`Credits type: ${typeof entry.credits}, value: ${entry.credits}`);
+      });
+      
       setIsProcessing(false);
       setProcessingStage('');
       
@@ -130,9 +138,10 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
       <div
         className={cn(
           "border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center gap-4 transition-all",
+          "transform hover:scale-[1.01] hover:shadow-md",
           isDragging 
             ? "border-primary bg-primary/5" 
-            : "border-border hover:border-secondary/50 hover:bg-secondary/5",
+            : "border-border hover:border-secondary/50 hover:bg-secondary/5 hover:border-gradient-to-r hover:from-primary/50 hover:to-secondary/50",
           file && !error ? "bg-confirmation/5 border-confirmation/50" : "",
           error ? "bg-destructive/5 border-destructive/50" : ""
         )}
@@ -166,8 +175,8 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
               <p className="text-sm text-destructive mb-4">{error}</p>
             </div>
             <Button 
-              variant="secondary"
-              className="mt-2"
+              variant="primary"
+              className="mt-2 gradient-btn"
               onClick={handleButtonClick}
             >
               Prøv et annet bilde
@@ -183,8 +192,8 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
               <p className="text-sm text-muted-foreground">{(file.size / 1024).toFixed(2)} KB</p>
             </div>
             <Button 
-              variant="secondary"
-              className="mt-2"
+              variant="primary"
+              className="mt-2 gradient-btn"
               onClick={handleButtonClick}
             >
               Last opp et annet bilde
@@ -202,7 +211,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
             </div>
             <Button 
               variant="primary"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 gradient-btn hover:shadow-lg transition-all"
               onClick={handleButtonClick}
             >
               <Upload className="w-4 h-4" />

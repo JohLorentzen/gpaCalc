@@ -262,7 +262,7 @@ const Page = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <h2 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">KarakterKalk</h2>
-              <p className="text-sm text-muted-foreground">© 2025 KarakterKalk. Alle rettigheter reservert.</p>
+              <p className="text-sm text-muted-foreground">© 2025 Unigpacalc. Alle rettigheter reservert.</p>
             </div>
             <div className="flex gap-6">
               <a href="#" className="btn-link">Personvern</a>

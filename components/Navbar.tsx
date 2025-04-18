@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        KarakterKalk
+        UNIGPACALC
       </div>
       <div className="navbar-links">
         <button className="btn btn-secondary">

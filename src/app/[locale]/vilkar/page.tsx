@@ -1,84 +1,9 @@
+'use client';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import type { Metadata } from "next";
-import { getTranslations } from 'next-intl/server';
-
-// Generate metadata for terms page
-export async function generateMetadata({
-  params
-}: {
-  params: { locale: string } | Promise<{ locale: string }>
-}): Promise<Metadata> {
-  // Ensure params is awaited
-  const resolvedParams = await Promise.resolve(params);
-  const locale = resolvedParams.locale;
-  
-  const t = await getTranslations({ locale, namespace: 'navigation' });
-  
-  const metadataByLocale: Record<string, Metadata> = {
-    en: {
-      title: "Terms of Service | GPA Calculator",
-      description: "Read our terms of service for using the GPA Calculator tool based on the Norwegian grading system.",
-      keywords: ["terms of service", "GPA calculator terms", "user agreement", "Norwegian GPA calculator"],
-      openGraph: {
-        title: "Terms of Service | GPA Calculator",
-        description: "Read our terms of service for using the GPA Calculator tool.",
-        url: `https://unigpacalc.com/${locale}/vilkar`,
-        type: "article"
-      }
-    },
-    no: {
-      title: "Vilkår for bruk | Karakterkalkulator",
-      description: "Les våre vilkår for bruk av Karakterkalkulatoren basert på det norske karaktersystemet.",
-      keywords: ["vilkår for bruk", "karakterkalkulator vilkår", "brukeravtale", "norsk karakterkalkulator"],
-      openGraph: {
-        title: "Vilkår for bruk | Karakterkalkulator",
-        description: "Les våre vilkår for bruk av Karakterkalkulatoren.",
-        url: `https://unigpacalc.com/${locale}/vilkar`,
-        type: "article"
-      }
-    },
-    es: {
-      title: "Términos de Servicio | Calculadora de GPA",
-      description: "Lea nuestros términos de servicio para usar la herramienta Calculadora de GPA basada en el sistema de calificación noruego.",
-      keywords: ["términos de servicio", "términos calculadora GPA", "acuerdo de usuario", "calculadora GPA noruega"],
-      openGraph: {
-        title: "Términos de Servicio | Calculadora de GPA",
-        description: "Lea nuestros términos de servicio para usar la herramienta Calculadora de GPA.",
-        url: `https://unigpacalc.com/${locale}/vilkar`,
-        type: "article"
-      }
-    },
-    fr: {
-      title: "Conditions d'Utilisation | Calculateur de GPA",
-      description: "Lisez nos conditions d'utilisation pour utiliser l'outil Calculateur de GPA basé sur le système de notation norvégien.",
-      keywords: ["conditions d'utilisation", "conditions calculateur GPA", "accord utilisateur", "calculateur GPA norvégien"],
-      openGraph: {
-        title: "Conditions d'Utilisation | Calculateur de GPA",
-        description: "Lisez nos conditions d'utilisation pour utiliser l'outil Calculateur de GPA.",
-        url: `https://unigpacalc.com/${locale}/vilkar`,
-        type: "article"
-      }
-    },
-    de: {
-      title: "Nutzungsbedingungen | GPA-Rechner",
-      description: "Lesen Sie unsere Nutzungsbedingungen für die Verwendung des GPA-Rechners basierend auf dem norwegischen Benotungssystem.",
-      keywords: ["Nutzungsbedingungen", "GPA-Rechner Bedingungen", "Benutzervereinbarung", "Norwegischer GPA-Rechner"],
-      openGraph: {
-        title: "Nutzungsbedingungen | GPA-Rechner",
-        description: "Lesen Sie unsere Nutzungsbedingungen für die Verwendung des GPA-Rechners.",
-        url: `https://unigpacalc.com/${locale}/vilkar`,
-        type: "article"
-      }
-    }
-  };
-
-  return metadataByLocale[locale] || metadataByLocale.en;
-}
 
 // Client component for the page content
-'use client';
 export default function TermsPage() {
   const t = useTranslations('navigation');
   const { locale } = useParams();
@@ -131,7 +56,7 @@ export default function TermsPage() {
         
         <h3>5. Disclaimer of Warranties</h3>
         <p>
-          The service is provided "as is" and "as available" without warranties of any kind, either express or implied. 
+          The service is provided &quot;as is&quot; and &quot;as available&quot; without warranties of any kind, either express or implied. 
           We do not guarantee the accuracy of GPA calculations and recommend that users verify results through their educational institution.
         </p>
         

@@ -1,0 +1,94 @@
+{
+  "app": {
+    "title": "Berechnen Sie Ihren",
+    "titleHighlight": "Notendurchschnitt",
+    "description": "Laden Sie Ihr Universitätszeugnis hoch und lassen Sie Ihre Kurse und Durchschnittsnote in Sekundenschnelle berechnen."
+  },
+  "navigation": {
+    "home": "Startseite",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "contact": "Kontakt"
+  },
+  "calculator": {
+    "title": "Notenrechner",
+    "addCourse": "Kurs hinzufügen",
+    "calculate": "Berechnen",
+    "reset": "Zurücksetzen",
+    "courseName": "Kursname",
+    "grade": "Note",
+    "credits": "Leistungspunkte",
+    "result": "Ihr Notendurchschnitt ist: {gpa}",
+    "emptyState": "Fügen Sie Kurse hinzu, um Ihren Notendurchschnitt zu berechnen",
+    "uploadTranscript": "Legen Sie Ihr Universitätszeugnis hier ab",
+    "processing": "Zeugnis wird verarbeitet",
+    "processingDescription": "Dies kann einen Moment dauern, während wir Ihr Bild analysieren und die Noten extrahieren",
+    "ocrProcessing": "OCR-Verarbeitung wird gestartet...",
+    "analyzingGrades": "Noten werden analysiert",
+    "calculatingAverage": "Durchschnitt wird berechnet",
+    "loading": "Laden...",
+    "loadingResults": "Ergebnisse werden geladen...",
+    "results": "Ihre Ergebnisse",
+    "dropOrClick": "oder klicken Sie zum Durchsuchen",
+    "browseFiles": "Dateien durchsuchen",
+    "supportedFormats": "Unterstützt Universitätszeugnisbilder oder Screenshots (JPG, PNG, JPEG)",
+    "supportedLanguages": "Unterstützt Zeugnisse auf Deutsch, Englisch und Norwegisch",
+    "processingComplete": "Zeugnis verarbeitet",
+    "processingError": "Fehler bei der Verarbeitung des Zeugnisses",
+    "tryAnotherImage": "Anderes Bild versuchen",
+    "uploadAnotherImage": "Anderes Bild hochladen",
+    "chooseAnotherFile": "Andere Datei auswählen"
+  },
+  "errors": {
+    "pageNotFound": "Ups! Seite nicht gefunden",
+    "backToHome": "Zurück zur Startseite"
+  },
+  "gradeDisplay": {
+    "summary": "Zusammenfassung",
+    "details": "Details",
+    "averageGrade": "Durchschnittsnote",
+    "letterGrade": "Buchstabennote",
+    "average": "Durchschnitt",
+    "gradeOverview": "Notenübersicht",
+    "detailsDescription": "Hier ist eine detaillierte Übersicht über Ihre Kurse und Noten.",
+    "courseName": "Kursname",
+    "credits": "Credits",
+    "grade": "Note",
+    "totalCredits": "Gesamtcredits",
+    "convertGPA": "GPA umrechnen in:",
+    "countryScales": "Länderskalen",
+    "originalScale": "Original",
+    "convertedScale": "Umgerechnet",
+    "equivalentGrade": "Äquivalente Note"
+  },
+  "courseTable": {
+    "courseOverview": "Kursübersicht",
+    "average": "Durchschnitt",
+    "totalCredits": "Gesamte Leistungspunkte",
+    "courseCode": "Kurscode",
+    "courseName": "Kursname",
+    "semester": "Semester",
+    "credits": "Leistungspunkte",
+    "grade": "Note"
+  },
+  "features": {
+    "title": "Wie es funktioniert",
+    "description": "Unigpacalc macht die Berechnung Ihres Notendurchschnitts einfach und intuitiv",
+    "step1": {
+      "title": "Zeugnis hochladen",
+      "description": "Ziehen Sie Ihr Universitätszeugnis im Bildformat per Drag & Drop."
+    },
+    "step2": {
+      "title": "Sofortige Analyse",
+      "description": "Unsere KI-Technologie extrahiert Ihre Noten und berechnet den Durchschnitt sofort."
+    },
+    "step3": {
+      "title": "Ergebnisse ansehen",
+      "description": "Sehen Sie Ihre Kurse, Leistungspunkte und Durchschnittsnote in einer übersichtlichen Tabelle."
+    }
+  },
+  "footer": {
+    "language": "Sprache",
+    "copyright": "© {year} Unigpacalc. Alle Rechte vorbehalten."
+  }
+} 

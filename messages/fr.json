@@ -1,0 +1,94 @@
+{
+  "app": {
+    "title": "Calculez votre Moyenne",
+    "titleHighlight": "Universitaire",
+    "description": "Téléchargez votre relevé de notes et obtenez vos cours et votre moyenne calculés en quelques secondes."
+  },
+  "navigation": {
+    "home": "Accueil",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "contact": "Contact"
+  },
+  "calculator": {
+    "title": "Calculateur de Moyenne",
+    "addCourse": "Ajouter un Cours",
+    "calculate": "Calculer",
+    "reset": "Réinitialiser",
+    "courseName": "Nom du Cours",
+    "grade": "Note",
+    "credits": "Crédits",
+    "result": "Votre moyenne est: {gpa}",
+    "emptyState": "Ajoutez des cours pour calculer votre moyenne",
+    "uploadTranscript": "Déposez votre relevé de notes ici",
+    "processing": "Traitement du relevé",
+    "processingDescription": "Cela peut prendre un moment pendant que nous analysons votre image et extrayons les notes",
+    "ocrProcessing": "Démarrage du traitement OCR...",
+    "analyzingGrades": "Analyse des notes",
+    "calculatingAverage": "Calcul de la moyenne",
+    "loading": "Chargement...",
+    "loadingResults": "Chargement des résultats...",
+    "results": "Vos Résultats",
+    "dropOrClick": "ou cliquez pour parcourir",
+    "browseFiles": "Parcourir les fichiers",
+    "supportedFormats": "Supporte les images ou captures d'écran de relevés universitaires (JPG, PNG, JPEG)",
+    "supportedLanguages": "Supporte les relevés en français, anglais et norvégien",
+    "processingComplete": "Relevé traité",
+    "processingError": "Erreur lors du traitement du relevé",
+    "tryAnotherImage": "Essayer une autre image",
+    "uploadAnotherImage": "Télécharger une autre image",
+    "chooseAnotherFile": "Choisir un autre fichier"
+  },
+  "errors": {
+    "pageNotFound": "Oups! Page non trouvée",
+    "backToHome": "Retour à l'accueil"
+  },
+  "gradeDisplay": {
+    "summary": "Résumé",
+    "details": "Détails",
+    "averageGrade": "Note moyenne",
+    "letterGrade": "Note en lettre",
+    "average": "Moyenne",
+    "gradeOverview": "Aperçu des notes",
+    "detailsDescription": "Voici un aperçu détaillé de vos cours et notes.",
+    "courseName": "Nom du cours",
+    "credits": "Crédits",
+    "grade": "Note",
+    "totalCredits": "Total des crédits",
+    "convertGPA": "Convertir la moyenne en:",
+    "countryScales": "Échelles par pays",
+    "originalScale": "Original",
+    "convertedScale": "Converti",
+    "equivalentGrade": "Note équivalente"
+  },
+  "courseTable": {
+    "courseOverview": "Aperçu des Cours",
+    "average": "Moyenne",
+    "totalCredits": "Crédits Totaux",
+    "courseCode": "Code du Cours",
+    "courseName": "Nom du Cours",
+    "semester": "Semestre",
+    "credits": "Crédits",
+    "grade": "Note"
+  },
+  "features": {
+    "title": "Comment Ça Marche",
+    "description": "Unigpacalc rend facile et intuitif le calcul de votre moyenne universitaire",
+    "step1": {
+      "title": "Téléchargez votre Relevé",
+      "description": "Faites glisser et déposez votre relevé de notes universitaire au format image."
+    },
+    "step2": {
+      "title": "Analyse Instantanée",
+      "description": "Notre technologie IA extrait vos notes et calcule la moyenne immédiatement."
+    },
+    "step3": {
+      "title": "Voir les Résultats",
+      "description": "Consultez vos cours, crédits et moyenne dans un tableau clair."
+    }
+  },
+  "footer": {
+    "language": "Langue",
+    "copyright": "© {year} Unigpacalc. Tous droits réservés."
+  }
+} 

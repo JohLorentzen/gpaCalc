@@ -1,0 +1,118 @@
+{
+  "app": {
+    "title": "Calculate your University",
+    "titleHighlight": "GPA",
+    "description": "Upload your university transcript and get your courses and average grade calculated in seconds."
+  },
+  "navigation": {
+    "home": "Home",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact"
+  },
+  "calculator": {
+    "title": "GPA Calculator",
+    "addCourse": "Add Course",
+    "calculate": "Calculate",
+    "reset": "Reset",
+    "courseName": "Course Name",
+    "grade": "Grade",
+    "credits": "Credits",
+    "result": "Your GPA is: {gpa}",
+    "emptyState": "Add courses to calculate your GPA",
+    "uploadTranscript": "Drop your University transcript here",
+    "processing": "Processing transcript",
+    "processingDescription": "This may take a moment while we analyze your image and extract the grades",
+    "ocrProcessing": "Starting OCR processing...",
+    "analyzingGrades": "Analyzing grades",
+    "calculatingAverage": "Calculating average",
+    "loading": "Loading...",
+    "loadingResults": "Loading results...",
+    "results": "Your Results",
+    "dropOrClick": "or click to browse",
+    "browseFiles": "Browse files",
+    "supportedFormats": "Supports University/College transcript images or screenshots (JPG, PNG, JPEG)",
+    "supportedLanguages": "Supports both Norwegian and English transcripts with passed courses",
+    "processingComplete": "Transcript processed",
+    "processingError": "Error processing transcript",
+    "tryAnotherImage": "Try another image",
+    "uploadAnotherImage": "Upload another image",
+    "chooseAnotherFile": "Choose another file"
+  },
+  "errors": {
+    "pageNotFound": "Oops! Page not found",
+    "backToHome": "Back to home"
+  },
+  "gradeDisplay": {
+    "summary": "Summary",
+    "details": "Details",
+    "averageGrade": "Average Grade",
+    "letterGrade": "Letter Grade",
+    "average": "Average",
+    "gradeOverview": "Grade Overview",
+    "detailsDescription": "Here is a detailed overview of your courses and grades.",
+    "courseName": "Course Name",
+    "credits": "Credits",
+    "grade": "Grade",
+    "totalCredits": "Total Credits",
+    "convertGPA": "Convert GPA to:",
+    "countryScales": "Country Scales",
+    "originalScale": "Original",
+    "convertedScale": "Converted",
+    "equivalentGrade": "Equivalent Grade"
+  },
+  "courseTable": {
+    "courseOverview": "Course Overview",
+    "average": "Average",
+    "totalCredits": "Total Credits",
+    "courseCode": "Course Code",
+    "courseName": "Course Name",
+    "semester": "Semester",
+    "credits": "Credits",
+    "grade": "Grade"
+  },
+  "features": {
+    "title": "How It Works",
+    "description": "Unigpacalc makes it easy and intuitive to calculate your grade point average",
+    "step1": {
+      "title": "Upload Transcript",
+      "description": "Drag and drop your university/college transcript in image format."
+    },
+    "step2": {
+      "title": "Instant Analysis",
+      "description": "Our AI technology extracts your grades and calculates the average immediately."
+    },
+    "step3": {
+      "title": "View Results",
+      "description": "See your courses, credits, and grade point average in a clear table."
+    }
+  },
+  "footer": {
+    "language": "Language",
+    "copyright": "© {year} Unigpacalc. All rights reserved."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Fill out the form below to get in touch with us.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "subjectRequired": "Subject is required",
+      "messageRequired": "Message is required",
+      "messageShort": "Message must be at least 10 characters",
+      "success": "Thank you for your message!",
+      "successDescription": "We have received your message and will get back to you as soon as possible.",
+      "error": "Something went wrong",
+      "errorDescription": "An error occurred while sending the form. Please try again later.",
+      "newMessage": "Send New Message",
+      "tryAgain": "Try Again"
+    }
+  }
+} 

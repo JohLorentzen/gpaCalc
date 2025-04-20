@@ -1,0 +1,94 @@
+{
+  "app": {
+    "title": "Calcula tu Promedio",
+    "titleHighlight": "Universitario",
+    "description": "Sube tu expediente académico y obtén tus cursos y nota media calculados en segundos."
+  },
+  "navigation": {
+    "home": "Inicio",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "contact": "Contacto"
+  },
+  "calculator": {
+    "title": "Calculadora de Promedio",
+    "addCourse": "Añadir Curso",
+    "calculate": "Calcular",
+    "reset": "Reiniciar",
+    "courseName": "Nombre del Curso",
+    "grade": "Nota",
+    "credits": "Créditos",
+    "result": "Tu promedio es: {gpa}",
+    "emptyState": "Añade cursos para calcular tu promedio",
+    "uploadTranscript": "Arrastra aquí tu expediente académico",
+    "processing": "Procesando expediente",
+    "processingDescription": "Esto puede tardar un momento mientras analizamos tu imagen y extraemos las calificaciones",
+    "ocrProcessing": "Iniciando procesamiento OCR...",
+    "analyzingGrades": "Analizando calificaciones",
+    "calculatingAverage": "Calculando promedio",
+    "loading": "Cargando...",
+    "loadingResults": "Cargando resultados...",
+    "results": "Tus Resultados",
+    "dropOrClick": "o haz clic para buscar",
+    "browseFiles": "Explorar archivos",
+    "supportedFormats": "Compatible con imágenes o capturas de expedientes universitarios (JPG, PNG, JPEG)",
+    "supportedLanguages": "Compatible con expedientes en español, inglés y noruego",
+    "processingComplete": "Expediente procesado",
+    "processingError": "Error al procesar el expediente",
+    "tryAnotherImage": "Prueba con otra imagen",
+    "uploadAnotherImage": "Subir otra imagen",
+    "chooseAnotherFile": "Seleccionar otro archivo"
+  },
+  "errors": {
+    "pageNotFound": "¡Ups! Página no encontrada",
+    "backToHome": "Volver al inicio"
+  },
+  "gradeDisplay": {
+    "summary": "Resumen",
+    "details": "Detalles",
+    "averageGrade": "Calificación media",
+    "letterGrade": "Calificación en letra",
+    "average": "Promedio",
+    "gradeOverview": "Resumen de calificaciones",
+    "detailsDescription": "Aquí hay un resumen detallado de tus cursos y calificaciones.",
+    "courseName": "Nombre del curso",
+    "credits": "Créditos",
+    "grade": "Calificación",
+    "totalCredits": "Créditos totales",
+    "convertGPA": "Convertir GPA a:",
+    "countryScales": "Escalas por país",
+    "originalScale": "Original",
+    "convertedScale": "Convertido",
+    "equivalentGrade": "Calificación equivalente"
+  },
+  "courseTable": {
+    "courseOverview": "Resumen de Cursos",
+    "average": "Promedio",
+    "totalCredits": "Créditos Totales",
+    "courseCode": "Código del Curso",
+    "courseName": "Nombre del Curso",
+    "semester": "Semestre",
+    "credits": "Créditos",
+    "grade": "Nota"
+  },
+  "features": {
+    "title": "Cómo Funciona",
+    "description": "Unigpacalc hace que sea fácil e intuitivo calcular tu promedio académico",
+    "step1": {
+      "title": "Sube tu Expediente",
+      "description": "Arrastra y suelta tu expediente universitario en formato de imagen."
+    },
+    "step2": {
+      "title": "Análisis Instantáneo",
+      "description": "Nuestra tecnología de IA extrae tus calificaciones y calcula el promedio inmediatamente."
+    },
+    "step3": {
+      "title": "Ver Resultados",
+      "description": "Mira tus cursos, créditos y promedio en una tabla clara."
+    }
+  },
+  "footer": {
+    "language": "Idioma",
+    "copyright": "© {year} Unigpacalc. Todos los derechos reservados."
+  }
+} 

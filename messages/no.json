@@ -1,0 +1,118 @@
+{
+  "app": {
+    "title": "Beregn din Universitets",
+    "titleHighlight": "Karaktersnitt",
+    "description": "Last opp din karakterutskrift og få dine emner og gjennomsnittskarakter beregnet på sekunder."
+  },
+  "navigation": {
+    "home": "Hjem",
+    "privacy": "Personvern",
+    "terms": "Vilkår",
+    "contact": "Kontakt"
+  },
+  "calculator": {
+    "title": "Karakterkalkulator",
+    "addCourse": "Legg til emne",
+    "calculate": "Beregn",
+    "reset": "Nullstill",
+    "courseName": "Emnenavn",
+    "grade": "Karakter",
+    "credits": "Studiepoeng",
+    "result": "Ditt karaktersnitt er: {gpa}",
+    "emptyState": "Legg til emner for å beregne ditt karaktersnitt",
+    "uploadTranscript": "Slipp ditt Universitets/Høyskole karakterutskrift her",
+    "processing": "Behandler karakterutskrift",
+    "processingDescription": "Dette kan ta litt tid mens vi analyserer bildet ditt og henter ut karakterene",
+    "ocrProcessing": "Starter OCR-behandling...",
+    "analyzingGrades": "Analyserer karakterer",
+    "calculatingAverage": "Beregner gjennomsnitt",
+    "loading": "Laster...",
+    "loadingResults": "Laster resultater...",
+    "results": "Dine resultater",
+    "dropOrClick": "eller klikk for å bla",
+    "chooseAnotherFile": "Velg et annet fil",
+    "browseFiles": "Bla gjennom filer",
+    "supportedFormats": "Støtter Universitets/Høyskole karakterutskriftsbilder eller skjermbilder (JPG, PNG, JPEG)",
+    "supportedLanguages": "Støtter både norske og engelske karakterutskrifter med bestått/passed emner",
+    "processingComplete": "Karakterutskrift behandlet",
+    "processingError": "Feil ved behandling av karakterutskrift",
+    "tryAnotherImage": "Prøv et annet bilde",
+    "uploadAnotherImage": "Last opp et annet bilde"
+  },
+  "errors": {
+    "pageNotFound": "Oops! Siden ble ikke funnet",
+    "backToHome": "Tilbake til forsiden"
+  },
+  "gradeDisplay": {
+    "summary": "Sammendrag",
+    "details": "Detaljer",
+    "averageGrade": "Gjennomsnittskarakter",
+    "letterGrade": "Bokstavkarakter",
+    "average": "Gjennomsnitt",
+    "gradeOverview": "Karakteroversikt",
+    "detailsDescription": "Her er en detaljert oversikt over dine emner og karakterer.",
+    "courseName": "Emnenavn",
+    "credits": "Studiepoeng",
+    "grade": "Karakter",
+    "totalCredits": "Totale studiepoeng",
+    "convertGPA": "Konverter karaktersnitt til:",
+    "countryScales": "Landsskalaer",
+    "originalScale": "Original",
+    "convertedScale": "Konvertert",
+    "equivalentGrade": "Tilsvarende karakter"
+  },
+  "courseTable": {
+    "courseOverview": "Emneoversikt",
+    "average": "Gjennomsnitt",
+    "totalCredits": "Totale studiepoeng",
+    "courseCode": "Emnekode",
+    "courseName": "Emnenavn",
+    "semester": "Semester",
+    "credits": "Studiepoeng",
+    "grade": "Karakter"
+  },
+  "features": {
+    "title": "Hvordan det fungerer",
+    "description": "Unigpacalc gjør det enkelt og intuitivt å beregne din gjennomsnittskarakter",
+    "step1": {
+      "title": "Last opp karakterutskrift",
+      "description": "Dra og slipp din universitets/høyskole karakterutskrift i bildeformat."
+    },
+    "step2": {
+      "title": "Øyeblikkelig analyse",
+      "description": "Vår AI-teknologi henter ut karakterene dine og beregner gjennomsnittet umiddelbart."
+    },
+    "step3": {
+      "title": "Se resultater",
+      "description": "Se emnene dine, studiepoeng og gjennomsnittskarakter i en oversiktlig tabell."
+    }
+  },
+  "footer": {
+    "language": "Språk",
+    "copyright": "© {year} Unigpacalc. Alle rettigheter reservert."
+  },
+  "contact": {
+    "title": "Kontakt Oss",
+    "description": "Fyll ut skjemaet nedenfor for å ta kontakt med oss.",
+    "form": {
+      "name": "Navn",
+      "email": "E-post",
+      "subject": "Emne",
+      "message": "Melding",
+      "submit": "Send melding",
+      "sending": "Sender...",
+      "nameRequired": "Navn er påkrevd",
+      "emailRequired": "E-post er påkrevd",
+      "emailInvalid": "Vennligst skriv inn en gyldig e-postadresse",
+      "subjectRequired": "Emne er påkrevd",
+      "messageRequired": "Melding er påkrevd",
+      "messageShort": "Meldingen må være minst 10 tegn",
+      "success": "Takk for din henvendelse!",
+      "successDescription": "Vi har mottatt din melding og vil ta kontakt med deg så snart som mulig.",
+      "error": "Noe gikk galt",
+      "errorDescription": "Det oppstod en feil under sending av skjemaet. Vennligst prøv igjen senere.",
+      "newMessage": "Send ny melding",
+      "tryAgain": "Prøv igjen"
+    }
+  }
+} 

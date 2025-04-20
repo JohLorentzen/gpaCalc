@@ -1,3 +1,5 @@
+"use client";
+
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table';
@@ -27,10 +29,11 @@ const GradeDisplay = ({ gradeData }: { gradeData: Grades }) => {
   const gpa = gradeData.average || 0;
   const totalCredits = gradeData.totalCredits !== undefined && gradeData.totalCredits !== null ? 
     Number(gradeData.totalCredits) : 0;
+  const university = gradeData.university || null;
+  const country = countryScales.find(c => c.name === selectedCountry);
 
   // Get the converted GPA
   const convertedGpa = convertGPA(gpa, selectedCountry) || 0;
-  const country = countryScales.find(c => c.name === selectedCountry);
 
   const chartData = [
     {
@@ -84,6 +87,13 @@ const GradeDisplay = ({ gradeData }: { gradeData: Grades }) => {
         <TabsContent value="summary" className="mt-4">
           <Card className="border border-border shadow-sm">
             <CardContent className="pt-6">
+              {university && (
+                <div className="mb-4 p-3 rounded-lg bg-muted/70 border border-border">
+                  <h3 className="text-lg font-medium text-foreground">{university}</h3>
+                  {gradeData.country && <p className="text-sm text-muted-foreground">{gradeData.country}</p>}
+                </div>
+              )}
+              
               <div className="flex flex-col md:flex-row gap-8 items-center">
                 <div className="w-full md:w-1/2">
                   <h3 className="text-xl font-medium text-foreground mb-2">{t('averageGrade')}</h3>
@@ -150,6 +160,24 @@ const GradeDisplay = ({ gradeData }: { gradeData: Grades }) => {
           <Card className="border border-border shadow-sm">
             <CardContent className="pt-6">
               <h3 className="text-xl font-medium text-foreground mb-4">{t('gradeOverview')}</h3>
+              
+              {university && (
+                <div className="mb-4 p-3 rounded-lg bg-muted/70 border border-border">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h4 className="font-medium text-foreground">{t('institution')}:</h4>
+                      <p className="text-foreground/90">{university}</p>
+                    </div>
+                    {gradeData.country && (
+                      <div className="text-right">
+                        <h4 className="font-medium text-foreground">{t('country')}:</h4>
+                        <p className="text-foreground/90">{gradeData.country}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+              
               <p className="text-muted-foreground mb-6">
                 {t('detailsDescription')}
               </p>

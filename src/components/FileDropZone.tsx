@@ -1,9 +1,11 @@
+"use client";
+
 import React, { useState, useRef } from 'react';
-import { Upload, Image, CheckCircle, AlertTriangle } from 'lucide-react';
+import { Upload, CheckCircle, AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
-import { GradeResult } from '@/lib/parser';
+import { GradeResult, GradeEntry } from '@/lib/parser';
 import { useTranslations } from 'next-intl';
 
 interface FileDropZoneProps {
@@ -82,7 +84,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
       console.log("Raw API response:", JSON.stringify(data, null, 2));
       
       // Log details of each entry
-      data.result.entries.forEach((entry, index) => {
+      data.result.entries.forEach((entry: GradeEntry, index: number) => {
         console.log(`Entry ${index}:`, entry);
         console.log(`Credits type: ${typeof entry.credits}, value: ${entry.credits}`);
       });
@@ -158,12 +160,28 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
         />
         
         {isProcessing ? (
-          <div className="flex flex-col items-center gap-4">
-            <div className="w-16 h-16 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div>
-            <p className="text-foreground font-medium">{processingStage || t('processing')}</p>
-            <p className="text-sm text-muted-foreground max-w-xs text-center">
-              {t('processingDescription')}
-            </p>
+          <div className="flex flex-col items-center gap-4 relative overflow-hidden">
+            <div className="absolute inset-0 animate-shimmer opacity-25"></div>
+            <div className="relative z-10">
+              <div className="relative">
+                <div className="w-16 h-16 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div>
+                <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-r-secondary/70 rounded-full animate-spin" style={{ animationDuration: '1.5s', animationDirection: 'reverse' }}></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-3 h-3 bg-primary/60 rounded-full animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+            <div className="relative z-10">
+              <p className="text-foreground font-medium">{processingStage || t('processing')}</p>
+              <p className="text-sm text-muted-foreground max-w-xs text-center">
+                {t('processingDescription')}
+              </p>
+              <div className="flex space-x-2 mt-1 justify-center">
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" style={{ animationDelay: '0s' }}></div>
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+              </div>
+            </div>
           </div>
         ) : error ? (
           <div className="flex flex-col items-center gap-4">

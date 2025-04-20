@@ -59,7 +59,9 @@
     "countryScales": "Landsskalaer",
     "originalScale": "Original",
     "convertedScale": "Konvertert",
-    "equivalentGrade": "Tilsvarende karakter"
+    "equivalentGrade": "Tilsvarende karakter",
+    "institution": "Institusjon",
+    "country": "Land"
   },
   "courseTable": {
     "courseOverview": "Emneoversikt",

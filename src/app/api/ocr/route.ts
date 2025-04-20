@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
         {
           role: "user",
           content: [
-            { type: "input_text", text: "I want a JSON list of all the courses and grades from this transcript image. Be accurate about term/semester information and credit values. Handle both English and Norwegian transcripts. For pass/fail courses, use 'Pass'/'Passed' or 'Fail'/'Failed' consistently. Return ONLY valid JSON without any explanations. The schema should be an array of objects with {course, title, term, credits, grade} properties. If credits are not available, use null." },
+            { type: "input_text", text: "Extract information from this transcript image. First, identify the university/college name and country. Then, extract all courses and grades from the transcript. Be accurate about term/semester information and credit values. Handle both English and Norwegian transcripts. For pass/fail courses, use 'Pass'/'Passed' or 'Fail'/'Failed' consistently. Return ONLY valid JSON without any explanations. The schema should be: {university: string, country: string, courses: Array<{course, title, term, credits, grade}>}. If credits are not available, use null. If university or country cannot be determined, use null for those fields." },
             {
               type: "input_image",
               image_url: `data:image/jpeg;base64,${base64Image}`,
@@ -43,9 +43,6 @@ export async function POST(req: NextRequest) {
       ],
     });
 
-    // Log the response for debugging
-    console.log('OpenAI API response:', response.output_text);
-
     // Extract JSON from the response
     let jsonData;
     
@@ -54,11 +51,10 @@ export async function POST(req: NextRequest) {
     if (jsonMatch && jsonMatch[1]) {
       try {
         jsonData = JSON.parse(jsonMatch[1]);
-        console.log('Successfully parsed JSON from code block:', jsonData);
-      } catch (parseError) {
-        console.error('Failed to parse extracted JSON:', parseError);
+      } catch (error) {
         return NextResponse.json({
           error: 'Failed to parse JSON from API response',
+          details: error instanceof Error ? error.message : 'Unknown parsing error',
           rawText: response.output_text
         }, { status: 400 });
       }
@@ -66,22 +62,25 @@ export async function POST(req: NextRequest) {
       // If no code blocks found, try to parse the entire response as JSON
       try {
         jsonData = JSON.parse(response.output_text);
-        console.log('Successfully parsed raw JSON response:', jsonData);
-      } catch (parseError) {
-        console.error('Failed to parse response as JSON:', parseError);
+      } catch (error) {
         return NextResponse.json({
           error: 'No valid JSON found in API response',
+          details: error instanceof Error ? error.message : 'Unknown parsing error',
           rawText: response.output_text
         }, { status: 400 });
       }
     }
     
-    if (!jsonData || !Array.isArray(jsonData) || jsonData.length === 0) {
+    if (!jsonData || !jsonData.courses || !Array.isArray(jsonData.courses) || jsonData.courses.length === 0) {
       return NextResponse.json({
         error: 'No course data could be extracted from the image',
         rawText: response.output_text
       }, { status: 400 });
     }
+    
+    // Extract university and country info
+    const university = jsonData.university || null;
+    const country = jsonData.country || null;
     
     // Calculate GPA and totals
     let totalCredits = 0;
@@ -89,18 +88,21 @@ export async function POST(req: NextRequest) {
     let countableCredits = 0;
     
     // Process the courses to calculate GPA
-    const processedCourses = jsonData.map(course => {
+    const processedCourses = jsonData.courses.map((course: {
+      course: string;
+      title: string;
+      term: string;
+      credits: string | number | null;
+      grade: string;
+    }) => {
       // Handle different credit formats and convert to number
       const creditsRaw = course.credits;
-      console.log(`Processing course: ${course.course}, raw credits: ${creditsRaw}, type: ${typeof creditsRaw}`);
       
       // Handle null, undefined, empty string, or dash
       let credits = 0;
       if (creditsRaw !== null && creditsRaw !== undefined && creditsRaw !== '' && creditsRaw !== '-') {
         credits = typeof creditsRaw === 'string' ? parseFloat(creditsRaw) : Number(creditsRaw);
       }
-      
-      console.log(`After conversion: credits = ${credits}, type: ${typeof credits}, isNaN: ${isNaN(credits)}`);
       
       // Normalize grade values for different formats
       let normalizedGrade = course.grade;
@@ -134,7 +136,6 @@ export async function POST(req: NextRequest) {
         includedInGpa: validForGpa
       };
       
-      console.log(`Final processed course: ${processedCourse.courseCode}, credits: ${processedCourse.credits}, type: ${typeof processedCourse.credits}`);
       return processedCourse;
     });
     
@@ -142,22 +143,20 @@ export async function POST(req: NextRequest) {
     const average = countableCredits > 0 ? totalGradePoints / countableCredits : 0;
     
     // Recalculate total credits by summing all processed entries
-    totalCredits = processedCourses.reduce((sum, course) => sum + (course.credits || 0), 0);
+    totalCredits = processedCourses.reduce((sum: number, course: { credits: number | null }) => sum + (course.credits || 0), 0);
     
     // Final response data object
     const responseData = {
       success: true,
       result: {
+        university,
+        country,
         entries: processedCourses,
         average,
         totalCredits,
         totalGradePoints
       }
     };
-    
-    // Debug the final response data
-    console.log("Final API response data:", JSON.stringify(responseData, null, 2));
-    console.log("Total credits:", totalCredits, "type:", typeof totalCredits);
     
     // Return data in the format expected by the client
     return NextResponse.json(responseData);

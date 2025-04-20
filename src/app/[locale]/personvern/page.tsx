@@ -1,9 +1,84 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import type { Metadata } from "next";
+import { getTranslations } from 'next-intl/server';
 
+// Generate metadata for privacy policy page
+export async function generateMetadata({
+  params
+}: {
+  params: { locale: string } | Promise<{ locale: string }>
+}): Promise<Metadata> {
+  // Ensure params is awaited
+  const resolvedParams = await Promise.resolve(params);
+  const locale = resolvedParams.locale;
+  
+  const t = await getTranslations({ locale, namespace: 'navigation' });
+  
+  const metadataByLocale: Record<string, Metadata> = {
+    en: {
+      title: "Privacy Policy | GPA Calculator",
+      description: "Our privacy policy explains how we handle your data when using our GPA calculator service based on the Norwegian grading system.",
+      keywords: ["privacy policy", "GPA calculator privacy", "data protection", "Norwegian GPA"],
+      openGraph: {
+        title: "Privacy Policy | GPA Calculator",
+        description: "Our privacy policy explains how we handle your data when using our GPA calculator service.",
+        url: `https://unigpacalc.com/${locale}/personvern`,
+        type: "article"
+      }
+    },
+    no: {
+      title: "Personvernerklæring | Karakterkalkulator",
+      description: "Vår personvernerklæring forklarer hvordan vi håndterer dine data når du bruker vår karakterkalkulator basert på det norske karaktersystemet.",
+      keywords: ["personvernerklæring", "personvern karakterkalkulator", "databeskyttelse", "norsk karakterkalkulator"],
+      openGraph: {
+        title: "Personvernerklæring | Karakterkalkulator",
+        description: "Vår personvernerklæring forklarer hvordan vi håndterer dine data når du bruker vår karakterkalkulator.",
+        url: `https://unigpacalc.com/${locale}/personvern`,
+        type: "article"
+      }
+    },
+    es: {
+      title: "Política de Privacidad | Calculadora de GPA",
+      description: "Nuestra política de privacidad explica cómo manejamos tus datos al usar nuestro servicio de calculadora de GPA basado en el sistema noruego.",
+      keywords: ["política de privacidad", "privacidad calculadora GPA", "protección de datos", "GPA noruego"],
+      openGraph: {
+        title: "Política de Privacidad | Calculadora de GPA",
+        description: "Nuestra política de privacidad explica cómo manejamos tus datos al usar nuestro servicio de calculadora de GPA.",
+        url: `https://unigpacalc.com/${locale}/personvern`,
+        type: "article"
+      }
+    },
+    fr: {
+      title: "Politique de Confidentialité | Calculateur de GPA",
+      description: "Notre politique de confidentialité explique comment nous traitons vos données lors de l'utilisation de notre service de calculateur de GPA basé sur le système norvégien.",
+      keywords: ["politique de confidentialité", "confidentialité calculateur GPA", "protection des données", "GPA norvégien"],
+      openGraph: {
+        title: "Politique de Confidentialité | Calculateur de GPA",
+        description: "Notre politique de confidentialité explique comment nous traitons vos données lors de l'utilisation de notre service de calculateur de GPA.",
+        url: `https://unigpacalc.com/${locale}/personvern`,
+        type: "article"
+      }
+    },
+    de: {
+      title: "Datenschutzrichtlinie | GPA-Rechner",
+      description: "Unsere Datenschutzrichtlinie erklärt, wie wir Ihre Daten bei der Nutzung unseres auf dem norwegischen System basierenden GPA-Rechners verarbeiten.",
+      keywords: ["Datenschutzrichtlinie", "GPA-Rechner Datenschutz", "Datenschutz", "Norwegischer GPA"],
+      openGraph: {
+        title: "Datenschutzrichtlinie | GPA-Rechner",
+        description: "Unsere Datenschutzrichtlinie erklärt, wie wir Ihre Daten bei der Nutzung unseres GPA-Rechners verarbeiten.",
+        url: `https://unigpacalc.com/${locale}/personvern`,
+        type: "article"
+      }
+    }
+  };
+
+  return metadataByLocale[locale] || metadataByLocale.en;
+}
+
+// Client component for the page content
+'use client';
 export default function PrivacyPage() {
   const t = useTranslations('navigation');
   const { locale } = useParams();

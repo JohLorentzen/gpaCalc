@@ -10,6 +10,8 @@ type course = {
     userId?: string;
     average?: number;
     totalCredits?: number;
+    university?: string | null;
+    country?: string | null;
     courses: course[];
   };
   

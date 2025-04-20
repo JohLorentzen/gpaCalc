@@ -59,7 +59,9 @@
     "countryScales": "Länderskalen",
     "originalScale": "Original",
     "convertedScale": "Umgerechnet",
-    "equivalentGrade": "Äquivalente Note"
+    "equivalentGrade": "Äquivalente Note",
+    "institution": "Institution",
+    "country": "Land"
   },
   "courseTable": {
     "courseOverview": "Kursübersicht",

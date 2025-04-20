@@ -88,17 +88,17 @@ export default function ContactForm() {
     setIsSubmitting(true);
     
     try {
-      // In a real app, you would send this data to your backend
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData)
-      // });
+      // Send form data to our API endpoint
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
       
-      // For demo purposes, simulate a successful API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // if (!response.ok) throw new Error('Det oppstod en feil ved sending av skjemaet');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to submit form');
+      }
       
       setSubmitStatus('success');
       setFormData({

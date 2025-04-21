@@ -116,5 +116,91 @@
       "newMessage": "Send ny melding",
       "tryAgain": "Prøv igjen"
     }
+  },
+  "terms": {
+    "title": "Vilkår for bruk",
+    "lastUpdated": "Sist oppdatert: 21. april 2025",
+    "acceptance": {
+      "title": "1. Aksept av vilkår",
+      "content": "Ved å bruke UniGPACalc, godtar du å være bundet av disse vilkårene for bruk. Hvis du ikke godtar disse vilkårene, vennligst ikke bruk vår tjeneste."
+    },
+    "description": {
+      "title": "2. Beskrivelse av tjenesten",
+      "content": "UniGPACalc tilbyr en nettbasert karakterberegningstjeneste som gjør det mulig for brukere å beregne sitt karaktergjennomsnitt basert på det norske karaktersystemet. Tjenesten inkluderer manuell karakterregistrering og behandling av karakterutskriftsbilder."
+    },
+    "responsibilities": {
+      "title": "3. Brukerens ansvar",
+      "content": "Når du bruker vår tjeneste, samtykker du til å:",
+      "items": [
+        "Gi nøyaktig informasjon når du bruker kalkulatoren",
+        "Ikke bruke tjenesten til ulovlige eller uautoriserte formål",
+        "Ikke forsøke å forstyrre eller avbryte tjenesten eller dens servere",
+        "Ikke prøve å få tilgang til data som ikke er ment for deg"
+      ]
+    },
+    "intellectual": {
+      "title": "4. Immaterielle rettigheter",
+      "content": "Alt innhold, funksjoner og funksjonalitet på UniGPACalc, inkludert men ikke begrenset til tekst, grafikk, logoer, ikoner og programvare, eies av eller er lisensiert til oss og er beskyttet av opphavsrett, varemerke og andre lover om immaterielle rettigheter."
+    },
+    "disclaimer": {
+      "title": "5. Ansvarsfraskrivelse",
+      "content": "Tjenesten leveres 'som den er' og 'som tilgjengelig' uten garantier av noe slag, verken uttrykkelige eller underforståtte. Vi garanterer ikke nøyaktigheten av karakterberegninger og anbefaler at brukere verifiserer resultatene gjennom sin utdanningsinstitusjon."
+    },
+    "limitation": {
+      "title": "6. Ansvarsbegrensning",
+      "content": "Under ingen omstendigheter skal UniGPACalc eller dets tilknyttede selskaper være ansvarlige for indirekte, tilfeldige, spesielle, følgeskader eller straffbare skader, inkludert men ikke begrenset til tap av fortjeneste, data eller andre immaterielle tap, som følge av din bruk av eller manglende evne til å bruke tjenesten."
+    },
+    "changes": {
+      "title": "7. Endringer i vilkårene",
+      "content": "Vi forbeholder oss retten til å endre disse vilkårene når som helst. Hvis vi gjør endringer, vil vi varsle ved å oppdatere datoen øverst i disse vilkårene. Din fortsatte bruk av tjenesten etter slike endringer utgjør din aksept av de nye vilkårene."
+    },
+    "contact": {
+      "title": "8. Kontakt oss",
+      "content": "Hvis du har spørsmål om disse vilkårene, vennligst kontakt oss gjennom vårt kontaktskjema."
+    }
+  },
+  "privacy": {
+    "title": "Personvernerklæring",
+    "lastUpdated": "Sist oppdatert: 21. april 2025",
+    "introduction": {
+      "title": "1. Introduksjon",
+      "content": "Velkommen til UniGPACalc. Vi respekterer ditt personvern og er forpliktet til å beskytte dine personopplysninger. Denne personvernerklæringen vil informere deg om hvordan vi tar vare på dine personopplysninger når du besøker vår nettside og fortelle deg om dine personvernrettigheter og hvordan loven beskytter deg."
+    },
+    "dataCollection": {
+      "title": "2. Dataene vi samler inn",
+      "content": "Når du bruker vår karakterkalkulator, kan vi samle inn følgende typer informasjon:",
+      "items": [
+        "Emnenavn og karakterer du registrerer manuelt",
+        "Karakterutskriftsbilder du laster opp for behandling",
+        "Bruksstatistikk og interaksjonsdata"
+      ]
+    },
+    "dataUsage": {
+      "title": "3. Hvordan vi bruker dine data",
+      "content": "Vi bruker dine data på følgende måter:",
+      "items": [
+        "For å tilby karakterberegningtjenesten",
+        "For å forbedre våre algoritmer og tekstgjenkjenning",
+        "For å analysere bruksmønstre og forbedre vår tjeneste"
+      ]
+    },
+    "security": {
+      "title": "4. Datasikkerhet",
+      "content": "Vi implementerer passende sikkerhetstiltak for å beskytte dine personopplysninger mot utilsiktet tap, uautorisert tilgang eller behandling. Dine karakterutskriftsdata behandles på våre sikre servere og deles ikke med tredjeparter."
+    },
+    "rights": {
+      "title": "5. Dine rettigheter",
+      "content": "Under visse omstendigheter har du rettigheter i henhold til personvernlovgivningen i forhold til dine personopplysninger, inkludert:",
+      "items": [
+        "Retten til å be om tilgang til dine personopplysninger",
+        "Retten til å be om korrigering av dine personopplysninger",
+        "Retten til å be om sletting av dine personopplysninger",
+        "Retten til å trekke tilbake samtykke"
+      ]
+    },
+    "contact": {
+      "title": "6. Kontakt oss",
+      "content": "Hvis du har spørsmål om denne personvernerklæringen eller våre personvernrutiner, vennligst kontakt oss gjennom vårt kontaktskjema."
+    }
   }
 } 

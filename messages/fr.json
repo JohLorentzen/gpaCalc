@@ -92,5 +92,115 @@
   "footer": {
     "language": "Langue",
     "copyright": "© {year} Unigpacalc. Tous droits réservés."
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "description": "Remplissez le formulaire ci-dessous pour nous contacter.",
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "subject": "Sujet",
+      "message": "Message",
+      "submit": "Envoyer",
+      "sending": "Envoi...",
+      "nameRequired": "Le nom est requis",
+      "emailRequired": "L'email est requis",
+      "emailInvalid": "Veuillez entrer une adresse email valide",
+      "subjectRequired": "Le sujet est requis",
+      "messageRequired": "Le message est requis",
+      "messageShort": "Le message doit contenir au moins 10 caractères",
+      "success": "Merci pour votre message!",
+      "successDescription": "Nous avons reçu votre message et nous vous contacterons dès que possible.",
+      "error": "Une erreur est survenue",
+      "errorDescription": "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer plus tard.",
+      "newMessage": "Envoyer un nouveau message",
+      "tryAgain": "Réessayer"
+    }
+  },
+  "terms": {
+    "title": "Conditions d'Utilisation",
+    "lastUpdated": "Dernière mise à jour: 21 avril 2025",
+    "acceptance": {
+      "title": "1. Acceptation des Conditions",
+      "content": "En accédant ou en utilisant UniGPACalc, vous acceptez d'être lié par ces Conditions d'Utilisation. Si vous n'êtes pas d'accord avec ces conditions, veuillez ne pas utiliser notre service."
+    },
+    "description": {
+      "title": "2. Description du Service",
+      "content": "UniGPACalc fournit un service de calcul de moyenne basé sur le web qui permet aux utilisateurs de calculer leur moyenne générale basée sur le système de notation norvégien. Le service comprend la saisie manuelle des notes et le traitement des images de relevés de notes."
+    },
+    "responsibilities": {
+      "title": "3. Responsabilités de l'Utilisateur",
+      "content": "En utilisant notre service, vous acceptez de:",
+      "items": [
+        "Fournir des informations précises lors de l'utilisation de la calculatrice",
+        "Ne pas utiliser le service à des fins illégales ou non autorisées",
+        "Ne pas tenter d'interférer avec ou de perturber le service ou ses serveurs",
+        "Ne pas essayer d'accéder à des données qui ne vous sont pas destinées"
+      ]
+    },
+    "intellectual": {
+      "title": "4. Propriété Intellectuelle",
+      "content": "Tout le contenu, les fonctionnalités et les fonctions sur UniGPACalc, y compris, mais sans s'y limiter, les textes, graphiques, logos, icônes et logiciels, sont la propriété ou sont sous licence de notre entreprise et sont protégés par les droits d'auteur, les marques déposées et d'autres lois sur la propriété intellectuelle."
+    },
+    "disclaimer": {
+      "title": "5. Clause de Non-Responsabilité",
+      "content": "Le service est fourni \"tel quel\" et \"selon disponibilité\" sans garanties d'aucune sorte, explicites ou implicites. Nous ne garantissons pas l'exactitude des calculs de moyenne et recommandons aux utilisateurs de vérifier les résultats auprès de leur établissement d'enseignement."
+    },
+    "limitation": {
+      "title": "6. Limitation de Responsabilité",
+      "content": "En aucun cas, UniGPACalc ou ses affiliés ne seront responsables des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs, y compris, mais sans s'y limiter, la perte de profits, de données ou d'autres pertes immatérielles, résultant de votre utilisation ou de l'impossibilité d'utiliser le service."
+    },
+    "changes": {
+      "title": "7. Modifications des Conditions",
+      "content": "Nous nous réservons le droit de modifier ces conditions à tout moment. Si nous apportons des modifications, nous en fournirons un avis en mettant à jour la date en haut de ces conditions. Votre utilisation continue du service après de telles modifications constitue votre acceptation des nouvelles conditions."
+    },
+    "contact": {
+      "title": "8. Contactez-nous",
+      "content": "Si vous avez des questions concernant ces Conditions, veuillez nous contacter via notre formulaire de contact."
+    }
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdated": "Dernière mise à jour: 21 avril 2025",
+    "introduction": {
+      "title": "1. Introduction",
+      "content": "Bienvenue sur UniGPACalc. Nous respectons votre vie privée et nous nous engageons à protéger vos données personnelles. Cette politique de confidentialité vous informera sur la façon dont nous prenons soin de vos données personnelles lorsque vous visitez notre site web et vous informera de vos droits en matière de confidentialité et de la manière dont la loi vous protège."
+    },
+    "dataCollection": {
+      "title": "2. Les Données que Nous Collectons",
+      "content": "Lorsque vous utilisez notre calculateur de moyenne, nous pouvons collecter les types d'informations suivants:",
+      "items": [
+        "Noms des cours et notes que vous saisissez manuellement",
+        "Images de relevés de notes que vous téléchargez pour traitement",
+        "Statistiques d'utilisation et données d'interaction"
+      ]
+    },
+    "dataUsage": {
+      "title": "3. Comment Nous Utilisons Vos Données",
+      "content": "Nous utilisons vos données des manières suivantes:",
+      "items": [
+        "Pour fournir le service de calcul de moyenne",
+        "Pour améliorer nos algorithmes et la reconnaissance de texte",
+        "Pour analyser les modèles d'utilisation et améliorer notre service"
+      ]
+    },
+    "security": {
+      "title": "4. Sécurité des Données",
+      "content": "Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos données personnelles contre la perte accidentelle, l'accès non autorisé ou le traitement. Vos données de relevé de notes sont traitées sur nos serveurs sécurisés et ne sont pas partagées avec des tiers."
+    },
+    "rights": {
+      "title": "5. Vos Droits",
+      "content": "Dans certaines circonstances, vous avez des droits en vertu des lois sur la protection des données concernant vos données personnelles, notamment:",
+      "items": [
+        "Le droit de demander l'accès à vos données personnelles",
+        "Le droit de demander la correction de vos données personnelles",
+        "Le droit de demander l'effacement de vos données personnelles",
+        "Le droit de retirer votre consentement"
+      ]
+    },
+    "contact": {
+      "title": "6. Contactez-nous",
+      "content": "Si vous avez des questions concernant cette politique de confidentialité ou nos pratiques en matière de confidentialité, veuillez nous contacter via notre formulaire de contact."
+    }
   }
 } 

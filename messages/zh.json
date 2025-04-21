@@ -1,0 +1,206 @@
+{
+  "app": {
+    "title": "计算你的大学",
+    "titleHighlight": "GPA",
+    "description": "上传你的大学成绩单，几秒钟内即可计算出你的课程和平均成绩。"
+  },
+  "navigation": {
+    "home": "首页",
+    "privacy": "隐私",
+    "terms": "条款",
+    "contact": "联系我们"
+  },
+  "calculator": {
+    "title": "GPA计算器",
+    "addCourse": "添加课程",
+    "calculate": "计算",
+    "reset": "重置",
+    "courseName": "课程名称",
+    "grade": "成绩",
+    "credits": "学分",
+    "result": "你的GPA是：{gpa}",
+    "emptyState": "添加课程来计算你的GPA",
+    "uploadTranscript": "在此处拖放你的大学成绩单",
+    "processing": "处理成绩单中",
+    "processingDescription": "这可能需要一点时间，我们正在分析你的图片并提取成绩",
+    "ocrProcessing": "开始OCR处理...",
+    "analyzingGrades": "分析成绩中",
+    "calculatingAverage": "计算平均成绩",
+    "loading": "加载中...",
+    "loadingResults": "加载结果中...",
+    "results": "你的结果",
+    "dropOrClick": "或点击浏览",
+    "browseFiles": "浏览文件",
+    "supportedFormats": "支持大学/学院成绩单图片或截图（JPG、PNG、JPEG）",
+    "supportedLanguages": "支持挪威语和英语成绩单以及已通过的课程",
+    "processingComplete": "成绩单处理完成",
+    "processingError": "处理成绩单时出错",
+    "tryAnotherImage": "尝试另一张图片",
+    "uploadAnotherImage": "上传另一张图片",
+    "chooseAnotherFile": "选择另一个文件"
+  },
+  "errors": {
+    "pageNotFound": "糟糕！找不到页面",
+    "backToHome": "返回首页"
+  },
+  "gradeDisplay": {
+    "summary": "摘要",
+    "details": "详情",
+    "averageGrade": "平均成绩",
+    "letterGrade": "字母成绩",
+    "average": "平均",
+    "gradeOverview": "成绩概览",
+    "detailsDescription": "这里是你的课程和成绩的详细概览。",
+    "courseName": "课程名称",
+    "credits": "学分",
+    "grade": "成绩",
+    "totalCredits": "总学分",
+    "convertGPA": "将GPA转换为：",
+    "countryScales": "国家量表",
+    "originalScale": "原始",
+    "convertedScale": "转换后",
+    "equivalentGrade": "等效成绩",
+    "institution": "机构",
+    "country": "国家"
+  },
+  "courseTable": {
+    "courseOverview": "课程概览",
+    "average": "平均",
+    "totalCredits": "总学分",
+    "courseCode": "课程代码",
+    "courseName": "课程名称",
+    "semester": "学期",
+    "credits": "学分",
+    "grade": "成绩"
+  },
+  "features": {
+    "title": "工作原理",
+    "description": "Unigpacalc使计算平均分变得简单直观",
+    "step1": {
+      "title": "上传成绩单",
+      "description": "拖放您的大学/学院成绩单图片格式。"
+    },
+    "step2": {
+      "title": "即时分析",
+      "description": "我们的AI技术提取您的成绩并立即计算平均分。"
+    },
+    "step3": {
+      "title": "查看结果",
+      "description": "在清晰的表格中查看您的课程、学分和平均分数。"
+    }
+  },
+  "footer": {
+    "language": "语言",
+    "copyright": "© {year} Unigpacalc. 保留所有权利。"
+  },
+  "contact": {
+    "title": "联系我们",
+    "description": "填写下面的表单与我们联系。",
+    "form": {
+      "name": "姓名",
+      "email": "电子邮件",
+      "subject": "主题",
+      "message": "信息",
+      "submit": "发送信息",
+      "sending": "发送中...",
+      "nameRequired": "姓名为必填项",
+      "emailRequired": "电子邮件为必填项",
+      "emailInvalid": "请输入有效的电子邮件地址",
+      "subjectRequired": "主题为必填项",
+      "messageRequired": "信息为必填项",
+      "messageShort": "信息必须至少10个字符",
+      "success": "感谢您的留言！",
+      "successDescription": "我们已收到您的信息，将尽快回复您。",
+      "error": "出了点问题",
+      "errorDescription": "发送表单时出错。请稍后再试。",
+      "newMessage": "发送新信息",
+      "tryAgain": "重试"
+    }
+  },
+  "terms": {
+    "title": "服务条款",
+    "lastUpdated": "最后更新：2025年4月21日",
+    "acceptance": {
+      "title": "1. 接受条款",
+      "content": "通过访问或使用UniGPACalc，您同意受这些服务条款的约束。如果您不同意这些条款，请不要使用我们的服务。"
+    },
+    "description": {
+      "title": "2. 服务描述",
+      "content": "UniGPACalc提供基于网络的GPA计算服务，允许用户根据挪威评分系统计算其平均成绩点数。该服务包括手动输入成绩和处理成绩单图像。"
+    },
+    "responsibilities": {
+      "title": "3. 用户责任",
+      "content": "在使用我们的服务时，您同意：",
+      "items": [
+        "在使用计算器时提供准确信息",
+        "不将服务用于任何非法或未经授权的目的",
+        "不尝试干扰或破坏服务或其服务器",
+        "不尝试访问不适合您的数据"
+      ]
+    },
+    "intellectual": {
+      "title": "4. 知识产权",
+      "content": "UniGPACalc上的所有内容、功能和功能，包括但不限于文本、图形、徽标、图标和软件，均为我们拥有或授权使用，并受版权、商标和其他知识产权法律保护。"
+    },
+    "disclaimer": {
+      "title": "5. 免责声明",
+      "content": "服务按\"原样\"和\"可用性\"提供，不提供任何明示或暗示的保证。我们不保证GPA计算的准确性，并建议用户通过其教育机构验证结果。"
+    },
+    "limitation": {
+      "title": "6. 责任限制",
+      "content": "在任何情况下，UniGPACalc或其附属机构均不对任何间接、偶然、特殊、后果性或惩罚性损害负责，包括但不限于利润损失、数据损失或其他无形损失，这些损失是由于您使用或无法使用服务而导致的。"
+    },
+    "changes": {
+      "title": "7. 条款变更",
+      "content": "我们保留随时修改这些条款的权利。如果我们做出更改，我们将通过更新这些条款顶部的日期提供通知。您在此类更改后继续使用该服务即表示您接受新条款。"
+    },
+    "contact": {
+      "title": "8. 联系我们",
+      "content": "如果您对这些条款有任何疑问，请通过我们的联系表格与我们联系。"
+    }
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "lastUpdated": "最后更新：2025年4月21日",
+    "introduction": {
+      "title": "1. 介绍",
+      "content": "欢迎访问UniGPACalc。我们尊重您的隐私并致力于保护您的个人数据。本隐私政策将告知您我们在您访问我们的网站时如何照顾您的个人数据，并告诉您有关您的隐私权以及法律如何保护您的信息。"
+    },
+    "dataCollection": {
+      "title": "2. 我们收集的数据",
+      "content": "当您使用我们的GPA计算器时，我们可能会收集以下类型的信息：",
+      "items": [
+        "您手动输入的课程名称和成绩",
+        "您上传用于处理的成绩单图像",
+        "使用统计和互动数据"
+      ]
+    },
+    "dataUsage": {
+      "title": "3. 我们如何使用您的数据",
+      "content": "我们以以下方式使用您的数据：",
+      "items": [
+        "提供GPA计算服务",
+        "改进我们的算法和文字识别",
+        "分析使用模式并改进我们的服务"
+      ]
+    },
+    "security": {
+      "title": "4. 数据安全",
+      "content": "我们实施适当的安全措施，以保护您的个人数据免受意外丢失、未经授权的访问或处理。您的成绩单数据在我们的安全服务器上处理，不会与第三方共享。"
+    },
+    "rights": {
+      "title": "5. 您的权利",
+      "content": "在某些情况下，您根据数据保护法对您的个人数据拥有权利，包括：",
+      "items": [
+        "要求访问您的个人数据的权利",
+        "要求更正您的个人数据的权利",
+        "要求删除您的个人数据的权利",
+        "撤回同意的权利"
+      ]
+    },
+    "contact": {
+      "title": "6. 联系我们",
+      "content": "如果您对本隐私政策或我们的隐私做法有任何疑问，请通过我们的联系表格与我们联系。"
+    }
+  }
+} 

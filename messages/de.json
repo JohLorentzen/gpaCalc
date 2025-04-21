@@ -92,5 +92,115 @@
   "footer": {
     "language": "Sprache",
     "copyright": "© {year} Unigpacalc. Alle Rechte vorbehalten."
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "description": "Füllen Sie das Kontaktformular aus, um uns zu kontaktieren.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Betreff",
+      "message": "Nachricht",
+      "submit": "Senden",
+      "sending": "Senden...",
+      "nameRequired": "Name ist erforderlich",
+      "emailRequired": "Email ist erforderlich",
+      "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "subjectRequired": "Betreff ist erforderlich",
+      "messageRequired": "Nachricht ist erforderlich",
+      "messageShort": "Nachricht muss mindestens 10 Zeichen lang sein",
+      "success": "Vielen Dank für Ihre Nachricht!",
+      "successDescription": "Wir haben Ihre Nachricht erhalten und werden uns schnellstmöglich um Ihre Anfrage kümmern.",
+      "error": "Ein Fehler ist aufgetreten",
+      "errorDescription": "Ein Fehler ist aufgetreten beim Senden der Nachricht. Bitte versuchen Sie es später erneut.",
+      "newMessage": "Neue Nachricht senden",
+      "tryAgain": "Erneut versuchen"
+    }
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "lastUpdated": "Letzte Aktualisierung: 21. April 2025",
+    "acceptance": {
+      "title": "1. Annahme der Bedingungen",
+      "content": "Durch den Zugriff auf oder die Nutzung von UniGPACalc stimmen Sie zu, an diese Nutzungsbedingungen gebunden zu sein. Wenn Sie mit diesen Bedingungen nicht einverstanden sind, nutzen Sie bitte unseren Service nicht."
+    },
+    "description": {
+      "title": "2. Beschreibung des Dienstes",
+      "content": "UniGPACalc bietet einen webbasierten GPA-Berechnungsservice, der es Benutzern ermöglicht, ihren Notendurchschnitt basierend auf dem norwegischen Notensystem zu berechnen. Der Service umfasst manuelle Noteneingabe und die Verarbeitung von Zeugnisbildern."
+    },
+    "responsibilities": {
+      "title": "3. Benutzerverantwortlichkeiten",
+      "content": "Bei der Nutzung unseres Service stimmen Sie zu:",
+      "items": [
+        "Genaue Informationen bei der Verwendung des Rechners anzugeben",
+        "Den Service nicht für illegale oder unbefugte Zwecke zu nutzen",
+        "Nicht zu versuchen, den Service oder seine Server zu stören oder zu unterbrechen",
+        "Nicht zu versuchen, auf Daten zuzugreifen, die nicht für Sie bestimmt sind"
+      ]
+    },
+    "intellectual": {
+      "title": "4. Geistiges Eigentum",
+      "content": "Alle Inhalte, Funktionen und Funktionalitäten auf UniGPACalc, einschließlich, aber nicht beschränkt auf Text, Grafiken, Logos, Symbole und Software, sind Eigentum von oder lizenziert an uns und durch Urheberrechte, Marken und andere Gesetze zum geistigen Eigentum geschützt."
+    },
+    "disclaimer": {
+      "title": "5. Haftungsausschluss",
+      "content": "Der Service wird \"wie er ist\" und \"wie verfügbar\" ohne Garantien jeglicher Art, weder ausdrücklich noch implizit, bereitgestellt. Wir garantieren nicht die Genauigkeit der GPA-Berechnungen und empfehlen Benutzern, die Ergebnisse über ihre Bildungseinrichtung zu überprüfen."
+    },
+    "limitation": {
+      "title": "6. Haftungsbeschränkung",
+      "content": "In keinem Fall haftet UniGPACalc oder seine verbundenen Unternehmen für indirekte, zufällige, besondere, Folge- oder Strafschäden, einschließlich, aber nicht beschränkt auf Gewinnverluste, Datenverluste oder andere immaterielle Verluste, die aus Ihrer Nutzung oder Unfähigkeit zur Nutzung des Dienstes resultieren."
+    },
+    "changes": {
+      "title": "7. Änderungen der Bedingungen",
+      "content": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Wenn wir Änderungen vornehmen, werden wir dies durch Aktualisierung des Datums oben in diesen Bedingungen bekannt geben. Ihre fortgesetzte Nutzung des Dienstes nach solchen Änderungen stellt Ihre Annahme der neuen Bedingungen dar."
+    },
+    "contact": {
+      "title": "8. Kontaktieren Sie uns",
+      "content": "Wenn Sie Fragen zu diesen Bedingungen haben, kontaktieren Sie uns bitte über unser Kontaktformular."
+    }
+  },
+  "privacy": {
+    "title": "Datenschutzrichtlinie",
+    "lastUpdated": "Letzte Aktualisierung: 21. April 2025",
+    "introduction": {
+      "title": "1. Einführung",
+      "content": "Willkommen bei UniGPACalc. Wir respektieren Ihre Privatsphäre und verpflichten uns, Ihre persönlichen Daten zu schützen. Diese Datenschutzrichtlinie informiert Sie darüber, wie wir Ihre persönlichen Daten bei Ihrem Besuch auf unserer Website behandeln und informiert Sie über Ihre Datenschutzrechte und wie das Gesetz Sie schützt."
+    },
+    "dataCollection": {
+      "title": "2. Die Daten, die wir sammeln",
+      "content": "Wenn Sie unseren GPA-Rechner verwenden, können wir die folgenden Arten von Informationen sammeln:",
+      "items": [
+        "Kursnamen und Noten, die Sie manuell eingeben",
+        "Zeugnisbilder, die Sie zur Verarbeitung hochladen",
+        "Nutzungsstatistiken und Interaktionsdaten"
+      ]
+    },
+    "dataUsage": {
+      "title": "3. Wie wir Ihre Daten verwenden",
+      "content": "Wir verwenden Ihre Daten auf folgende Weise:",
+      "items": [
+        "Um den GPA-Berechnungsservice bereitzustellen",
+        "Um unsere Algorithmen und Texterkennung zu verbessern",
+        "Um Nutzungsmuster zu analysieren und unseren Service zu verbessern"
+      ]
+    },
+    "security": {
+      "title": "4. Datensicherheit",
+      "content": "Wir implementieren angemessene Sicherheitsmaßnahmen, um Ihre persönlichen Daten vor versehentlichem Verlust, unbefugtem Zugriff oder Verarbeitung zu schützen. Ihre Zeugnisdaten werden auf unseren sicheren Servern verarbeitet und nicht an Dritte weitergegeben."
+    },
+    "rights": {
+      "title": "5. Ihre Rechte",
+      "content": "Unter bestimmten Umständen haben Sie gemäß den Datenschutzgesetzen Rechte in Bezug auf Ihre persönlichen Daten, einschließlich:",
+      "items": [
+        "Das Recht, Zugang zu Ihren persönlichen Daten zu verlangen",
+        "Das Recht, die Korrektur Ihrer persönlichen Daten zu verlangen",
+        "Das Recht, die Löschung Ihrer persönlichen Daten zu verlangen",
+        "Das Recht, Ihre Einwilligung zu widerrufen"
+      ]
+    },
+    "contact": {
+      "title": "6. Kontaktieren Sie uns",
+      "content": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie oder unseren Datenschutzpraktiken haben, kontaktieren Sie uns bitte über unser Kontaktformular."
+    }
   }
 } 

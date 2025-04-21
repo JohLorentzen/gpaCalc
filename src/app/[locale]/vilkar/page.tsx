@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation';
 // Client component for the page content
 export default function TermsPage() {
   const t = useTranslations('navigation');
+  const termsT = useTranslations('terms');
   const { locale } = useParams();
   
   return (
@@ -22,59 +23,52 @@ export default function TermsPage() {
       </div>
       
       <div className="prose prose-lg dark:prose-invert max-w-none mb-8">
-        <h2 className="text-2xl font-medium tracking-tight">Terms of Service</h2>
-        <p className="text-muted-foreground">Last updated: June 1, 2023</p>
+        <h2 className="text-2xl font-medium tracking-tight">{termsT('title')}</h2>
+        <p className="text-muted-foreground">{termsT('lastUpdated')}</p>
         
-        <h3>1. Acceptance of Terms</h3>
+        <h3>{termsT('acceptance.title')}</h3>
         <p>
-          By accessing or using UniGPACalc, you agree to be bound by these Terms of Service. If you do not agree to these terms, 
-          please do not use our service.
+          {termsT('acceptance.content')}
         </p>
         
-        <h3>2. Description of Service</h3>
+        <h3>{termsT('description.title')}</h3>
         <p>
-          UniGPACalc provides a web-based GPA calculation service that allows users to calculate their grade point average based on 
-          the Norwegian grading system. The service includes manual grade entry and transcript image processing.
+          {termsT('description.content')}
         </p>
         
-        <h3>3. User Responsibilities</h3>
+        <h3>{termsT('responsibilities.title')}</h3>
         <p>
-          When using our service, you agree to:
+          {termsT('responsibilities.content')}
         </p>
         <ul>
-          <li>Provide accurate information when using the calculator</li>
-          <li>Not use the service for any illegal or unauthorized purpose</li>
-          <li>Not attempt to interfere with or disrupt the service or its servers</li>
-          <li>Not try to access data that is not intended for you</li>
+          {termsT.raw('responsibilities.items').map((item: string, index: number) => (
+            <li key={index}>{item}</li>
+          ))}
         </ul>
         
-        <h3>4. Intellectual Property</h3>
+        <h3>{termsT('intellectual.title')}</h3>
         <p>
-          All content, features, and functionality on UniGPACalc, including but not limited to text, graphics, logos, icons, 
-          and software, are owned by or licensed to us and are protected by copyright, trademark, and other intellectual property laws.
+          {termsT('intellectual.content')}
         </p>
         
-        <h3>5. Disclaimer of Warranties</h3>
+        <h3>{termsT('disclaimer.title')}</h3>
         <p>
-          The service is provided &quot;as is&quot; and &quot;as available&quot; without warranties of any kind, either express or implied. 
-          We do not guarantee the accuracy of GPA calculations and recommend that users verify results through their educational institution.
+          {termsT('disclaimer.content')}
         </p>
         
-        <h3>6. Limitation of Liability</h3>
+        <h3>{termsT('limitation.title')}</h3>
         <p>
-          In no event shall UniGPACalc or its affiliates be liable for any indirect, incidental, special, consequential or punitive damages, 
-          including but not limited to loss of profits, data, or other intangible losses, resulting from your use of or inability to use the service.
+          {termsT('limitation.content')}
         </p>
         
-        <h3>7. Changes to Terms</h3>
+        <h3>{termsT('changes.title')}</h3>
         <p>
-          We reserve the right to modify these terms at any time. If we make changes, we will provide notice by updating the date at the top of these terms. 
-          Your continued use of the service after such changes constitutes your acceptance of the new terms.
+          {termsT('changes.content')}
         </p>
         
-        <h3>8. Contact Us</h3>
+        <h3>{termsT('contact.title')}</h3>
         <p>
-          If you have any questions about these Terms, please contact us through our 
+          {termsT('contact.content')}
           <Link href={`/${locale}/kontakt`} className="text-primary hover:underline">
             {" "}contact form
           </Link>.

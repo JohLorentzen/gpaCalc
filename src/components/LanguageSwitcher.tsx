@@ -19,6 +19,9 @@ const languages = {
   es: { name: 'Español', flag: '🇪🇸' },
   fr: { name: 'Français', flag: '🇫🇷' },
   de: { name: 'Deutsch', flag: '🇩🇪' },
+  pl: { name: 'Polski', flag: '🇵🇱' },
+  zh: { name: '中文', flag: '🇨🇳' },
+  ar: { name: 'العربية', flag: '🇸🇦' },
 };
 
 interface LanguageSwitcherProps {

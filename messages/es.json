@@ -92,5 +92,115 @@
   "footer": {
     "language": "Idioma",
     "copyright": "© {year} Unigpacalc. Todos los derechos reservados."
+  },
+  "contact": {
+    "title": "Contacta con nosotros",
+    "description": "Rellena el formulario de contacto para ponerte en contacto con nosotros.",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "submit": "Enviar",
+      "sending": "Enviando...",
+      "nameRequired": "El nombre es requerido",
+      "emailRequired": "El correo electrónico es requerido",
+      "emailInvalid": "Por favor, ingrese una dirección de correo electrónico válida",
+      "subjectRequired": "El asunto es requerido",
+      "messageRequired": "El mensaje es requerido",
+      "messageShort": "El mensaje debe contener al menos 10 caracteres",
+      "success": "¡Gracias por tu mensaje!",
+      "successDescription": "Hemos recibido tu mensaje y te contactaremos lo antes posible.",
+      "error": "Ocurrió un error",
+      "errorDescription": "Ocurrió un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.",
+      "newMessage": "Enviar un nuevo mensaje",
+      "tryAgain": "Intentar de nuevo"
+    }
+  },
+  "terms": {
+    "title": "Términos de Servicio",
+    "lastUpdated": "Última actualización: 21 de abril de 2025",
+    "acceptance": {
+      "title": "1. Aceptación de Términos",
+      "content": "Al acceder o utilizar UniGPACalc, acepta estar sujeto a estos Términos de Servicio. Si no está de acuerdo con estos términos, no utilice nuestro servicio."
+    },
+    "description": {
+      "title": "2. Descripción del Servicio",
+      "content": "UniGPACalc proporciona un servicio de cálculo de GPA basado en web que permite a los usuarios calcular su promedio de calificaciones basado en el sistema de calificación noruego. El servicio incluye entrada manual de calificaciones y procesamiento de imágenes de expedientes académicos."
+    },
+    "responsibilities": {
+      "title": "3. Responsabilidades del Usuario",
+      "content": "Al utilizar nuestro servicio, acepta:",
+      "items": [
+        "Proporcionar información precisa al utilizar la calculadora",
+        "No utilizar el servicio para fines ilegales o no autorizados",
+        "No intentar interferir o interrumpir el servicio o sus servidores",
+        "No intentar acceder a datos que no están destinados a usted"
+      ]
+    },
+    "intellectual": {
+      "title": "4. Propiedad Intelectual",
+      "content": "Todo el contenido, características y funcionalidad en UniGPACalc, incluyendo pero no limitado a texto, gráficos, logotipos, iconos y software, son propiedad o están licenciados a nosotros y están protegidos por derechos de autor, marcas comerciales y otras leyes de propiedad intelectual."
+    },
+    "disclaimer": {
+      "title": "5. Descargo de Responsabilidad",
+      "content": "El servicio se proporciona \"tal cual\" y \"según disponibilidad\" sin garantías de ningún tipo, ya sean expresas o implícitas. No garantizamos la precisión de los cálculos de GPA y recomendamos que los usuarios verifiquen los resultados a través de su institución educativa."
+    },
+    "limitation": {
+      "title": "6. Limitación de Responsabilidad",
+      "content": "En ningún caso UniGPACalc o sus afiliados serán responsables por daños indirectos, incidentales, especiales, consecuentes o punitivos, incluyendo pero no limitado a pérdida de beneficios, datos u otras pérdidas intangibles, resultantes de su uso o incapacidad para utilizar el servicio."
+    },
+    "changes": {
+      "title": "7. Cambios en los Términos",
+      "content": "Nos reservamos el derecho de modificar estos términos en cualquier momento. Si realizamos cambios, proporcionaremos un aviso actualizando la fecha en la parte superior de estos términos. Su uso continuado del servicio después de tales cambios constituye su aceptación de los nuevos términos."
+    },
+    "contact": {
+      "title": "8. Contáctenos",
+      "content": "Si tiene alguna pregunta sobre estos Términos, contáctenos a través de nuestro formulario de contacto."
+    }
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "lastUpdated": "Última actualización: 21 de abril de 2025",
+    "introduction": {
+      "title": "1. Introducción",
+      "content": "Bienvenido a UniGPACalc. Respetamos su privacidad y estamos comprometidos a proteger sus datos personales. Esta política de privacidad le informará sobre cómo cuidamos sus datos personales cuando visita nuestro sitio web y le informará sobre sus derechos de privacidad y cómo la ley lo protege."
+    },
+    "dataCollection": {
+      "title": "2. Los Datos que Recopilamos",
+      "content": "Cuando utiliza nuestra calculadora de GPA, podemos recopilar los siguientes tipos de información:",
+      "items": [
+        "Nombres de cursos y calificaciones que ingresa manualmente",
+        "Imágenes de expedientes académicos que sube para procesamiento",
+        "Estadísticas de uso y datos de interacción"
+      ]
+    },
+    "dataUsage": {
+      "title": "3. Cómo Utilizamos sus Datos",
+      "content": "Utilizamos sus datos de las siguientes maneras:",
+      "items": [
+        "Para proporcionar el servicio de cálculo de GPA",
+        "Para mejorar nuestros algoritmos y reconocimiento de texto",
+        "Para analizar patrones de uso y mejorar nuestro servicio"
+      ]
+    },
+    "security": {
+      "title": "4. Seguridad de Datos",
+      "content": "Implementamos medidas de seguridad apropiadas para proteger sus datos personales contra pérdida accidental, acceso no autorizado o procesamiento. Sus datos de expedientes académicos se procesan en nuestros servidores seguros y no se comparten con terceros."
+    },
+    "rights": {
+      "title": "5. Sus Derechos",
+      "content": "Bajo ciertas circunstancias, tiene derechos bajo las leyes de protección de datos en relación con sus datos personales, incluyendo:",
+      "items": [
+        "El derecho a solicitar acceso a sus datos personales",
+        "El derecho a solicitar la corrección de sus datos personales",
+        "El derecho a solicitar la eliminación de sus datos personales",
+        "El derecho a retirar el consentimiento"
+      ]
+    },
+    "contact": {
+      "title": "6. Contáctenos",
+      "content": "Si tiene alguna pregunta sobre esta política de privacidad o nuestras prácticas de privacidad, contáctenos a través de nuestro formulario de contacto."
+    }
   }
 } 

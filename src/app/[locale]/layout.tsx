@@ -11,7 +11,7 @@ import { Space_Grotesk } from "next/font/google";
 import Providers from './providers';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
+import AdSense from '@/components/AdSense';
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 export async function generateMetadata({
@@ -52,7 +52,9 @@ export default async function LocaleLayout({
  
   return (
     <html lang={locale} suppressHydrationWarning>
-      <head />
+      <head>
+        <AdSense pId="ca-pub-7138448371398428" />
+      </head>
       <body className={spaceGrotesk.className}>
         {/* Theme script - runs before page load with strategy="beforeInteractive" */}
         <Script
@@ -80,16 +82,6 @@ export default async function LocaleLayout({
             `,
           }}
         />
-        
-        {/* Google AdSense script */}
-        <Script
-          async
-          id="google-adsense"
-          src="https://pagead.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7138448371398428"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Providers>
             <div className="flex flex-col min-h-screen">

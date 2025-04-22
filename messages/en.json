@@ -43,6 +43,13 @@
     "pageNotFound": "Oops! Page not found",
     "backToHome": "Back to home"
   },
+  "error": {
+    "title": "Something went wrong",
+    "description": "We encountered an error while processing your request. You can try again or contact us if the problem persists.",
+    "tryAgain": "Try again",
+    "contactUs": "Contact us",
+    "serverError": "Server Error"
+  },
   "gradeDisplay": {
     "summary": "Summary",
     "details": "Details",

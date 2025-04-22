@@ -43,6 +43,13 @@
     "pageNotFound": "Oops! Siden ble ikke funnet",
     "backToHome": "Tilbake til forsiden"
   },
+  "error": {
+    "title": "Noe gikk galt",
+    "description": "Vi møtte en feil under behandling av din forespørsel. Du kan prøve igjen eller kontakte oss hvis problemet vedvarer.",
+    "tryAgain": "Prøv igjen",
+    "contactUs": "Kontakt oss",
+    "serverError": "Serverfeil"
+  },
   "gradeDisplay": {
     "summary": "Sammendrag",
     "details": "Detaljer",

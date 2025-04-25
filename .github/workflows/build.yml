@@ -1,4 +1,4 @@
-name: Simple Next.js Build
+name: Build and Deploy
 
 on:
   push:
@@ -28,4 +28,37 @@ jobs:
         run: npm ci
 
       - name: Build Next.js app
-        run: npm run build 
+        run: npm run build
+        
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          
+      - name: Deploy to AWS Amplify
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+        run: |
+          # Create environment variables file for Amplify
+          echo "OPENAI_API_KEY=$OPENAI_API_KEY" > .env.production
+          echo "NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL" >> .env.production
+          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY" >> .env.production
+          
+          # Start the Amplify deployment with environment variables
+          aws amplify start-job \
+            --app-id ${{ secrets.AMPLIFY_APP_ID }} \
+            --branch-name ${{ github.ref_name }} \
+            --job-type RELEASE \
+            --environment-variables "{\"OPENAI_API_KEY\":\"$OPENAI_API_KEY\",\"NEXT_PUBLIC_SUPABASE_URL\":\"$NEXT_PUBLIC_SUPABASE_URL\",\"NEXT_PUBLIC_SUPABASE_ANON_KEY\":\"$NEXT_PUBLIC_SUPABASE_ANON_KEY\"}" 

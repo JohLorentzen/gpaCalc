@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { success: false, message: 'Database connection not available' },
         { status: 503 }
-      );
+      ); 
     }
 
     const formData = await request.json();

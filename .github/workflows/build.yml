@@ -45,7 +45,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
           
-      - name: Deploy to AWS Amplify
+      - name: Create environment variables file
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
@@ -55,10 +55,18 @@ jobs:
           echo "OPENAI_API_KEY=$OPENAI_API_KEY" > .env.production
           echo "NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL" >> .env.production
           echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY" >> .env.production
+      
+      - name: Install AWS Amplify CLI
+        run: npm install -g @aws-amplify/cli
+      
+      - name: Deploy to AWS Amplify
+        run: |
+          # Zip the project for deployment
+          zip -r deploy.zip . -x "node_modules/*" ".git/*"
           
-          # Start the Amplify deployment with environment variables
-          aws amplify start-job \
+          # Start the Amplify deployment (without environment-variables parameter)
+          aws amplify start-deployment \
             --app-id ${{ secrets.AMPLIFY_APP_ID }} \
             --branch-name ${{ github.ref_name }} \
-            --job-type RELEASE \
-            --environment-variables "{\"OPENAI_API_KEY\":\"$OPENAI_API_KEY\",\"NEXT_PUBLIC_SUPABASE_URL\":\"$NEXT_PUBLIC_SUPABASE_URL\",\"NEXT_PUBLIC_SUPABASE_ANON_KEY\":\"$NEXT_PUBLIC_SUPABASE_ANON_KEY\"}" 
+            --source-content fileb://deploy.zip \
+            --source-content-type "application/zip" 

@@ -1,12 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Check if OpenAI API key is available
+const apiKey = process.env.OPENAI_API_KEY;
+let openai: OpenAI | null = null;
+
+if (apiKey) {
+  openai = new OpenAI({
+    apiKey: apiKey,
+  });
+} else {
+  console.warn('Missing OpenAI API key. OCR functionality will not be available.');
+}
 
 export async function POST(req: NextRequest) {
   try {
+    // Check if OpenAI client is initialized
+    if (!openai) {
+      return NextResponse.json({ 
+        error: 'OpenAI API is not configured',
+        message: 'The OpenAI API key is missing. Please configure it to use this feature.'
+      }, { status: 503 });
+    }
+    
     const formData = await req.formData();
     const file = formData.get('file') as File;
     
@@ -201,5 +217,13 @@ function getGradeValue(grade: string): number {
 
 // This function allows us to check API status
 export async function GET() {
+  // Check if OpenAI client is initialized
+  if (!openai) {
+    return NextResponse.json({ 
+      status: 'OCR API is not available',
+      message: 'The OpenAI API key is missing. Please configure it to use this feature.'
+    });
+  }
+  
   return NextResponse.json({ status: 'OCR API is working' });
 } 

@@ -3,6 +3,14 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if Supabase is initialized
+    if (!supabase) {
+      return NextResponse.json(
+        { success: false, message: 'Database connection not available' },
+        { status: 503 }
+      );
+    }
+
     const formData = await request.json();
     const { name, email, subject, message } = formData;
 

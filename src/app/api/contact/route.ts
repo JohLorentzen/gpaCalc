@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Store the contact information in Supabase
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('contacts')
       .insert([
         { 

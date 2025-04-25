@@ -1,47 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
-import getConfig from 'next/config';
-
-// Instead of this:
-// const { serverRuntimeConfig, env } = getConfig() || { 
-//   serverRuntimeConfig: {}, 
-//   env: {} 
-// };
-
-// Do this:
-let serverRuntimeConfig = {};
-let env = {};
-
-// Only use getConfig() at runtime, not during build
-if (typeof window === 'undefined') {
-  try {
-    const config = getConfig();
-    if (config) {
-      serverRuntimeConfig = config.serverRuntimeConfig || {};
-      env = config.env || {};
-    }
-  } catch (error) {
-    console.warn('Next.js config not available during build');
-  }
-}
-
-// Get API key from multiple possible sources
-const apiKey = serverRuntimeConfig.OPENAI_API_KEY || 
-              env.OPENAI_API_KEY || 
-              process.env.OPENAI_API_KEY;
-
-// Debug - log available sources but not the actual key
 
 
-let openai: OpenAI | null = null;
 
-if (apiKey) {
-  openai = new OpenAI({
-    apiKey: apiKey,
+
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
   });
-} else {
-  console.warn('Missing OpenAI API key. OCR functionality will not be available.');
-}
+
 
 export async function POST(req: NextRequest) {
   try {

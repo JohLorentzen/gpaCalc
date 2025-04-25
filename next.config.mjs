@@ -25,21 +25,6 @@ const nextConfig = {
     };
     return config;
   },
-  // Add environment variables - make sure they're available at runtime
-  env: {
-    OPENAI_API_KEY: process.env.OPENAI_API_KEY || '',
-    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-    SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY || '',
-  },
-  // Add public runtime config (this is available to both server and client)
-  publicRuntimeConfig: {
-    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-    SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY || '',
-  },
-  // Add server-only runtime config (this is only available to server components)
-  serverRuntimeConfig: {
-    OPENAI_API_KEY: process.env.OPENAI_API_KEY || '',
-  }
 };
 
 export default withNextIntl(nextConfig); 

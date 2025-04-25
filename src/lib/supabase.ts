@@ -1,8 +1,14 @@
 import { createClient } from '@supabase/supabase-js';
+import getConfig from 'next/config';
 
-// Initialize the Supabase client
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+// Use runtime config if available (for server components)
+const { publicRuntimeConfig } = getConfig() || { publicRuntimeConfig: {} };
+
+// Initialize the Supabase client with fallback options
+const supabaseUrl = publicRuntimeConfig.NEXT_PUBLIC_SUPABASE_URL || 
+                   process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseAnonKey = publicRuntimeConfig.NEXT_PUBLIC_SUPABASE_ANON_KEY || 
+                       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
 // Check if Supabase credentials are available
 if (!supabaseUrl || !supabaseAnonKey) {

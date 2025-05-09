@@ -17,6 +17,7 @@ export function createClient() {
           try {
             const store = await cookieStore;
             store.set({ name, value, ...options });
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           } catch (error) {
             // The `set` method was called from a Server Component.
             // This can be ignored if you have middleware refreshing
@@ -27,6 +28,7 @@ export function createClient() {
           try {
             const store = await cookieStore;
             store.set({ name, value: '', ...options });
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           } catch (error) {
             // The `delete` method was called from a Server Component.
             // This can be ignored if you have middleware refreshing

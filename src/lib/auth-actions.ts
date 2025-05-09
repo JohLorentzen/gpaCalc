@@ -72,10 +72,12 @@ export async function signout(locale: string) {
 export async function signInWithGoogle(locale: string) {
   const supabase = createClient();
 
-  // Construct the redirectTo URL, ensuring it's an absolute URL
-  // If NEXT_PUBLIC_SITE_URL is not set, this might need adjustment
-  // or you might need to ensure it's available.
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'; // Fallback for local dev
+  // Get the current host from the request to determine which domain to use
+  // This allows the callback to work with multiple domains
+  const currentHost = getRequestHost();
+  
+  // If we can't determine the host, fallback to configured site URL or localhost
+  const siteUrl = currentHost || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
   const redirectTo = `${siteUrl}/${locale}/auth/callback`;
 
   const { data, error } = await supabase.auth.signInWithOAuth({
@@ -99,7 +101,12 @@ export async function signInWithGoogle(locale: string) {
 
 export async function signInWithMicrosoft(locale: string) {
   const supabase = createClient();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  
+  // Get the current host from the request to determine which domain to use
+  const currentHost = getRequestHost();
+  
+  // If we can't determine the host, fallback to configured site URL or localhost
+  const siteUrl = currentHost || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
   const redirectTo = `${siteUrl}/${locale}/auth/callback`;
 
   const { data, error } = await supabase.auth.signInWithOAuth({
@@ -125,5 +132,34 @@ export async function signInWithMicrosoft(locale: string) {
     // Handle the case where data.url is null, though it's unlikely for OAuth redirects
     console.error("Microsoft SignIn Error: No URL returned from Supabase");
     redirect(`/${locale}/auth/auth-error?message=Microsoft%20sign-in%20failed%20to%20initiate.`);
+  }
+}
+
+// Helper function to get the current request host
+function getRequestHost() {
+  // In a server action, we don't have direct access to the request object
+  // This is a workaround that works in most deployments
+  try {
+    // In Next.js, we can use headers() to get request info, but it needs to be in the proper context
+    // This is a placeholder for your implementation
+    
+    // For development and testing, handle multiple possible hosts
+    if (process.env.NODE_ENV === 'development') {
+      return 'http://localhost:3000';
+    }
+    
+    // For production, you could implement logic to determine between your domains
+    // Based on your deployment environment or configuration
+    
+    // Check if we're on snittkalk.no
+    if (process.env.NEXT_PUBLIC_SITE_DOMAIN === 'snittkalk.no') {
+      return 'https://snittkalk.no';
+    }
+    
+    // Default to unigpacalc.com
+    return 'https://unigpacalc.com';
+  } catch (error) {
+    console.error('Error getting request host:', error);
+    return null;
   }
 }

@@ -12,6 +12,7 @@ export async function GET(
     return NextResponse.redirect(new URL('/en', request.url).toString());
   }
   
+
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get('code');
   const next = searchParams.get('next') || `/${locale}`; // Use locale safely
@@ -20,7 +21,10 @@ export async function GET(
     const supabase = createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
+      console.log(`Successful auth callback, redirecting to: ${origin}${next}`);
       return NextResponse.redirect(`${origin}${next}`);
+    } else {
+      console.error('Error exchanging code for session:', error);
     }
   }
 

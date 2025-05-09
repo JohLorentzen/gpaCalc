@@ -179,6 +179,7 @@
     --sidebar-border: 217.2 32.6% 17.5%;
     --sidebar-ring: var(--primary);
   }
+  
 }
 
 @layer utilities {
@@ -443,4 +444,14 @@
 
 .prose p {
   @apply leading-relaxed;
+}
+
+.button-outline {
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground)); /* or another appropriate foreground color */
+  background-color: transparent;
+}
+.button-outline:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
 }

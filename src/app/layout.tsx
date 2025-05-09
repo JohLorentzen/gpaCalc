@@ -2,16 +2,19 @@ import Script from "next/script";
 import "./globals.css";
 import { Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import Navbar from "@/components/Navbar";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
   return (
-    <html lang="en">
+    <html lang={params.locale} suppressHydrationWarning>
         <head>
         <Script
           async
@@ -23,10 +26,11 @@ export default function RootLayout({
       <body className={spaceGrotesk.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
+        <Navbar locale={params.locale} />
         {children}
         </ThemeProvider>
       </body>

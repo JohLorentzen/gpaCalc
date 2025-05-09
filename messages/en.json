@@ -209,5 +209,70 @@
       "title": "6. Contact Us",
       "content": "If you have any questions about this privacy policy or our privacy practices, please contact us through our contact form."
     }
+  },
+  "AuthModal": {
+    "title": "Login or Sign Up",
+    "signInWithGoogle": "Sign in with Google",
+    "signInWithMicrosoft": "Sign in with Microsoft",
+    "signInWithApple": "Sign in with Apple",
+    "termsAgreement": "By signing in, you agree to our Terms of Service and Privacy Policy.",
+    "microsoftSignInNotImplemented": "Microsoft Sign-In not yet implemented.",
+    "appleSignInNotImplemented": "Apple Sign-In not yet implemented.",
+    "closeModalAltText": "Close modal"
+  },
+  "AuthBtn": {
+    "login": "Login",
+    "logout": "Log out"
+  },
+  "Navbar": {
+    "brand": "GPA Calc"
+  },
+  "FileDropZone": {
+    "checkingAuth": "Checking authentication...",
+    "fetchingLimit": "Fetching upload limit...",
+    "authRequiredTitle": "Authentication Required",
+    "authRequiredDescription": "Please log in or sign up to upload your transcript.",
+    "limitReachedTitle": "Upload Limit Reached",
+    "limitReachedDescription": "You have used all {maxUploads} of your uploads for the current period.",
+    "nextUploadAvailableAfter": "Your next upload will be available after {date}.",
+    "processingErrorTitle": "Processing Error",
+    "tryAnotherImage": "Try Another Image",
+    "fileSelected": "{fileName}",
+    "fileSizeKiloBytes": "{fileSize} KB",
+    "chooseAnotherFile": "Choose Another File",
+    "uploadTranscriptTitle": "Upload Transcript",
+    "supportedFormats": "Supported formats: JPG, PNG",
+    "dropOrClickToUpload": "Drop or Click to Upload",
+    "ocrProcessing": "OCR Processing",
+    "processing": "Processing...",
+    "analyzingGrades": "Analyzing Grades",
+    "processingCompleteTitle": "Processing Complete",
+    "processingCompleteDescription": "Found {count} courses. Average: {average}/5.",
+    "errorProcessingFile": "There was a problem analyzing your transcript.",
+    "errorCouldNotExtract": "No grade data could be extracted from the image. Please check the format and try again.",
+    "errorPleaseUploadImage": "Please upload an image file (JPG, PNG)",
+    "errorUploadLimitInfo": "Could not load upload limit information.",
+    "errorFailedToFetchLimit": "Failed to fetch upload limit status.",
+    "errorLoadingLimit": "Error loading upload limit.",
+    "errorFailedToRecordUpload": "Failed to save your upload attempt. Please try again.",
+    "uploadsRemaining": "You have {remaining} of {max} uploads remaining.",
+    "firstUploadCycle": "This is your first upload cycle.",
+    "currentCycleEnds": "Your current cycle ends on {date}.",
+    "loadingLimitInfo": "Loading upload limit information..."
+  },
+  "LoggingOutPage": {
+    "title": "Logging Out",
+    "description": "Please wait while we securely log you out..."
+  },
+  "UserProfileActions": {
+    "userNotAuthenticated": "User not authenticated",
+    "couldNotFetchUploadStatus": "Could not fetch upload status.",
+    "failedToFetchProfile": "Failed to fetch profile data.",
+    "uploadLimitReachedCycle": "Upload limit reached for the current cycle.",
+    "failedToRecordUpload": "Failed to record upload."
+  },
+  "Common": {
+    "error": "Error",
+    "loading": "Loading..."
   }
 } 

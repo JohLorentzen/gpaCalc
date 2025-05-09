@@ -137,29 +137,29 @@ export async function signInWithMicrosoft(locale: string) {
 
 // Helper function to get the current request host
 function getRequestHost() {
-  // In a server action, we don't have direct access to the request object
-  // This is a workaround that works in most deployments
   try {
-    // In Next.js, we can use headers() to get request info, but it needs to be in the proper context
-    // This is a placeholder for your implementation
+    // Always use the configured site domain if available, regardless of environment
+    if (process.env.NEXT_PUBLIC_SITE_DOMAIN) {
+      if (process.env.NEXT_PUBLIC_SITE_DOMAIN === 'snittkalk.no') {
+        console.log("Using snittkalk.no domain for auth redirect");
+        return 'https://snittkalk.no';
+      } else if (process.env.NEXT_PUBLIC_SITE_DOMAIN === 'unigpacalc.com') {
+        console.log("Using unigpacalc.com domain for auth redirect");
+        return 'https://unigpacalc.com';
+      }
+    }
     
-    // For development and testing, handle multiple possible hosts
+    // If we're in development and no domain is set, use localhost
     if (process.env.NODE_ENV === 'development') {
+      console.log("Using localhost for auth redirect");
       return 'http://localhost:3000';
     }
     
-    // For production, you could implement logic to determine between your domains
-    // Based on your deployment environment or configuration
-    
-    // Check if we're on snittkalk.no
-    if (process.env.NEXT_PUBLIC_SITE_DOMAIN === 'snittkalk.no') {
-      return 'https://snittkalk.no';
-    }
-    
-    // Default to unigpacalc.com
-    return 'https://unigpacalc.com';
+    // Default to snittkalk.no for production if no domain is specified
+    console.log("Defaulting to snittkalk.no for auth redirect");
+    return 'https://snittkalk.no';
   } catch (error) {
     console.error('Error getting request host:', error);
-    return null;
+    return 'https://snittkalk.no'; // Default to snittkalk.no even if there's an error
   }
 }

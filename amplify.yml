@@ -6,7 +6,8 @@ frontend:
         - npm ci --cache .npm --prefer-offline
     build:
       commands:
-        - env | grep -E 'OPENAI_API_KEY|NEXT_PUBLIC_SUPABASE_URL|NEXT_PUBLIC_SUPABASE_ANON_KEY' > .env.production
+        - env | grep -E 'OPENAI_API_KEY|NEXT_PUBLIC_SUPABASE_URL|NEXT_PUBLIC_SUPABASE_ANON_KEY|NEXT_PUBLIC_SITE_DOMAIN' > .env.production
+        - echo "NEXT_PUBLIC_SITE_DOMAIN=snittkalk.no" >> .env.production
         - npm run build
   artifacts:
     baseDirectory: .next

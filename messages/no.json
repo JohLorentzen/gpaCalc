@@ -1,8 +1,8 @@
 {
   "app": {
-    "title": "Beregn din Universitets",
-    "titleHighlight": "Karaktersnitt",
-    "description": "Last opp din karakterutskrift og få dine emner og gjennomsnittskarakter beregnet på sekunder."
+    "title": "Beregn ditt Universitet",
+    "titleHighlight": "GPA",
+    "description": "Last opp ditt karakterutskrift og få dine fag og gjennomsnittskarakter beregnet på sekunder."
   },
   "navigation": {
     "home": "Hjem",
@@ -11,33 +11,65 @@
     "contact": "Kontakt"
   },
   "calculator": {
-    "title": "Karakterkalkulator",
-    "addCourse": "Legg til emne",
+    "title": "GPA-kalkulator",
+    "addCourse": "Legg til fag",
     "calculate": "Beregn",
     "reset": "Nullstill",
-    "courseName": "Emnenavn",
+    "courseName": "Fagnavn",
     "grade": "Karakter",
     "credits": "Studiepoeng",
-    "result": "Ditt karaktersnitt er: {gpa}",
-    "emptyState": "Legg til emner for å beregne ditt karaktersnitt",
-    "uploadTranscript": "Slipp ditt Universitets/Høyskole karakterutskrift her",
-    "processing": "Behandler karakterutskrift",
-    "processingDescription": "Dette kan ta litt tid mens vi analyserer bildet ditt og henter ut karakterene",
+    "result": "Din GPA er: {gpa}",
+    "emptyState": "Legg til fag for å beregne din GPA",
+    "uploadTranscript": "Slipp ditt universitetsutskrift her",
+    "processing": "Behandler...",
+    "processingDescription": "Dette kan ta et øyeblikk mens vi analyserer bildet ditt og henter ut karakterene",
     "ocrProcessing": "Starter OCR-behandling...",
     "analyzingGrades": "Analyserer karakterer",
     "calculatingAverage": "Beregner gjennomsnitt",
     "loading": "Laster...",
     "loadingResults": "Laster resultater...",
-    "results": "Dine resultater",
-    "dropOrClick": "eller klikk for å bla",
-    "chooseAnotherFile": "Velg et annet fil",
+    "results": "Dine Resultater",
+    "dropOrClick": "Dra og slipp eller klikk for å laste opp",
     "browseFiles": "Bla gjennom filer",
-    "supportedFormats": "Støtter Universitets/Høyskole karakterutskriftsbilder eller skjermbilder (JPG, PNG, JPEG)",
-    "supportedLanguages": "Støtter både norske og engelske karakterutskrifter med bestått/passed emner",
-    "processingComplete": "Karakterutskrift behandlet",
-    "processingError": "Feil ved behandling av karakterutskrift",
+    "supportedFormats": "Støttede formater: JPG, PNG",
+    "supportedLanguages": "Støtter både norske og engelske karakterutskrifter med beståtte fag",
+    "processingComplete": "Behandling fullført",
+    "processingError": "Behandlingsfeil",
     "tryAnotherImage": "Prøv et annet bilde",
-    "uploadAnotherImage": "Last opp et annet bilde"
+    "uploadAnotherImage": "Last opp et annet bilde",
+    "chooseAnotherFile": "Velg en annen fil",
+    "uploadLimitError": "Kunne ikke laste opplastningsgrensen",
+    "uploadLimitLoadError": "Kunne ikke laste informasjon om opplastningsgrense.",
+    "fetchLimitError": "Kunne ikke hente status for opplastningsgrense.",
+    "uploadLimitReached": "Opplastningsgrense nådd",
+    "noUploadsRemaining": "Du har ingen opplastninger igjen.",
+    "imageFormatError": "Vennligst last opp en bildefil (JPG, PNG)",
+    "noGradeData": "Ingen karakterdata kunne hentes ut. Vennligst sjekk formatet.",
+    "foundCoursesAverage": "Fant {count} fag. Gjennomsnitt: {average}/5.",
+    "failedToSaveUpload": "Kunne ikke lagre opplastningsforsøket. Vennligst prøv igjen.",
+    "transcriptAnalyzingProblem": "Det oppstod et problem med å analysere utskriften din.",
+    "notAvailable": "Ikke tilgjengelig",
+    "checkingAuth": "Sjekker autentisering...",
+    "fetchingUploadLimit": "Henter opplastningsgrense...",
+    "usedAllUploads": "Du har brukt alle dine {count} opplastninger for denne perioden.",
+    "nextUploadAvailable": "Din neste opplastning vil være tilgjengelig etter",
+    "documentBeingProcessed": "Dokumentet ditt blir behandlet.",
+    "uploadsRemaining": "Du har {remaining} av {total} opplastninger igjen.",
+    "cycleEndDate": " Din nåværende syklus slutter den {date}.",
+    "firstUploadCycle": " Dette er din første opplastningssyklus.",
+    "loadingUploadLimit": "Laster informasjon om opplastningsgrense..."
+  },
+  "auth": {
+    "authRequired": "Autentisering påkrevd",
+    "loginToUpload": "Vennligst logg inn for å laste opp.",
+    "loginToChooseFile": "Vennligst logg inn for å velge en fil.",
+    "loginToUploadTranscript": "Vennligst logg inn eller registrer deg for å laste opp karakterutskriften din.",
+    "login": "Logg inn",
+    "logout": "Logg ut",
+    "signInWithGoogle": "Logg inn med Google",
+    "signInWithMicrosoft": "Logg inn med Microsoft",
+    "termsAgreement": "Ved å logge inn godtar du våre <terms>vilkår for bruk</terms> og <privacy>personvernpolicy</privacy>.",
+    "closeModal": "Lukk vindu"
   },
   "errors": {
     "pageNotFound": "Oops! Siden ble ikke funnet",
@@ -209,5 +241,8 @@
       "title": "6. Kontakt oss",
       "content": "Hvis du har spørsmål om denne personvernerklæringen eller våre personvernrutiner, vennligst kontakt oss gjennom vårt kontaktskjema."
     }
+  },
+  "Navbar": {
+    "title": "SNITT KALK"
   }
 } 

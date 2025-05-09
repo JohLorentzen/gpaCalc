@@ -6,12 +6,14 @@ import { createClient } from "@/utils/supabase/client";
 import { signout } from "@/lib/auth-actions";
 import { User } from "@supabase/supabase-js";
 import AuthModal from "./AuthModal";
+import { useTranslations } from 'next-intl';
 
 interface AuthBtnProps {
   locale: string;
 }
 
 const AuthBtn = ({ locale }: AuthBtnProps) => {
+  const t = useTranslations('auth');
   const [user, setUser] = useState<User | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const supabase = createClient();
@@ -46,11 +48,12 @@ const AuthBtn = ({ locale }: AuthBtnProps) => {
   if (user) {
     return (
       <Button
+        className="text-white"
         onClick={() => {
           router.push(`/${locale}/logging-out`);
         }}
       >
-        Log out
+        {t('logout')}
       </Button>
     );
   }
@@ -58,12 +61,13 @@ const AuthBtn = ({ locale }: AuthBtnProps) => {
   return (
     <>
       <Button
-        variant="outline"
+        variant="primary"
+        className="text-white"
         onClick={() => {
           setIsModalOpen(true);
         }}
       >
-        Login
+        {t('login')}
       </Button>
       <AuthModal 
         isOpen={isModalOpen} 

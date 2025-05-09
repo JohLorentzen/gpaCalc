@@ -2,9 +2,18 @@ import Script from "next/script";
 import "./globals.css";
 import { Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
-import Navbar from "@/components/Navbar";
+import { getTranslations } from 'next-intl/server';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
+
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+  const t = await getTranslations({ locale, namespace: 'app' });
+  
+  return {
+    title: `${t('title')} ${t('titleHighlight')}`,
+    description: t('description'),
+  };
+}
 
 export default function RootLayout({
   children,
@@ -30,7 +39,6 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-        <Navbar locale={params.locale} />
         {children}
         </ThemeProvider>
       </body>

@@ -1,23 +1,26 @@
 import React from 'react';
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import Link from 'next/link';
-import LanguageSwitcher from './LanguageSwitcher';
-import AuthBtn from './AuthBtn';
-  
+import LanguageSwitcherWrapper from './LanguageSwitcherWrapper';
+import AuthBtnWrapper from './AuthBtnWrapper';
+
 interface NavbarProps {
   locale: string;
 }
 
-const Navbar = ({ locale }: NavbarProps) => {
+const Navbar = async ({ locale }: NavbarProps) => {
+  // Force the correct title based on locale
+  const navTitle = locale === 'no' ? 'SNITT KALK' : 'UNI GPA CALC';
+  
   return (
     <nav className="navbar">
       <Link href={`/${locale}`} className="navbar-brand">
-        UNIGPACALC
+        {navTitle}
       </Link>
       <div className="navbar-links">
         <ModeToggle />
-        <LanguageSwitcher currentLocale={locale} />
-        <AuthBtn locale={locale} />
+        <LanguageSwitcherWrapper currentLocale={locale} />
+        <AuthBtnWrapper locale={locale} />
       </div>
     </nav>
   );

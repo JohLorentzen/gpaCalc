@@ -21,7 +21,7 @@
     "result": "Your GPA is: {gpa}",
     "emptyState": "Add courses to calculate your GPA",
     "uploadTranscript": "Drop your University transcript here",
-    "processing": "Processing transcript",
+    "processing": "Processing...",
     "processingDescription": "This may take a moment while we analyze your image and extract the grades",
     "ocrProcessing": "Starting OCR processing...",
     "analyzingGrades": "Analyzing grades",
@@ -29,15 +29,35 @@
     "loading": "Loading...",
     "loadingResults": "Loading results...",
     "results": "Your Results",
-    "dropOrClick": "or click to browse",
+    "dropOrClick": "Drop or Click to Upload",
     "browseFiles": "Browse files",
-    "supportedFormats": "Supports University/College transcript images or screenshots (JPG, PNG, JPEG)",
+    "supportedFormats": "Supported formats: JPG, PNG",
     "supportedLanguages": "Supports both Norwegian and English transcripts with passed courses",
     "processingComplete": "Transcript processed",
-    "processingError": "Error processing transcript",
-    "tryAnotherImage": "Try another image",
+    "processingError": "Processing Error",
+    "tryAnotherImage": "Try Another Image",
     "uploadAnotherImage": "Upload another image",
-    "chooseAnotherFile": "Choose another file"
+    "chooseAnotherFile": "Choose Another File",
+    "uploadLimitError": "Could not load upload limit",
+    "uploadLimitLoadError": "Could not load upload limit information.",
+    "fetchLimitError": "Failed to fetch upload limit status.",
+    "uploadLimitReached": "Upload Limit Reached",
+    "noUploadsRemaining": "You have no uploads remaining.",
+    "imageFormatError": "Please upload an image file (JPG, PNG)",
+    "noGradeData": "No grade data could be extracted. Please check the format.",
+    "foundCoursesAverage": "Found {count} courses. Average: {average}/5.",
+    "failedToSaveUpload": "Failed to save your upload attempt. Please try again.",
+    "transcriptAnalyzingProblem": "There was a problem analyzing your transcript.",
+    "notAvailable": "N/A",
+    "checkingAuth": "Checking authentication...",
+    "fetchingUploadLimit": "Fetching upload limit...",
+    "usedAllUploads": "You have used all {count} of your uploads for the current period.",
+    "nextUploadAvailable": "Your next upload will be available after",
+    "documentBeingProcessed": "Your document is being processed.",
+    "uploadsRemaining": "You have {remaining} of {total} uploads remaining.",
+    "cycleEndDate": " Your current cycle ends on {date}.",
+    "firstUploadCycle": " This is your first upload cycle.",
+    "loadingUploadLimit": "Loading upload limit information..."
   },
   "errors": {
     "pageNotFound": "Oops! Page not found",
@@ -225,7 +245,7 @@
     "logout": "Log out"
   },
   "Navbar": {
-    "brand": "GPA Calc"
+    "title": "UNI GPA CALC"
   },
   "FileDropZone": {
     "checkingAuth": "Checking authentication...",
@@ -274,5 +294,17 @@
   "Common": {
     "error": "Error",
     "loading": "Loading..."
+  },
+  "auth": {
+    "authRequired": "Authentication Required",
+    "loginToUpload": "Please log in to upload.",
+    "loginToChooseFile": "Please log in to choose a file.",
+    "loginToUploadTranscript": "Please log in or sign up to upload your transcript.",
+    "login": "Login",
+    "logout": "Log out",
+    "signInWithGoogle": "Sign in with Google",
+    "signInWithMicrosoft": "Sign in with Microsoft",
+    "termsAgreement": "By signing in, you agree to our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>.",
+    "closeModal": "Close modal"
   }
 } 

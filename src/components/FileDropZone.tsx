@@ -9,6 +9,7 @@ import { GradeResult, GradeEntry } from '@/lib/parser';
 import { createClient } from '@/utils/supabase/client';
 import { User } from '@supabase/supabase-js';
 import { getUploadStatus, recordUpload } from '@/lib/user-profile-actions';
+import { useTranslations } from 'next-intl';
 
 // Define a type for the status returned by getUploadStatus if direct import is an issue
 type FetchedUploadStatus = Awaited<ReturnType<typeof getUploadStatus>>;
@@ -28,6 +29,10 @@ interface ClientUploadStatus {
 const MAX_UPLOADS_PER_CYCLE = 6;
 
 const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessingStart }) => {
+  const t = useTranslations('calculator');
+  const tErrors = useTranslations('errors');
+  const tAuth = useTranslations('auth');
+  
   const [isDragging, setIsDragging] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -75,8 +80,8 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
       getUploadStatus().then((status: FetchedUploadStatus) => {
         if (status.error) {
             console.error("Error fetching upload status:", status.error);
-            toast({ title: "Could not load upload limit", description: status.error, variant: "destructive"});
-            setUploadLimitStatus({ remaining: 0, limitReached: true, cycleStartDate: null, message: "Could not load upload limit information." });
+            toast({ title: t('uploadLimitError'), description: status.error, variant: "destructive"});
+            setUploadLimitStatus({ remaining: 0, limitReached: true, cycleStartDate: null, message: t('uploadLimitLoadError') });
         } else {
             const cycleDate = status.cycleStartDate ? new Date(status.cycleStartDate) : null;
             setUploadLimitStatus({ 
@@ -88,14 +93,14 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
         setIsLoadingLimitStatus(false);
       }).catch(err => {
         console.error("Client error fetching upload status:", err);
-        toast({ title: "Error", description: "Failed to fetch upload limit status.", variant: "destructive"});
-        setUploadLimitStatus({ remaining: 0, limitReached: true, cycleStartDate: null, message: "Error loading upload limit." });
+        toast({ title: tErrors('title'), description: t('fetchLimitError'), variant: "destructive"});
+        setUploadLimitStatus({ remaining: 0, limitReached: true, cycleStartDate: null, message: t('uploadLimitLoadError') });
         setIsLoadingLimitStatus(false);
       });
     } else {
       setUploadLimitStatus(null);
     }
-  }, [user, toast]);
+  }, [user, toast, t, tErrors]);
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -111,41 +116,41 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
 
   const processFile = async (fileToProcess: File) => {
     if (!user) {
-      toast({ title: "Authentication Required", description: "Please log in to upload.", variant: "default" });
+      toast({ title: tAuth('authRequired'), description: tAuth('loginToUpload'), variant: "default" });
       return;
     }
     if (uploadLimitStatus?.limitReached) {
-      toast({ title: "Upload Limit Reached", description: "You have used all your uploads for the current period.", variant: "destructive" });
+      toast({ title: t('uploadLimitReached'), description: t('noUploadsRemaining'), variant: "destructive" });
       return;
     }
 
     setIsProcessing(true);
     setError(null);
-    setProcessingStage('OCR Processing');
+    setProcessingStage(t('ocrProcessing'));
     if (onProcessingStart) onProcessingStart();
     
     try {
       const fileExt = fileToProcess.name.split('.').pop()?.toLowerCase();
       const isImage = ['jpg', 'jpeg', 'png'].includes(fileExt || '');
-      if (!isImage) throw new Error('Please upload an image file (JPG, PNG)');
+      if (!isImage) throw new Error(t('imageFormatError'));
       const formData = new FormData();
       formData.append('file', fileToProcess);
-      setProcessingStage('Processing...');
+      setProcessingStage(t('processing'));
       const response = await fetch('/api/ocr', { method: 'POST', body: formData });
       if (!response.ok) {
         const errData = await response.json();
-        throw new Error(errData.error || errData.details || `Error: ${response.status} ${response.statusText}`);
+        throw new Error(errData.error || errData.details || `${tErrors('title')}: ${response.status} ${response.statusText}`);
       }
       const data = await response.json();
       if (data.error) throw new Error(data.error);
-      setProcessingStage('Analyzing Grades');
+      setProcessingStage(t('analyzingGrades'));
       if (!data.result || !data.result.entries || data.result.entries.length === 0) {
-        throw new Error("No grade data could be extracted. Please check the format.");
+        throw new Error(t('noGradeData'));
       }
       const recordResult = await recordUpload();
       if (recordResult.success) {
         onFileProcessed(data.result.average, data.result);
-        toast({ title: 'Processing Complete', description: `Found ${data.result.entries.length} courses. Average: ${data.result.average.toFixed(2)}/5.` });
+        toast({ title: t('processingComplete'), description: t('foundCoursesAverage', { count: data.result.entries.length, average: data.result.average.toFixed(2) }) });
         if (recordResult.newRemaining !== undefined && recordResult.newCycleStartDate) {
             setUploadLimitStatus({
                 remaining: recordResult.newRemaining,
@@ -155,14 +160,14 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
         }
       } else {
         console.error("Failed to record upload:", recordResult.error);
-        throw new Error(recordResult.error || "Failed to save your upload attempt. Please try again.");
+        throw new Error(recordResult.error || t('failedToSaveUpload'));
       }
 
     } catch (err) {
       console.error("Error processing file:", err);
-      const errorMessage = err instanceof Error ? err.message : "There was a problem analyzing your transcript.";
+      const errorMessage = err instanceof Error ? err.message : t('transcriptAnalyzingProblem');
       setError(errorMessage);
-      toast({ title: 'Processing Error', description: `${errorMessage}`, variant: "destructive" });
+      toast({ title: t('processingError'), description: `${errorMessage}`, variant: "destructive" });
     } finally {
       setIsProcessing(false);
       setProcessingStage('');
@@ -173,11 +178,11 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
     e.preventDefault();
     setIsDragging(false);
     if (!user) {
-      toast({ title: "Authentication Required", description: "Please log in to upload files.", variant: "default" });
+      toast({ title: tAuth('authRequired'), description: tAuth('loginToUpload'), variant: "default" });
       return;
     }
     if (uploadLimitStatus?.limitReached) {
-        toast({ title: "Upload Limit Reached", description: "You have no uploads remaining.", variant: "destructive" });
+        toast({ title: t('uploadLimitReached'), description: t('noUploadsRemaining'), variant: "destructive" });
         return;
     }
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
@@ -189,11 +194,11 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!user) {
-      toast({ title: "Authentication Required", description: "Please log in to upload files.", variant: "default" });
+      toast({ title: tAuth('authRequired'), description: tAuth('loginToUpload'), variant: "default" });
       return;
     }
      if (uploadLimitStatus?.limitReached) {
-        toast({ title: "Upload Limit Reached", description: "You have no uploads remaining.", variant: "destructive" });
+        toast({ title: t('uploadLimitReached'), description: t('noUploadsRemaining'), variant: "destructive" });
         return;
     }
     if (e.target.files && e.target.files.length > 0) {
@@ -205,11 +210,11 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
 
   const handleButtonClick = () => {
     if (!user) {
-      toast({ title: "Authentication Required", description: "Please log in to choose a file.", variant: "default" });
+      toast({ title: tAuth('authRequired'), description: tAuth('loginToChooseFile'), variant: "default" });
       return;
     }
     if (uploadLimitStatus?.limitReached) {
-        toast({ title: "Upload Limit Reached", description: "You have no uploads remaining.", variant: "destructive" });
+        toast({ title: t('uploadLimitReached'), description: t('noUploadsRemaining'), variant: "destructive" });
         return;
     }
     fileInputRef.current?.click();
@@ -222,7 +227,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
         endDate.setDate(endDate.getDate() -1);
         return endDate.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
     }
-    return "N/A";
+    return t('notAvailable');
   };
 
   const renderContent = () => {
@@ -230,7 +235,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
       return (
         <div className="flex flex-col items-center justify-center h-full p-4">
           <div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div>
-          <p className="mt-4 text-muted-foreground">{loadingUser ? "Checking authentication..." : "Fetching upload limit..."}</p>
+          <p className="mt-4 text-muted-foreground">{loadingUser ? t('checkingAuth') : t('fetchingUploadLimit')}</p>
         </div>
       );
     }
@@ -239,9 +244,9 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
       return (
         <div className="flex flex-col items-center justify-center h-full text-center p-4">
           <LogIn className="w-12 h-12 text-muted-foreground mb-4" />
-          <h3 className="text-lg font-semibold mb-2">Authentication Required</h3>
+          <h3 className="text-lg font-semibold mb-2">{tAuth('authRequired')}</h3>
           <p className="text-sm text-muted-foreground px-4">
-            Please log in or sign up to upload your transcript.
+            {tAuth('loginToUploadTranscript')}
           </p>
         </div>
       );
@@ -251,10 +256,10 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
         return (
             <div className="flex flex-col items-center justify-center h-full text-center p-4">
                 <Info className="w-12 h-12 text-destructive mb-4" />
-                <h3 className="text-lg font-semibold text-destructive mb-2">Upload Limit Reached</h3>
+                <h3 className="text-lg font-semibold text-destructive mb-2">{t('uploadLimitReached')}</h3>
                 <p className="text-sm text-muted-foreground px-4">
-                    You have used all {MAX_UPLOADS_PER_CYCLE} of your uploads for the current period.
-                    Your next upload will be available after {getCycleEndDateFormatted()}.
+                    {t('usedAllUploads', { count: MAX_UPLOADS_PER_CYCLE })}
+                    {t('nextUploadAvailable')} {getCycleEndDateFormatted()}.
                 </p>
             </div>
         );
@@ -274,9 +279,9 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
                     </div>
                 </div>
                 <div className="relative z-10 text-center">
-                    <p className="text-foreground font-medium">{processingStage || 'Processing...'}</p>
+                    <p className="text-foreground font-medium">{processingStage || t('processing')}</p>
                     <p className="text-sm text-muted-foreground max-w-xs">
-                        Your document is being processed.
+                        {t('documentBeingProcessed')}
                     </p>
                     <div className="flex space-x-2 mt-1 justify-center">
                         <div className="w-2 h-2 rounded-full bg-primary animate-pulse" style={{ animationDelay: '0s' }}></div>
@@ -294,11 +299,11 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
                     <AlertTriangle className="w-10 h-10 text-destructive" />
                 </div>
                 <div className="text-center">
-                    <p className="text-foreground font-medium mb-1">Processing Error</p>
+                    <p className="text-foreground font-medium mb-1">{t('processingError')}</p>
                     <p className="text-sm text-destructive mb-4">{error}</p>
                 </div>
                 <Button variant="gradient" className="mt-2" onClick={handleButtonClick}>
-                    Try Another Image
+                    {t('tryAnotherImage')}
                 </Button>
             </div>
         );
@@ -314,7 +319,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
                     <p className="text-sm text-muted-foreground">{(file.size / 1024).toFixed(2)} KB</p>
                 </div>
                 <Button variant="gradient" className="mt-2" onClick={handleButtonClick}>
-                    Choose Another File
+                    {t('chooseAnotherFile')}
                 </Button>
             </div>
         );
@@ -324,12 +329,12 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
             <div className="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mb-4">
                 <Upload className="w-8 h-8 text-primary-foreground" />
             </div>
-            <h3 className="text-lg font-medium mb-1">Upload Transcript</h3>
+            <h3 className="text-lg font-medium mb-1">{t('uploadTranscript')}</h3>
             <p className="text-sm text-muted-foreground mb-6">
-                Supported formats: JPG, PNG
+                {t('supportedFormats')}
             </p>
             <Button variant="gradient" className="mt-2 text-white" onClick={handleButtonClick}>
-                Drop or Click to Upload
+                {t('dropOrClick')}
             </Button>
         </div>
     );
@@ -364,14 +369,17 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
         <div className="mt-4 text-center text-sm text-muted-foreground">
             {uploadLimitStatus.limitReached ? (
                 <p>
-                    Upload limit reached. Your next upload will be available after {getCycleEndDateFormatted()}.
+                    {t('uploadLimitReached')} {t('nextUploadAvailable')} {getCycleEndDateFormatted()}.
                 </p>
             ) : (
                 <p>
-                    You have <span className="font-semibold text-foreground">{uploadLimitStatus.remaining}</span> of {MAX_UPLOADS_PER_CYCLE} uploads remaining.
+                    {t('uploadsRemaining', { 
+                        remaining: uploadLimitStatus.remaining, 
+                        total: MAX_UPLOADS_PER_CYCLE 
+                    })}
                     {uploadLimitStatus.cycleStartDate ? 
-                        ` Your current cycle ends on ${getCycleEndDateFormatted()}.` : 
-                        ' This is your first upload cycle.'
+                        t('cycleEndDate', { date: getCycleEndDateFormatted() }) : 
+                        t('firstUploadCycle')
                     }
                 </p>
             )}
@@ -379,7 +387,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
       )}
       {user && isLoadingLimitStatus && (
            <div className="mt-4 text-center text-sm text-muted-foreground">
-               Loading upload limit information...
+               {t('loadingUploadLimit')}
            </div>
       )}
     </div>

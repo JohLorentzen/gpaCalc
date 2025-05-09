@@ -4,6 +4,8 @@ import React from 'react';
 import { Button } from './ui/button'; // Assuming you have a Button component
 import { signInWithGoogle } from '@/lib/auth-actions'; // Import existing Google sign-in
 import { signInWithMicrosoft } from '@/lib/auth-actions'; // Import signInWithMicrosoft
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 // We'll need to create these actions later
 // import { signInWithApple } from '@/lib/auth-actions';
@@ -15,10 +17,14 @@ interface AuthModalProps {
 }
 
 const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, locale }) => {
+  const t = useTranslations('auth');
 
   if (!isOpen) {
     return null;
   }
+
+  // Force the correct title based on locale
+  const modalTitle = locale === 'no' ? 'SNITT KALK' : 'UNI GPA CALC';
 
   const handleGoogleSignIn = async () => {
     await signInWithGoogle(locale);
@@ -38,10 +44,10 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, locale }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center h-screen w-screen p-4 bg-black/70 backdrop-blur-sm">
-      <div className="bg-white text-text p-6 rounded-lg shadow-xl w-full max-w-md">
+      <div className="bg-white text-text p-6 rounded-lg shadow-xl w-full max-w-md dark:bg-gray-900">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-semibold">GPA Calc</h2>
-          <Button variant="ghost" size="icon" onClick={onClose} aria-label="Close modal"> {/* Added alt text for close button */}
+          <h2 className="text-2xl font-semibold">{modalTitle}</h2>
+          <Button variant="ghost" size="icon" onClick={onClose} aria-label={t('closeModal')}> {/* Added alt text for close button */}
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </Button>
         </div>
@@ -59,7 +65,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, locale }) => {
               <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
               <path fill="none" d="M0 0h48v48H0z"></path>
             </svg>
-            Sign in with Google
+            {t('signInWithGoogle')}
           </Button>
           <Button 
             variant="outline" 
@@ -74,16 +80,37 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, locale }) => {
               <rect x="1" y="13" width="10" height="10" fill="#00A4EF"/> {/* Blue */}
               <rect x="13" y="13" width="10" height="10" fill="#FFB900"/> {/* Yellow */}
             </svg>
-            Sign in with Microsoft
+            {t('signInWithMicrosoft')}
           </Button>
          
         </div>
         <p className="text-xs text-muted-foreground mt-6 text-center">
-          By signing in, you agree to our Terms of Service and Privacy Policy.
+          {t.rich('termsAgreement', {
+            terms: (chunks) => (
+              <Link 
+                href={`/${locale}/${locale === 'no' ? 'vilkar' : 'terms'}`} 
+                onClick={onClose} 
+                className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent font-medium"
+              >
+                {chunks}
+              </Link>
+            ),
+            privacy: (chunks) => (
+              <Link 
+                href={`/${locale}/${locale === 'no' ? 'personvern' : 'privacy'}`} 
+                onClick={onClose} 
+                className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent font-medium"
+              >
+                {chunks}
+              </Link>
+            )
+          })}
         </p>
       </div>
     </div>
   );
+
+  
 };
 
 export default AuthModal; 

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { getMessages } from 'next-intl/server';
 
 import { generateLayoutMetadata } from '@/lib/metadata';
 
@@ -13,41 +14,37 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
-export async function generateMetadata({
-  params
-}: {
-  params: { locale: string }
-}): Promise<Metadata> {
-  // Get the locale parameter, ensuring it's awaited properly
-  const { locale } = await params;
+// Use proper typings for Next.js App Router params
+type Props = {
+  params: {
+    locale: string
+  },
+  children: React.ReactNode
+}
+
+// Using a more direct approach without destructuring params
+export async function generateMetadata(props: Omit<Props, 'children'>): Promise<Metadata> {
+  // Get the locale safely from the param object without destructuring
+  const locale = await props.params?.locale;
   
-  // Use the centralized metadata generator
+  if (!locale) {
+    return {}; // Default empty metadata if locale is not available
+  }
+  
   return generateLayoutMetadata({ locale });
 }
 
-export default async function LocaleLayout({
-  children,
-  params
-}: {
-  children: React.ReactNode;
-  params: Promise<{locale: string}>;
-}) {
+// Using a more direct approach without destructuring params
+export default async function LocaleLayout(props: Props) {
+  // Get locale safely from the params object without destructuring
+  const locale = await(props.params?.locale);
+
   // Ensure that the incoming `locale` is valid
-  const {locale} = await params;
-  if (!hasLocale(routing.locales, locale)) {
+  if (!locale || !hasLocale(routing.locales, locale)) {
     notFound();
   }
  
-  // Load messages from messages directory
-  // Using relative path starting from project root
-  let messages;
-  try {
-    messages = (await import(`../../../messages/${locale}.json`)).default;
-  } catch (error) {
-    console.error(`Error loading messages for locale ${locale}:`, error);
-    // Fallback to English if message loading fails
-    messages = (await import(`../../../messages/en.json`)).default;
-  }
+  const messages = await getMessages({ locale });
  
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -57,11 +54,13 @@ export default async function LocaleLayout({
       </head>
       <body className={spaceGrotesk.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-            <div className="flex flex-col min-h-screen">
-              <Navbar locale={locale} />
-              {children}
-              <Footer locale={locale} />
-            </div>
+          <div className="flex flex-col min-h-screen">
+            <Navbar locale={locale} />
+            <main className="flex-grow pt-20">
+              {props.children}
+            </main>
+            <Footer locale={locale} />
+          </div>
           <Analytics />
           <SpeedInsights />
         </NextIntlClientProvider>

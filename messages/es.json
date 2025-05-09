@@ -37,7 +37,27 @@
     "processingError": "Error al procesar el expediente",
     "tryAnotherImage": "Prueba con otra imagen",
     "uploadAnotherImage": "Subir otra imagen",
-    "chooseAnotherFile": "Seleccionar otro archivo"
+    "chooseAnotherFile": "Seleccionar otro archivo",
+    "uploadLimitError": "No se pudo cargar el límite de subidas",
+    "uploadLimitLoadError": "No se pudo cargar la información del límite de subidas.",
+    "fetchLimitError": "No se pudo obtener el estado del límite de subidas.",
+    "uploadLimitReached": "Límite de subidas alcanzado",
+    "noUploadsRemaining": "No tienes subidas restantes.",
+    "imageFormatError": "Por favor, sube un archivo de imagen (JPG, PNG)",
+    "noGradeData": "No se pudieron extraer datos de calificaciones. Por favor, comprueba el formato.",
+    "foundCoursesAverage": "Se encontraron {count} cursos. Promedio: {average}/5.",
+    "failedToSaveUpload": "No se pudo guardar el intento de subida. Por favor, inténtalo de nuevo.",
+    "transcriptAnalyzingProblem": "Hubo un problema al analizar tu expediente.",
+    "notAvailable": "N/D",
+    "checkingAuth": "Comprobando autenticación...",
+    "fetchingUploadLimit": "Obteniendo límite de subidas...",
+    "usedAllUploads": "Has usado todas tus {count} subidas para el período actual.",
+    "nextUploadAvailable": "Tu próxima subida estará disponible después de",
+    "documentBeingProcessed": "Tu documento está siendo procesado.",
+    "uploadsRemaining": "Te quedan {remaining} de {total} subidas.",
+    "cycleEndDate": " Tu ciclo actual finaliza el {date}.",
+    "firstUploadCycle": " Este es tu primer ciclo de subidas.",
+    "loadingUploadLimit": "Cargando información sobre el límite de subidas..."
   },
   "errors": {
     "pageNotFound": "¡Ups! Página no encontrada",
@@ -203,7 +223,81 @@
       "content": "Si tiene alguna pregunta sobre esta política de privacidad o nuestras prácticas de privacidad, contáctenos a través de nuestro formulario de contacto."
     }
   },
+  "AuthModal": {
+    "title": "Iniciar sesión o Registrarse",
+    "signInWithGoogle": "Iniciar sesión con Google",
+    "signInWithMicrosoft": "Iniciar sesión con Microsoft",
+    "signInWithApple": "Iniciar sesión con Apple",
+    "termsAgreement": "Al iniciar sesión, aceptas nuestros Términos de Servicio y Política de Privacidad.",
+    "microsoftSignInNotImplemented": "Inicio de sesión con Microsoft aún no implementado.",
+    "appleSignInNotImplemented": "Inicio de sesión con Apple aún no implementado.",
+    "closeModalAltText": "Cerrar ventana"
+  },
+  "AuthBtn": {
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión"
+  },
   "Navbar": {
     "title": "UNI GPA CALC"
+  },
+  "FileDropZone": {
+    "checkingAuth": "Comprobando autenticación...",
+    "fetchingLimit": "Obteniendo límite de subidas...",
+    "authRequiredTitle": "Autenticación requerida",
+    "authRequiredDescription": "Por favor, inicia sesión o regístrate para subir tu expediente académico.",
+    "limitReachedTitle": "Límite de subidas alcanzado",
+    "limitReachedDescription": "Has utilizado todas tus {maxUploads} subidas para el período actual.",
+    "nextUploadAvailableAfter": "Tu próxima subida estará disponible después de {date}.",
+    "processingErrorTitle": "Error de procesamiento",
+    "tryAnotherImage": "Probar con otra imagen",
+    "fileSelected": "{fileName}",
+    "fileSizeKiloBytes": "{fileSize} KB",
+    "chooseAnotherFile": "Elegir otro archivo",
+    "uploadTranscriptTitle": "Subir expediente académico",
+    "supportedFormats": "Formatos compatibles: JPG, PNG",
+    "dropOrClickToUpload": "Arrastra o haz clic para subir",
+    "ocrProcessing": "Procesamiento OCR",
+    "processing": "Procesando...",
+    "analyzingGrades": "Analizando calificaciones",
+    "processingCompleteTitle": "Procesamiento completado",
+    "processingCompleteDescription": "Se encontraron {count} cursos. Promedio: {average}/5.",
+    "errorProcessingFile": "Hubo un problema al analizar tu expediente académico.",
+    "errorCouldNotExtract": "No se pudieron extraer datos de calificaciones de la imagen. Por favor, comprueba el formato e inténtalo de nuevo.",
+    "errorPleaseUploadImage": "Por favor, sube un archivo de imagen (JPG, PNG)",
+    "errorUploadLimitInfo": "No se pudo cargar información sobre el límite de subidas.",
+    "errorFailedToFetchLimit": "No se pudo obtener el estado del límite de subidas.",
+    "errorLoadingLimit": "Error al cargar límite de subidas.",
+    "errorFailedToRecordUpload": "No se pudo guardar tu intento de subida. Por favor, inténtalo de nuevo.",
+    "uploadsRemaining": "Te quedan {remaining} de {max} subidas.",
+    "firstUploadCycle": "Este es tu primer ciclo de subidas.",
+    "currentCycleEnds": "Tu ciclo actual finaliza el {date}.",
+    "loadingLimitInfo": "Cargando información sobre el límite de subidas..."
+  },
+  "LoggingOutPage": {
+    "title": "Cerrando sesión",
+    "description": "Por favor, espera mientras cerramos tu sesión de forma segura..."
+  },
+  "UserProfileActions": {
+    "userNotAuthenticated": "Usuario no autenticado",
+    "couldNotFetchUploadStatus": "No se pudo obtener el estado de subidas.",
+    "failedToFetchProfile": "No se pudieron obtener los datos del perfil.",
+    "uploadLimitReachedCycle": "Límite de subidas alcanzado para el ciclo actual.",
+    "failedToRecordUpload": "No se pudo registrar la subida."
+  },
+  "Common": {
+    "error": "Error",
+    "loading": "Cargando..."
+  },
+  "auth": {
+    "authRequired": "Autenticación requerida",
+    "loginToUpload": "Por favor, inicia sesión para subir.",
+    "loginToChooseFile": "Por favor, inicia sesión para elegir un archivo.",
+    "loginToUploadTranscript": "Por favor, inicia sesión o regístrate para subir tu expediente académico.",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "signInWithGoogle": "Iniciar sesión con Google",
+    "signInWithMicrosoft": "Iniciar sesión con Microsoft",
+    "termsAgreement": "Al iniciar sesión, aceptas nuestros <terms>Términos de Servicio</terms> y <privacy>Política de Privacidad</privacy>.",
+    "closeModal": "Cerrar ventana"
   }
 } 

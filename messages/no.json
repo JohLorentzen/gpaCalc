@@ -242,7 +242,69 @@
       "content": "Hvis du har spørsmål om denne personvernerklæringen eller våre personvernrutiner, vennligst kontakt oss gjennom vårt kontaktskjema."
     }
   },
+  "AuthModal": {
+    "title": "Logg inn eller registrer deg",
+    "signInWithGoogle": "Logg inn med Google",
+    "signInWithMicrosoft": "Logg inn med Microsoft",
+    "signInWithApple": "Logg inn med Apple",
+    "termsAgreement": "Ved å logge inn godtar du våre vilkår for bruk og personvernerklæring.",
+    "microsoftSignInNotImplemented": "Microsoft-innlogging er ikke implementert ennå.",
+    "appleSignInNotImplemented": "Apple-innlogging er ikke implementert ennå.",
+    "closeModalAltText": "Lukk vindu"
+  },
+  "AuthBtn": {
+    "login": "Logg inn",
+    "logout": "Logg ut"
+  },
   "Navbar": {
     "title": "SNITT KALK"
+  },
+  "FileDropZone": {
+    "checkingAuth": "Sjekker autentisering...",
+    "fetchingLimit": "Henter opplastningsgrense...",
+    "authRequiredTitle": "Autentisering påkrevd",
+    "authRequiredDescription": "Vennligst logg inn eller registrer deg for å laste opp karakterutskriften din.",
+    "limitReachedTitle": "Opplastningsgrense nådd",
+    "limitReachedDescription": "Du har brukt alle {maxUploads} opplastninger for denne perioden.",
+    "nextUploadAvailableAfter": "Din neste opplastning vil være tilgjengelig etter {date}.",
+    "processingErrorTitle": "Behandlingsfeil",
+    "tryAnotherImage": "Prøv et annet bilde",
+    "fileSelected": "{fileName}",
+    "fileSizeKiloBytes": "{fileSize} KB",
+    "chooseAnotherFile": "Velg en annen fil",
+    "uploadTranscriptTitle": "Last opp karakterutskrift",
+    "supportedFormats": "Støttede formater: JPG, PNG",
+    "dropOrClickToUpload": "Dra og slipp eller klikk for å laste opp",
+    "ocrProcessing": "OCR-behandling",
+    "processing": "Behandler...",
+    "analyzingGrades": "Analyserer karakterer",
+    "processingCompleteTitle": "Behandling fullført",
+    "processingCompleteDescription": "Fant {count} fag. Gjennomsnitt: {average}/5.",
+    "errorProcessingFile": "Det oppstod et problem med å analysere karakterutskriften din.",
+    "errorCouldNotExtract": "Ingen karakterdata kunne hentes fra bildet. Vennligst sjekk formatet og prøv igjen.",
+    "errorPleaseUploadImage": "Vennligst last opp en bildefil (JPG, PNG)",
+    "errorUploadLimitInfo": "Kunne ikke laste informasjon om opplastningsgrense.",
+    "errorFailedToFetchLimit": "Kunne ikke hente status for opplastningsgrense.",
+    "errorLoadingLimit": "Feil ved lasting av opplastningsgrense.",
+    "errorFailedToRecordUpload": "Kunne ikke lagre opplastningsforsøket. Vennligst prøv igjen.",
+    "uploadsRemaining": "Du har {remaining} av {max} opplastninger igjen.",
+    "firstUploadCycle": "Dette er din første opplastningssyklus.",
+    "currentCycleEnds": "Din nåværende syklus slutter den {date}.",
+    "loadingLimitInfo": "Laster informasjon om opplastningsgrense..."
+  },
+  "LoggingOutPage": {
+    "title": "Logger ut",
+    "description": "Vennligst vent mens vi logger deg ut på en sikker måte..."
+  },
+  "UserProfileActions": {
+    "userNotAuthenticated": "Bruker ikke autentisert",
+    "couldNotFetchUploadStatus": "Kunne ikke hente opplastningsstatus.",
+    "failedToFetchProfile": "Kunne ikke hente profildata.",
+    "uploadLimitReachedCycle": "Opplastningsgrense nådd for denne syklusen.",
+    "failedToRecordUpload": "Kunne ikke registrere opplastning."
+  },
+  "Common": {
+    "error": "Feil",
+    "loading": "Laster..."
   }
 } 

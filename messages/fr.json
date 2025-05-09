@@ -37,7 +37,27 @@
     "processingError": "Erreur lors du traitement du relevé",
     "tryAnotherImage": "Essayer une autre image",
     "uploadAnotherImage": "Télécharger une autre image",
-    "chooseAnotherFile": "Choisir un autre fichier"
+    "chooseAnotherFile": "Choisir un autre fichier",
+    "uploadLimitError": "Impossible de charger la limite de téléchargements",
+    "uploadLimitLoadError": "Impossible de charger les informations sur la limite de téléchargements.",
+    "fetchLimitError": "Impossible de récupérer le statut de la limite de téléchargements.",
+    "uploadLimitReached": "Limite de téléchargements atteinte",
+    "noUploadsRemaining": "Vous n'avez plus de téléchargements disponibles.",
+    "imageFormatError": "Veuillez télécharger un fichier image (JPG, PNG)",
+    "noGradeData": "Aucune donnée de note n'a pu être extraite. Veuillez vérifier le format.",
+    "foundCoursesAverage": "Trouvé {count} cours. Moyenne: {average}/5.",
+    "failedToSaveUpload": "Échec de l'enregistrement de votre tentative de téléchargement. Veuillez réessayer.",
+    "transcriptAnalyzingProblem": "Un problème est survenu lors de l'analyse de votre relevé.",
+    "notAvailable": "N/D",
+    "checkingAuth": "Vérification de l'authentification...",
+    "fetchingUploadLimit": "Récupération de la limite de téléchargements...",
+    "usedAllUploads": "Vous avez utilisé tous vos {count} téléchargements pour cette période.",
+    "nextUploadAvailable": "Votre prochain téléchargement sera disponible après",
+    "documentBeingProcessed": "Votre document est en cours de traitement.",
+    "uploadsRemaining": "Il vous reste {remaining} téléchargements sur {total}.",
+    "cycleEndDate": " Votre cycle actuel se termine le {date}.",
+    "firstUploadCycle": " C'est votre premier cycle de téléchargements.",
+    "loadingUploadLimit": "Chargement des informations sur la limite de téléchargements..."
   },
   "errors": {
     "pageNotFound": "Oups! Page non trouvée",
@@ -203,7 +223,81 @@
       "content": "Si vous avez des questions concernant cette politique de confidentialité ou nos pratiques en matière de confidentialité, veuillez nous contacter via notre formulaire de contact."
     }
   },
+  "AuthModal": {
+    "title": "Connexion ou Inscription",
+    "signInWithGoogle": "Se connecter avec Google",
+    "signInWithMicrosoft": "Se connecter avec Microsoft",
+    "signInWithApple": "Se connecter avec Apple",
+    "termsAgreement": "En vous connectant, vous acceptez nos Conditions d'Utilisation et notre Politique de Confidentialité.",
+    "microsoftSignInNotImplemented": "Connexion Microsoft pas encore implémentée.",
+    "appleSignInNotImplemented": "Connexion Apple pas encore implémentée.",
+    "closeModalAltText": "Fermer la fenêtre"
+  },
+  "AuthBtn": {
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  },
   "Navbar": {
     "title": "UNI GPA CALC"
+  },
+  "FileDropZone": {
+    "checkingAuth": "Vérification de l'authentification...",
+    "fetchingLimit": "Récupération de la limite de téléchargements...",
+    "authRequiredTitle": "Authentification requise",
+    "authRequiredDescription": "Veuillez vous connecter ou vous inscrire pour télécharger votre relevé de notes.",
+    "limitReachedTitle": "Limite de téléchargements atteinte",
+    "limitReachedDescription": "Vous avez utilisé tous vos {maxUploads} téléchargements pour cette période.",
+    "nextUploadAvailableAfter": "Votre prochain téléchargement sera disponible après {date}.",
+    "processingErrorTitle": "Erreur de traitement",
+    "tryAnotherImage": "Essayer une autre image",
+    "fileSelected": "{fileName}",
+    "fileSizeKiloBytes": "{fileSize} Ko",
+    "chooseAnotherFile": "Choisir un autre fichier",
+    "uploadTranscriptTitle": "Télécharger le relevé de notes",
+    "supportedFormats": "Formats pris en charge: JPG, PNG",
+    "dropOrClickToUpload": "Déposez ou cliquez pour télécharger",
+    "ocrProcessing": "Traitement OCR",
+    "processing": "Traitement...",
+    "analyzingGrades": "Analyse des notes",
+    "processingCompleteTitle": "Traitement terminé",
+    "processingCompleteDescription": "Trouvé {count} cours. Moyenne: {average}/5.",
+    "errorProcessingFile": "Un problème est survenu lors de l'analyse de votre relevé de notes.",
+    "errorCouldNotExtract": "Aucune donnée de note n'a pu être extraite de l'image. Veuillez vérifier le format et réessayer.",
+    "errorPleaseUploadImage": "Veuillez télécharger un fichier image (JPG, PNG)",
+    "errorUploadLimitInfo": "Impossible de charger les informations sur la limite de téléchargements.",
+    "errorFailedToFetchLimit": "Impossible de récupérer le statut de la limite de téléchargements.",
+    "errorLoadingLimit": "Erreur lors du chargement de la limite de téléchargements.",
+    "errorFailedToRecordUpload": "Échec de l'enregistrement de votre tentative de téléchargement. Veuillez réessayer.",
+    "uploadsRemaining": "Il vous reste {remaining} téléchargements sur {max}.",
+    "firstUploadCycle": "C'est votre premier cycle de téléchargements.",
+    "currentCycleEnds": "Votre cycle actuel se termine le {date}.",
+    "loadingLimitInfo": "Chargement des informations sur la limite de téléchargements..."
+  },
+  "LoggingOutPage": {
+    "title": "Déconnexion en cours",
+    "description": "Veuillez patienter pendant que nous vous déconnectons en toute sécurité..."
+  },
+  "UserProfileActions": {
+    "userNotAuthenticated": "Utilisateur non authentifié",
+    "couldNotFetchUploadStatus": "Impossible de récupérer le statut des téléchargements.",
+    "failedToFetchProfile": "Impossible de récupérer les données du profil.",
+    "uploadLimitReachedCycle": "Limite de téléchargements atteinte pour le cycle actuel.",
+    "failedToRecordUpload": "Échec de l'enregistrement du téléchargement."
+  },
+  "Common": {
+    "error": "Erreur",
+    "loading": "Chargement..."
+  },
+  "auth": {
+    "authRequired": "Authentification requise",
+    "loginToUpload": "Veuillez vous connecter pour télécharger.",
+    "loginToChooseFile": "Veuillez vous connecter pour choisir un fichier.",
+    "loginToUploadTranscript": "Veuillez vous connecter ou vous inscrire pour télécharger votre relevé de notes.",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "signInWithGoogle": "Se connecter avec Google",
+    "signInWithMicrosoft": "Se connecter avec Microsoft",
+    "termsAgreement": "En vous connectant, vous acceptez nos <terms>Conditions d'Utilisation</terms> et notre <privacy>Politique de Confidentialité</privacy>.",
+    "closeModal": "Fermer la fenêtre"
   }
 } 

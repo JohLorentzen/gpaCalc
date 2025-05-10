@@ -1,0 +1,40 @@
+{
+  "profile": {
+    "title": "个人资料设置",
+    "signInPrompt": "请登录以查看您的个人资料。",
+    "accountInfo": {
+      "title": "账户信息",
+      "description": "查看和管理您的账户详情",
+      "email": "电子邮件",
+      "name": "姓名",
+      "notProvided": "未提供"
+    },
+    "dataManagement": {
+      "title": "数据管理",
+      "description": "管理您的数据和账户",
+      "exportButton": "请求数据导出",
+      "deleteButton": "删除账户"
+    },
+    "deleteAccount": {
+      "title": "您确定要这样做吗？",
+      "description": "此操作无法撤销。这将永久删除您的账户并从我们的服务器中删除您的数据。",
+      "cancel": "取消",
+      "confirm": "删除账户"
+    },
+    "toast": {
+      "accountDeleted": {
+        "title": "账户已删除",
+        "description": "您的账户已成功删除。"
+      },
+      "dataExportRequested": {
+        "title": "已请求数据导出",
+        "description": "我们将很快通过电子邮件发送您的数据。"
+      },
+      "error": {
+        "title": "错误",
+        "deleteAccount": "无法删除账户。请重试。",
+        "dataExport": "无法请求数据导出。请重试。"
+      }
+    }
+  }
+} 

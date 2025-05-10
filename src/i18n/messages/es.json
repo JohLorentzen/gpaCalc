@@ -1,0 +1,40 @@
+{
+  "profile": {
+    "title": "Configuración del Perfil",
+    "signInPrompt": "Por favor, inicia sesión para ver tu perfil.",
+    "accountInfo": {
+      "title": "Información de la Cuenta",
+      "description": "Ver y gestionar los detalles de tu cuenta",
+      "email": "Correo electrónico",
+      "name": "Nombre",
+      "notProvided": "No proporcionado"
+    },
+    "dataManagement": {
+      "title": "Gestión de Datos",
+      "description": "Gestionar tus datos y cuenta",
+      "exportButton": "Solicitar Exportación de Datos",
+      "deleteButton": "Eliminar Cuenta"
+    },
+    "deleteAccount": {
+      "title": "¿Estás completamente seguro?",
+      "description": "Esta acción no se puede deshacer. Esto eliminará permanentemente tu cuenta y eliminará tus datos de nuestros servidores.",
+      "cancel": "Cancelar",
+      "confirm": "Eliminar Cuenta"
+    },
+    "toast": {
+      "accountDeleted": {
+        "title": "Cuenta eliminada",
+        "description": "Tu cuenta ha sido eliminada exitosamente."
+      },
+      "dataExportRequested": {
+        "title": "Exportación de datos solicitada",
+        "description": "Te enviaremos tus datos a tu correo electrónico pronto."
+      },
+      "error": {
+        "title": "Error",
+        "deleteAccount": "No se pudo eliminar la cuenta. Por favor, inténtalo de nuevo.",
+        "dataExport": "No se pudo solicitar la exportación de datos. Por favor, inténtalo de nuevo."
+      }
+    }
+  }
+} 

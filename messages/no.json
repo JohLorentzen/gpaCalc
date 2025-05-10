@@ -68,7 +68,8 @@
     "logout": "Logg ut",
     "signInWithGoogle": "Logg inn med Google",
     "signInWithMicrosoft": "Logg inn med Microsoft",
-    "termsAgreement": "Ved å logge inn godtar du våre <terms>bruksvilkår</terms> og <privacy>personvernregler</privacy>.",
+    "signInWithApple": "Logg inn med Apple",
+    "termsAgreement": "Ved å logge inn godtar du våre <terms>vilkår for bruk</terms> og <privacy>personvernserklæring</privacy>.",
     "closeModal": "Lukk modal"
   },
   "errors": {
@@ -246,7 +247,6 @@
     "title": "Logg inn eller registrer deg",
     "signInWithGoogle": "Logg inn med Google",
     "signInWithMicrosoft": "Logg inn med Microsoft",
-    "signInWithApple": "Logg inn med Apple",
     "termsAgreement": "Ved å logge inn godtar du våre vilkår for bruk og personvernerklæring.",
     "microsoftSignInNotImplemented": "Microsoft-innlogging er ikke implementert ennå.",
     "appleSignInNotImplemented": "Apple-innlogging er ikke implementert ennå.",
@@ -344,5 +344,11 @@
         "dataExport": "Kunne ikke be om dataeksport. Vennligst prøv igjen."
       }
     }
+  },
+  "accountDeleted": {
+    "title": "Konto tidligere slettet",
+    "description": "Denne e-postadressen er knyttet til en tidligere slettet konto. Av sikkerhetsmessige årsaker kan den ikke brukes til å opprette en ny konto. Vennligst kontakt vårt supportteam hvis du trenger hjelp.",
+    "contactSupport": "Kontakt Support",
+    "returnHome": "Gå tilbake til Hjem"
   }
 } 

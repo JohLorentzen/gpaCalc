@@ -234,7 +234,6 @@
     "title": "Login or Sign Up",
     "signInWithGoogle": "Sign in with Google",
     "signInWithMicrosoft": "Sign in with Microsoft",
-    "signInWithApple": "Sign in with Apple",
     "termsAgreement": "By signing in, you agree to our Terms of Service and Privacy Policy.",
     "microsoftSignInNotImplemented": "Microsoft Sign-In not yet implemented.",
     "appleSignInNotImplemented": "Apple Sign-In not yet implemented.",
@@ -301,9 +300,10 @@
     "loginToChooseFile": "Please log in to choose a file.",
     "loginToUploadTranscript": "Please log in or sign up to upload your transcript.",
     "login": "Login",
-    "logout": "Log out",
+    "logout": "Logout",
     "signInWithGoogle": "Sign in with Google",
     "signInWithMicrosoft": "Sign in with Microsoft",
+    "signInWithApple": "Sign in with Apple",
     "termsAgreement": "By signing in, you agree to our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>.",
     "closeModal": "Close modal"
   },
@@ -344,5 +344,11 @@
         "dataExport": "Failed to request data export. Please try again."
       }
     }
+  },
+  "accountDeleted": {
+    "title": "Account Previously Deleted",
+    "description": "This email address is associated with a previously deleted account. For security reasons, it cannot be used to create a new account. Please contact our support team if you need assistance.",
+    "contactSupport": "Contact Support",
+    "returnHome": "Return to Home"
   }
 } 

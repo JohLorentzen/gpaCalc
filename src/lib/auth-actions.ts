@@ -25,6 +25,26 @@ export async function login(formData: FormData) {
   redirect("/");
 }
 
+// Helper function to check if an email belongs to a deleted user
+async function isDeletedUser(email: string) {
+  const supabase = createClient();
+  
+  // Query profiles table to check if this email is marked as deleted
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('deleted')
+    .eq('email', email)
+    .eq('deleted', true)
+    .maybeSingle();
+  
+  if (error) {
+    console.error('Error checking if user is deleted:', error);
+    return false;
+  }
+  
+  return data !== null;
+}
+
 export async function signup(formData: FormData) {
   const supabase = createClient();
 
@@ -32,13 +52,26 @@ export async function signup(formData: FormData) {
   // in practice, you should validate your inputs
   const firstName = formData.get("first-name") as string;
   const lastName = formData.get("last-name") as string;
+  const email = formData.get("email") as string;
+  
+  // Get locale from the form data or default to 'en'
+  const locale = formData.get("locale") as string || 'en';
+  
+  // Check if email belongs to a deleted account
+  const isDeleted = await isDeletedUser(email);
+  if (isDeleted) {
+    // Redirect to a page that informs the user their account was deleted
+    // and they should contact support
+    redirect(`/${locale}/account-deleted`);
+  }
+  
   const data = {
-    email: formData.get("email") as string,
+    email,
     password: formData.get("password") as string,
     options: {
       data: {
         full_name: `${firstName + " " + lastName}`,
-        email: formData.get("email") as string,
+        email,
       },
     },
   };

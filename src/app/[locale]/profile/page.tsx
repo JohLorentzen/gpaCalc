@@ -38,7 +38,10 @@ export default function ProfilePage() {
         title: t('toast.accountDeleted.title'),
         description: t('toast.accountDeleted.description'),
       });
-      router.push('/');
+      
+      // Redirect to logging-out page instead of home
+      const locale = typeof window !== 'undefined' ? window.location.pathname.split('/')[1] : 'en';
+      router.push(`/${locale}/logging-out`);
     } catch {
       toast({
         title: t('toast.error.title'),
@@ -166,7 +169,7 @@ export default function ProfilePage() {
                     <AlertDialogCancel>{t('deleteAccount.cancel')}</AlertDialogCancel>
                     <AlertDialogAction
                       onClick={handleDeleteAccount}
-                      className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                      className="bg-destructive text-destructive-foreground hover:bg-destructive/90 dark:bg-destructive dark:text-destructive-foreground dark:hover:bg-destructive/90"
                     >
                       {t('deleteAccount.confirm')}
                     </AlertDialogAction>

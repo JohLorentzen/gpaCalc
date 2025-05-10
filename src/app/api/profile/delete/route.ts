@@ -16,7 +16,7 @@ export async function DELETE() {
     // 1. Mark user as deleted in profiles table
     const { error: updateError } = await supabase
       .from('profiles')
-      .update({ deleted: true, deleted_at: new Date().toISOString() })
+      .update({ deleted: true })
       .eq('id', user.id);
 
     if (updateError) {

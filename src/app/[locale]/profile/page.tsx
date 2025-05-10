@@ -158,7 +158,7 @@ export default function ProfilePage() {
                     {t('dataManagement.deleteButton')}
                   </Button>
                 </AlertDialogTrigger>
-                <AlertDialogContent className="bg-background text-foreground dark:bg-background dark:text-foreground">
+                <AlertDialogContent className="bg-background text-text">
                   <AlertDialogHeader>
                     <AlertDialogTitle>{t('deleteAccount.title')}</AlertDialogTitle>
                     <AlertDialogDescription>

@@ -306,5 +306,43 @@
     "signInWithMicrosoft": "Sign in with Microsoft",
     "termsAgreement": "By signing in, you agree to our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>.",
     "closeModal": "Close modal"
+  },
+  "profile": {
+    "title": "Profile Settings",
+    "signInPrompt": "Please sign in to view your profile.",
+    "accountInfo": {
+      "title": "Account Information",
+      "description": "View and manage your account details",
+      "email": "Email",
+      "name": "Name",
+      "notProvided": "Not provided"
+    },
+    "dataManagement": {
+      "title": "Data Management",
+      "description": "Manage your data and account",
+      "exportButton": "Request Data Export",
+      "deleteButton": "Delete Account"
+    },
+    "deleteAccount": {
+      "title": "Are you absolutely sure?",
+      "description": "This action cannot be undone. This will permanently delete your account and remove your data from our servers.",
+      "cancel": "Cancel",
+      "confirm": "Delete Account"
+    },
+    "toast": {
+      "accountDeleted": {
+        "title": "Account deleted",
+        "description": "Your account has been successfully deleted."
+      },
+      "dataExportRequested": {
+        "title": "Data export requested",
+        "description": "We will send your data to your email address shortly."
+      },
+      "error": {
+        "title": "Error",
+        "deleteAccount": "Failed to delete account. Please try again.",
+        "dataExport": "Failed to request data export. Please try again."
+      }
+    }
   }
 } 

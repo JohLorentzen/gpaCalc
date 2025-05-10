@@ -299,5 +299,43 @@
     "signInWithMicrosoft": "Mit Microsoft anmelden",
     "termsAgreement": "Durch die Anmeldung stimmen Sie unseren <terms>Nutzungsbedingungen</terms> und der <privacy>Datenschutzrichtlinie</privacy> zu.",
     "closeModal": "Dialog schließen"
+  },
+  "profile": {
+    "title": "Profileinstellungen",
+    "signInPrompt": "Bitte melden Sie sich an, um Ihr Profil zu sehen.",
+    "accountInfo": {
+      "title": "Kontoinformationen",
+      "description": "Kontodetails anzeigen und verwalten",
+      "email": "E-Mail",
+      "name": "Name",
+      "notProvided": "Nicht angegeben"
+    },
+    "dataManagement": {
+      "title": "Datenverwaltung",
+      "description": "Verwalten Sie Ihre Daten und Ihr Konto",
+      "exportButton": "Datenexport anfordern",
+      "deleteButton": "Konto löschen"
+    },
+    "deleteAccount": {
+      "title": "Sind Sie absolut sicher?",
+      "description": "Diese Aktion kann nicht rückgängig gemacht werden. Dies wird Ihr Konto dauerhaft löschen und Ihre Daten von unseren Servern entfernen.",
+      "cancel": "Abbrechen",
+      "confirm": "Konto löschen"
+    },
+    "toast": {
+      "accountDeleted": {
+        "title": "Konto gelöscht",
+        "description": "Ihr Konto wurde erfolgreich gelöscht."
+      },
+      "dataExportRequested": {
+        "title": "Datenexport angefordert",
+        "description": "Wir senden Ihnen Ihre Daten in Kürze per E-Mail zu."
+      },
+      "error": {
+        "title": "Fehler",
+        "deleteAccount": "Konto konnte nicht gelöscht werden. Bitte versuchen Sie es erneut.",
+        "dataExport": "Datenexport konnte nicht angefordert werden. Bitte versuchen Sie es erneut."
+      }
+    }
   }
 } 

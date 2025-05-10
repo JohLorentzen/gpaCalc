@@ -1,0 +1,310 @@
+{
+  "app": {
+    "title": "Calculate your University",
+    "titleHighlight": "GPA",
+    "description": "Upload your university transcript and get your courses and average grade calculated in seconds."
+  },
+  "navigation": {
+    "home": "Home",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact"
+  },
+  "calculator": {
+    "title": "GPA Calculator",
+    "addCourse": "Add Course",
+    "calculate": "Calculate",
+    "reset": "Reset",
+    "courseName": "Course Name",
+    "grade": "Grade",
+    "credits": "Credits",
+    "result": "Your GPA is: {gpa}",
+    "emptyState": "Add courses to calculate your GPA",
+    "uploadTranscript": "Drop your University transcript here",
+    "processing": "Processing...",
+    "processingDescription": "This may take a moment while we analyze your image and extract the grades",
+    "ocrProcessing": "Starting OCR processing...",
+    "analyzingGrades": "Analyzing grades",
+    "calculatingAverage": "Calculating average",
+    "loading": "Loading...",
+    "loadingResults": "Loading results...",
+    "results": "Your Results",
+    "dropOrClick": "Drop or Click to Upload",
+    "browseFiles": "Browse files",
+    "supportedFormats": "Supported formats: JPG, PNG",
+    "supportedLanguages": "Supports both Norwegian and English transcripts with passed courses",
+    "processingComplete": "Transcript processed",
+    "processingError": "Processing Error",
+    "tryAnotherImage": "Try Another Image",
+    "uploadAnotherImage": "Upload another image",
+    "chooseAnotherFile": "Choose Another File",
+    "uploadLimitError": "Could not load upload limit",
+    "uploadLimitLoadError": "Could not load upload limit information.",
+    "fetchLimitError": "Failed to fetch upload limit status.",
+    "uploadLimitReached": "Upload Limit Reached",
+    "noUploadsRemaining": "You have no uploads remaining.",
+    "imageFormatError": "Please upload an image file (JPG, PNG)",
+    "noGradeData": "No grade data could be extracted. Please check the format.",
+    "foundCoursesAverage": "Found {count} courses. Average: {average}/5.",
+    "failedToSaveUpload": "Failed to save your upload attempt. Please try again.",
+    "transcriptAnalyzingProblem": "There was a problem analyzing your transcript.",
+    "notAvailable": "N/A",
+    "checkingAuth": "Checking authentication...",
+    "fetchingUploadLimit": "Fetching upload limit...",
+    "usedAllUploads": "You have used all {count} of your uploads for the current period.",
+    "nextUploadAvailable": "Your next upload will be available after",
+    "documentBeingProcessed": "Your document is being processed.",
+    "uploadsRemaining": "You have {remaining} of {total} uploads remaining.",
+    "cycleEndDate": " Your current cycle ends on {date}.",
+    "firstUploadCycle": " This is your first upload cycle.",
+    "loadingUploadLimit": "Loading upload limit information..."
+  },
+  "errors": {
+    "pageNotFound": "Oops! Page not found",
+    "backToHome": "Back to home"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "description": "We encountered an error while processing your request. You can try again or contact us if the problem persists.",
+    "tryAgain": "Try again",
+    "contactUs": "Contact us",
+    "serverError": "Server Error"
+  },
+  "gradeDisplay": {
+    "summary": "Summary",
+    "details": "Details",
+    "averageGrade": "Average Grade",
+    "letterGrade": "Letter Grade",
+    "average": "Average",
+    "gradeOverview": "Grade Overview",
+    "detailsDescription": "Here is a detailed overview of your courses and grades.",
+    "courseName": "Course Name",
+    "credits": "Credits",
+    "grade": "Grade",
+    "totalCredits": "Total Credits",
+    "convertGPA": "Convert GPA to:",
+    "countryScales": "Country Scales",
+    "originalScale": "Original",
+    "convertedScale": "Converted",
+    "equivalentGrade": "Equivalent Grade",
+    "institution": "Institution",
+    "country": "Country"
+  },
+  "courseTable": {
+    "courseOverview": "Course Overview",
+    "average": "Average",
+    "totalCredits": "Total Credits",
+    "courseCode": "Course Code",
+    "courseName": "Course Name",
+    "semester": "Semester",
+    "credits": "Credits",
+    "grade": "Grade"
+  },
+  "features": {
+    "title": "How It Works",
+    "description": "Unigpacalc makes it easy and intuitive to calculate your grade point average",
+    "step1": {
+      "title": "Upload Transcript",
+      "description": "Drag and drop your university/college transcript in image format."
+    },
+    "step2": {
+      "title": "Instant Analysis",
+      "description": "Our AI technology extracts your grades and calculates the average immediately."
+    },
+    "step3": {
+      "title": "View Results",
+      "description": "See your courses, credits, and grade point average in a clear table."
+    }
+  },
+  "footer": {
+    "language": "Language",
+    "copyright": "© {year} Unigpacalc. All rights reserved."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Fill out the form below to get in touch with us.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "subjectRequired": "Subject is required",
+      "messageRequired": "Message is required",
+      "messageShort": "Message must be at least 10 characters",
+      "success": "Thank you for your message!",
+      "successDescription": "We have received your message and will get back to you as soon as possible.",
+      "error": "Something went wrong",
+      "errorDescription": "An error occurred while sending the form. Please try again later.",
+      "newMessage": "Send New Message",
+      "tryAgain": "Try Again"
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: April 21, 2025",
+    "acceptance": {
+      "title": "1. Acceptance of Terms",
+      "content": "By accessing or using UniGPACalc, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our service."
+    },
+    "description": {
+      "title": "2. Description of Service",
+      "content": "UniGPACalc provides a web-based GPA calculation service that allows users to calculate their grade point average based on the Norwegian grading system. The service includes manual grade entry and transcript image processing."
+    },
+    "responsibilities": {
+      "title": "3. User Responsibilities",
+      "content": "When using our service, you agree to:",
+      "items": [
+        "Provide accurate information when using the calculator",
+        "Not use the service for any illegal or unauthorized purpose",
+        "Not attempt to interfere with or disrupt the service or its servers",
+        "Not try to access data that is not intended for you"
+      ]
+    },
+    "intellectual": {
+      "title": "4. Intellectual Property",
+      "content": "All content, features, and functionality on UniGPACalc, including but not limited to text, graphics, logos, icons, and software, are owned by or licensed to us and are protected by copyright, trademark, and other intellectual property laws."
+    },
+    "disclaimer": {
+      "title": "5. Disclaimer of Warranties",
+      "content": "The service is provided \"as is\" and \"as available\" without warranties of any kind, either express or implied. We do not guarantee the accuracy of GPA calculations and recommend that users verify results through their educational institution."
+    },
+    "limitation": {
+      "title": "6. Limitation of Liability",
+      "content": "In no event shall UniGPACalc or its affiliates be liable for any indirect, incidental, special, consequential or punitive damages, including but not limited to loss of profits, data, or other intangible losses, resulting from your use of or inability to use the service."
+    },
+    "changes": {
+      "title": "7. Changes to Terms",
+      "content": "We reserve the right to modify these terms at any time. If we make changes, we will provide notice by updating the date at the top of these terms. Your continued use of the service after such changes constitutes your acceptance of the new terms."
+    },
+    "contact": {
+      "title": "8. Contact Us",
+      "content": "If you have any questions about these Terms, please contact us through our contact form."
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: April 21, 2025",
+    "introduction": {
+      "title": "1. Introduction",
+      "content": "Welcome to UniGPACalc. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you."
+    },
+    "dataCollection": {
+      "title": "2. The Data We Collect",
+      "content": "When you use our GPA calculator, we may collect the following types of information:",
+      "items": [
+        "Course names and grades you enter manually",
+        "Transcript images you upload for processing",
+        "Usage statistics and interaction data"
+      ]
+    },
+    "dataUsage": {
+      "title": "3. How We Use Your Data",
+      "content": "We use your data in the following ways:",
+      "items": [
+        "To provide the GPA calculation service",
+        "To improve our algorithms and text recognition",
+        "To analyze usage patterns and improve our service"
+      ]
+    },
+    "security": {
+      "title": "4. Data Security",
+      "content": "We implement appropriate security measures to protect your personal data against accidental loss, unauthorized access, or processing. Your transcript data is processed on our secure servers and is not shared with third parties."
+    },
+    "rights": {
+      "title": "5. Your Rights",
+      "content": "Under certain circumstances, you have rights under data protection laws in relation to your personal data, including:",
+      "items": [
+        "The right to request access to your personal data",
+        "The right to request correction of your personal data",
+        "The right to request erasure of your personal data",
+        "The right to withdraw consent"
+      ]
+    },
+    "contact": {
+      "title": "6. Contact Us",
+      "content": "If you have any questions about this privacy policy or our privacy practices, please contact us through our contact form."
+    }
+  },
+  "AuthModal": {
+    "title": "Login or Sign Up",
+    "signInWithGoogle": "Sign in with Google",
+    "signInWithMicrosoft": "Sign in with Microsoft",
+    "signInWithApple": "Sign in with Apple",
+    "termsAgreement": "By signing in, you agree to our Terms of Service and Privacy Policy.",
+    "microsoftSignInNotImplemented": "Microsoft Sign-In not yet implemented.",
+    "appleSignInNotImplemented": "Apple Sign-In not yet implemented.",
+    "closeModalAltText": "Close modal"
+  },
+  "AuthBtn": {
+    "login": "Login",
+    "logout": "Log out"
+  },
+  "Navbar": {
+    "title": "UNI GPA CALC"
+  },
+  "FileDropZone": {
+    "checkingAuth": "Checking authentication...",
+    "fetchingLimit": "Fetching upload limit...",
+    "authRequiredTitle": "Authentication Required",
+    "authRequiredDescription": "Please log in or sign up to upload your transcript.",
+    "limitReachedTitle": "Upload Limit Reached",
+    "limitReachedDescription": "You have used all {maxUploads} of your uploads for the current period.",
+    "nextUploadAvailableAfter": "Your next upload will be available after {date}.",
+    "processingErrorTitle": "Processing Error",
+    "tryAnotherImage": "Try Another Image",
+    "fileSelected": "{fileName}",
+    "fileSizeKiloBytes": "{fileSize} KB",
+    "chooseAnotherFile": "Choose Another File",
+    "uploadTranscriptTitle": "Upload Transcript",
+    "supportedFormats": "Supported formats: JPG, PNG",
+    "dropOrClickToUpload": "Drop or Click to Upload",
+    "ocrProcessing": "OCR Processing",
+    "processing": "Processing...",
+    "analyzingGrades": "Analyzing Grades",
+    "processingCompleteTitle": "Processing Complete",
+    "processingCompleteDescription": "Found {count} courses. Average: {average}/5.",
+    "errorProcessingFile": "There was a problem analyzing your transcript.",
+    "errorCouldNotExtract": "No grade data could be extracted from the image. Please check the format and try again.",
+    "errorPleaseUploadImage": "Please upload an image file (JPG, PNG)",
+    "errorUploadLimitInfo": "Could not load upload limit information.",
+    "errorFailedToFetchLimit": "Failed to fetch upload limit status.",
+    "errorLoadingLimit": "Error loading upload limit.",
+    "errorFailedToRecordUpload": "Failed to save your upload attempt. Please try again.",
+    "uploadsRemaining": "You have {remaining} of {max} uploads remaining.",
+    "firstUploadCycle": "This is your first upload cycle.",
+    "currentCycleEnds": "Your current cycle ends on {date}.",
+    "loadingLimitInfo": "Loading upload limit information..."
+  },
+  "LoggingOutPage": {
+    "title": "Logging Out",
+    "description": "Please wait while we securely log you out..."
+  },
+  "UserProfileActions": {
+    "userNotAuthenticated": "User not authenticated",
+    "couldNotFetchUploadStatus": "Could not fetch upload status.",
+    "failedToFetchProfile": "Failed to fetch profile data.",
+    "uploadLimitReachedCycle": "Upload limit reached for the current cycle.",
+    "failedToRecordUpload": "Failed to record upload."
+  },
+  "Common": {
+    "error": "Error",
+    "loading": "Loading..."
+  },
+  "auth": {
+    "authRequired": "Authentication Required",
+    "loginToUpload": "Please log in to upload.",
+    "loginToChooseFile": "Please log in to choose a file.",
+    "loginToUploadTranscript": "Please log in or sign up to upload your transcript.",
+    "login": "Login",
+    "logout": "Log out",
+    "signInWithGoogle": "Sign in with Google",
+    "signInWithMicrosoft": "Sign in with Microsoft",
+    "termsAgreement": "By signing in, you agree to our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>.",
+    "closeModal": "Close modal"
+  }
+} 

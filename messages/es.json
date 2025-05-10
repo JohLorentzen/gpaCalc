@@ -1,0 +1,303 @@
+{
+  "app": {
+    "title": "Calcula tu Promedio",
+    "titleHighlight": "Universitario",
+    "description": "Sube tu expediente académico y obtén tus cursos y nota media calculados en segundos."
+  },
+  "navigation": {
+    "home": "Inicio",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "contact": "Contacto"
+  },
+  "calculator": {
+    "title": "Calculadora de Promedio",
+    "addCourse": "Añadir Curso",
+    "calculate": "Calcular",
+    "reset": "Reiniciar",
+    "courseName": "Nombre del Curso",
+    "grade": "Nota",
+    "credits": "Créditos",
+    "result": "Tu promedio es: {gpa}",
+    "emptyState": "Añade cursos para calcular tu promedio",
+    "uploadTranscript": "Arrastra aquí tu expediente académico",
+    "processing": "Procesando expediente",
+    "processingDescription": "Esto puede tardar un momento mientras analizamos tu imagen y extraemos las calificaciones",
+    "ocrProcessing": "Iniciando procesamiento OCR...",
+    "analyzingGrades": "Analizando calificaciones",
+    "calculatingAverage": "Calculando promedio",
+    "loading": "Cargando...",
+    "loadingResults": "Cargando resultados...",
+    "results": "Tus Resultados",
+    "dropOrClick": "o haz clic para buscar",
+    "browseFiles": "Explorar archivos",
+    "supportedFormats": "Compatible con imágenes o capturas de expedientes universitarios (JPG, PNG, JPEG)",
+    "supportedLanguages": "Compatible con expedientes en español, inglés y noruego",
+    "processingComplete": "Expediente procesado",
+    "processingError": "Error al procesar el expediente",
+    "tryAnotherImage": "Prueba con otra imagen",
+    "uploadAnotherImage": "Subir otra imagen",
+    "chooseAnotherFile": "Seleccionar otro archivo",
+    "uploadLimitError": "No se pudo cargar el límite de subidas",
+    "uploadLimitLoadError": "No se pudo cargar la información del límite de subidas.",
+    "fetchLimitError": "No se pudo obtener el estado del límite de subidas.",
+    "uploadLimitReached": "Límite de subidas alcanzado",
+    "noUploadsRemaining": "No tienes subidas restantes.",
+    "imageFormatError": "Por favor, sube un archivo de imagen (JPG, PNG)",
+    "noGradeData": "No se pudieron extraer datos de calificaciones. Por favor, comprueba el formato.",
+    "foundCoursesAverage": "Se encontraron {count} cursos. Promedio: {average}/5.",
+    "failedToSaveUpload": "No se pudo guardar el intento de subida. Por favor, inténtalo de nuevo.",
+    "transcriptAnalyzingProblem": "Hubo un problema al analizar tu expediente.",
+    "notAvailable": "N/D",
+    "checkingAuth": "Comprobando autenticación...",
+    "fetchingUploadLimit": "Obteniendo límite de subidas...",
+    "usedAllUploads": "Has usado todas tus {count} subidas para el período actual.",
+    "nextUploadAvailable": "Tu próxima subida estará disponible después de",
+    "documentBeingProcessed": "Tu documento está siendo procesado.",
+    "uploadsRemaining": "Te quedan {remaining} de {total} subidas.",
+    "cycleEndDate": " Tu ciclo actual finaliza el {date}.",
+    "firstUploadCycle": " Este es tu primer ciclo de subidas.",
+    "loadingUploadLimit": "Cargando información sobre el límite de subidas..."
+  },
+  "errors": {
+    "pageNotFound": "¡Ups! Página no encontrada",
+    "backToHome": "Volver al inicio"
+  },
+  "gradeDisplay": {
+    "summary": "Resumen",
+    "details": "Detalles",
+    "averageGrade": "Calificación media",
+    "letterGrade": "Calificación en letra",
+    "average": "Promedio",
+    "gradeOverview": "Resumen de calificaciones",
+    "detailsDescription": "Aquí hay un resumen detallado de tus cursos y calificaciones.",
+    "courseName": "Nombre del curso",
+    "credits": "Créditos",
+    "grade": "Calificación",
+    "totalCredits": "Créditos totales",
+    "convertGPA": "Convertir GPA a:",
+    "countryScales": "Escalas por país",
+    "originalScale": "Original",
+    "convertedScale": "Convertido",
+    "equivalentGrade": "Calificación equivalente",
+    "institution": "Institución",
+    "country": "País"
+  },
+  "courseTable": {
+    "courseOverview": "Resumen de Cursos",
+    "average": "Promedio",
+    "totalCredits": "Créditos Totales",
+    "courseCode": "Código del Curso",
+    "courseName": "Nombre del Curso",
+    "semester": "Semestre",
+    "credits": "Créditos",
+    "grade": "Nota"
+  },
+  "features": {
+    "title": "Cómo Funciona",
+    "description": "Unigpacalc hace que sea fácil e intuitivo calcular tu promedio académico",
+    "step1": {
+      "title": "Sube tu Expediente",
+      "description": "Arrastra y suelta tu expediente universitario en formato de imagen."
+    },
+    "step2": {
+      "title": "Análisis Instantáneo",
+      "description": "Nuestra tecnología de IA extrae tus calificaciones y calcula el promedio inmediatamente."
+    },
+    "step3": {
+      "title": "Ver Resultados",
+      "description": "Mira tus cursos, créditos y promedio en una tabla clara."
+    }
+  },
+  "footer": {
+    "language": "Idioma",
+    "copyright": "© {year} Unigpacalc. Todos los derechos reservados."
+  },
+  "contact": {
+    "title": "Contacta con nosotros",
+    "description": "Rellena el formulario de contacto para ponerte en contacto con nosotros.",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "submit": "Enviar",
+      "sending": "Enviando...",
+      "nameRequired": "El nombre es requerido",
+      "emailRequired": "El correo electrónico es requerido",
+      "emailInvalid": "Por favor, ingrese una dirección de correo electrónico válida",
+      "subjectRequired": "El asunto es requerido",
+      "messageRequired": "El mensaje es requerido",
+      "messageShort": "El mensaje debe contener al menos 10 caracteres",
+      "success": "¡Gracias por tu mensaje!",
+      "successDescription": "Hemos recibido tu mensaje y te contactaremos lo antes posible.",
+      "error": "Ocurrió un error",
+      "errorDescription": "Ocurrió un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.",
+      "newMessage": "Enviar un nuevo mensaje",
+      "tryAgain": "Intentar de nuevo"
+    }
+  },
+  "terms": {
+    "title": "Términos de Servicio",
+    "lastUpdated": "Última actualización: 21 de abril de 2025",
+    "acceptance": {
+      "title": "1. Aceptación de Términos",
+      "content": "Al acceder o utilizar UniGPACalc, acepta estar sujeto a estos Términos de Servicio. Si no está de acuerdo con estos términos, no utilice nuestro servicio."
+    },
+    "description": {
+      "title": "2. Descripción del Servicio",
+      "content": "UniGPACalc proporciona un servicio de cálculo de GPA basado en web que permite a los usuarios calcular su promedio de calificaciones basado en el sistema de calificación noruego. El servicio incluye entrada manual de calificaciones y procesamiento de imágenes de expedientes académicos."
+    },
+    "responsibilities": {
+      "title": "3. Responsabilidades del Usuario",
+      "content": "Al utilizar nuestro servicio, acepta:",
+      "items": [
+        "Proporcionar información precisa al utilizar la calculadora",
+        "No utilizar el servicio para fines ilegales o no autorizados",
+        "No intentar interferir o interrumpir el servicio o sus servidores",
+        "No intentar acceder a datos que no están destinados a usted"
+      ]
+    },
+    "intellectual": {
+      "title": "4. Propiedad Intelectual",
+      "content": "Todo el contenido, características y funcionalidad en UniGPACalc, incluyendo pero no limitado a texto, gráficos, logotipos, iconos y software, son propiedad o están licenciados a nosotros y están protegidos por derechos de autor, marcas comerciales y otras leyes de propiedad intelectual."
+    },
+    "disclaimer": {
+      "title": "5. Descargo de Responsabilidad",
+      "content": "El servicio se proporciona \"tal cual\" y \"según disponibilidad\" sin garantías de ningún tipo, ya sean expresas o implícitas. No garantizamos la precisión de los cálculos de GPA y recomendamos que los usuarios verifiquen los resultados a través de su institución educativa."
+    },
+    "limitation": {
+      "title": "6. Limitación de Responsabilidad",
+      "content": "En ningún caso UniGPACalc o sus afiliados serán responsables por daños indirectos, incidentales, especiales, consecuentes o punitivos, incluyendo pero no limitado a pérdida de beneficios, datos u otras pérdidas intangibles, resultantes de su uso o incapacidad para utilizar el servicio."
+    },
+    "changes": {
+      "title": "7. Cambios en los Términos",
+      "content": "Nos reservamos el derecho de modificar estos términos en cualquier momento. Si realizamos cambios, proporcionaremos un aviso actualizando la fecha en la parte superior de estos términos. Su uso continuado del servicio después de tales cambios constituye su aceptación de los nuevos términos."
+    },
+    "contact": {
+      "title": "8. Contáctenos",
+      "content": "Si tiene alguna pregunta sobre estos Términos, contáctenos a través de nuestro formulario de contacto."
+    }
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "lastUpdated": "Última actualización: 21 de abril de 2025",
+    "introduction": {
+      "title": "1. Introducción",
+      "content": "Bienvenido a UniGPACalc. Respetamos su privacidad y estamos comprometidos a proteger sus datos personales. Esta política de privacidad le informará sobre cómo cuidamos sus datos personales cuando visita nuestro sitio web y le informará sobre sus derechos de privacidad y cómo la ley lo protege."
+    },
+    "dataCollection": {
+      "title": "2. Los Datos que Recopilamos",
+      "content": "Cuando utiliza nuestra calculadora de GPA, podemos recopilar los siguientes tipos de información:",
+      "items": [
+        "Nombres de cursos y calificaciones que ingresa manualmente",
+        "Imágenes de expedientes académicos que sube para procesamiento",
+        "Estadísticas de uso y datos de interacción"
+      ]
+    },
+    "dataUsage": {
+      "title": "3. Cómo Utilizamos sus Datos",
+      "content": "Utilizamos sus datos de las siguientes maneras:",
+      "items": [
+        "Para proporcionar el servicio de cálculo de GPA",
+        "Para mejorar nuestros algoritmos y reconocimiento de texto",
+        "Para analizar patrones de uso y mejorar nuestro servicio"
+      ]
+    },
+    "security": {
+      "title": "4. Seguridad de Datos",
+      "content": "Implementamos medidas de seguridad apropiadas para proteger sus datos personales contra pérdida accidental, acceso no autorizado o procesamiento. Sus datos de expedientes académicos se procesan en nuestros servidores seguros y no se comparten con terceros."
+    },
+    "rights": {
+      "title": "5. Sus Derechos",
+      "content": "Bajo ciertas circunstancias, tiene derechos bajo las leyes de protección de datos en relación con sus datos personales, incluyendo:",
+      "items": [
+        "El derecho a solicitar acceso a sus datos personales",
+        "El derecho a solicitar la corrección de sus datos personales",
+        "El derecho a solicitar la eliminación de sus datos personales",
+        "El derecho a retirar el consentimiento"
+      ]
+    },
+    "contact": {
+      "title": "6. Contáctenos",
+      "content": "Si tiene alguna pregunta sobre esta política de privacidad o nuestras prácticas de privacidad, contáctenos a través de nuestro formulario de contacto."
+    }
+  },
+  "AuthModal": {
+    "title": "Iniciar sesión o Registrarse",
+    "signInWithGoogle": "Iniciar sesión con Google",
+    "signInWithMicrosoft": "Iniciar sesión con Microsoft",
+    "signInWithApple": "Iniciar sesión con Apple",
+    "termsAgreement": "Al iniciar sesión, aceptas nuestros Términos de Servicio y Política de Privacidad.",
+    "microsoftSignInNotImplemented": "Inicio de sesión con Microsoft aún no implementado.",
+    "appleSignInNotImplemented": "Inicio de sesión con Apple aún no implementado.",
+    "closeModalAltText": "Cerrar ventana"
+  },
+  "AuthBtn": {
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión"
+  },
+  "Navbar": {
+    "title": "UNI GPA CALC"
+  },
+  "FileDropZone": {
+    "checkingAuth": "Comprobando autenticación...",
+    "fetchingLimit": "Obteniendo límite de subidas...",
+    "authRequiredTitle": "Autenticación requerida",
+    "authRequiredDescription": "Por favor, inicia sesión o regístrate para subir tu expediente académico.",
+    "limitReachedTitle": "Límite de subidas alcanzado",
+    "limitReachedDescription": "Has utilizado todas tus {maxUploads} subidas para el período actual.",
+    "nextUploadAvailableAfter": "Tu próxima subida estará disponible después de {date}.",
+    "processingErrorTitle": "Error de procesamiento",
+    "tryAnotherImage": "Probar con otra imagen",
+    "fileSelected": "{fileName}",
+    "fileSizeKiloBytes": "{fileSize} KB",
+    "chooseAnotherFile": "Elegir otro archivo",
+    "uploadTranscriptTitle": "Subir expediente académico",
+    "supportedFormats": "Formatos compatibles: JPG, PNG",
+    "dropOrClickToUpload": "Arrastra o haz clic para subir",
+    "ocrProcessing": "Procesamiento OCR",
+    "processing": "Procesando...",
+    "analyzingGrades": "Analizando calificaciones",
+    "processingCompleteTitle": "Procesamiento completado",
+    "processingCompleteDescription": "Se encontraron {count} cursos. Promedio: {average}/5.",
+    "errorProcessingFile": "Hubo un problema al analizar tu expediente académico.",
+    "errorCouldNotExtract": "No se pudieron extraer datos de calificaciones de la imagen. Por favor, comprueba el formato e inténtalo de nuevo.",
+    "errorPleaseUploadImage": "Por favor, sube un archivo de imagen (JPG, PNG)",
+    "errorUploadLimitInfo": "No se pudo cargar información sobre el límite de subidas.",
+    "errorFailedToFetchLimit": "No se pudo obtener el estado del límite de subidas.",
+    "errorLoadingLimit": "Error al cargar límite de subidas.",
+    "errorFailedToRecordUpload": "No se pudo guardar tu intento de subida. Por favor, inténtalo de nuevo.",
+    "uploadsRemaining": "Te quedan {remaining} de {max} subidas.",
+    "firstUploadCycle": "Este es tu primer ciclo de subidas.",
+    "currentCycleEnds": "Tu ciclo actual finaliza el {date}.",
+    "loadingLimitInfo": "Cargando información sobre el límite de subidas..."
+  },
+  "LoggingOutPage": {
+    "title": "Cerrando sesión",
+    "description": "Por favor, espera mientras cerramos tu sesión de forma segura..."
+  },
+  "UserProfileActions": {
+    "userNotAuthenticated": "Usuario no autenticado",
+    "couldNotFetchUploadStatus": "No se pudo obtener el estado de subidas.",
+    "failedToFetchProfile": "No se pudieron obtener los datos del perfil.",
+    "uploadLimitReachedCycle": "Límite de subidas alcanzado para el ciclo actual.",
+    "failedToRecordUpload": "No se pudo registrar la subida."
+  },
+  "Common": {
+    "error": "Error",
+    "loading": "Cargando..."
+  },
+  "auth": {
+    "authRequired": "Autenticación requerida",
+    "loginToUpload": "Por favor, inicia sesión para subir.",
+    "loginToChooseFile": "Por favor, inicia sesión para elegir un archivo.",
+    "loginToUploadTranscript": "Por favor, inicia sesión o regístrate para subir tu expediente académico.",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "signInWithGoogle": "Iniciar sesión con Google",
+    "signInWithMicrosoft": "Iniciar sesión con Microsoft",
+    "termsAgreement": "Al iniciar sesión, aceptas nuestros <terms>Términos de Servicio</terms> y <privacy>Política de Privacidad</privacy>.",
+    "closeModal": "Cerrar ventana"
+  }
+} 

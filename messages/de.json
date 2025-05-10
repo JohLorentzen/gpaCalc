@@ -1,0 +1,303 @@
+{
+  "app": {
+    "title": "Berechnen Sie Ihren",
+    "titleHighlight": "Notendurchschnitt",
+    "description": "Laden Sie Ihr Universitätszeugnis hoch und lassen Sie Ihre Kurse und Durchschnittsnote in Sekundenschnelle berechnen."
+  },
+  "navigation": {
+    "home": "Startseite",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "contact": "Kontakt"
+  },
+  "calculator": {
+    "title": "Notenrechner",
+    "addCourse": "Kurs hinzufügen",
+    "calculate": "Berechnen",
+    "reset": "Zurücksetzen",
+    "courseName": "Kursname",
+    "grade": "Note",
+    "credits": "Leistungspunkte",
+    "result": "Ihr Notendurchschnitt ist: {gpa}",
+    "emptyState": "Fügen Sie Kurse hinzu, um Ihren Notendurchschnitt zu berechnen",
+    "uploadTranscript": "Legen Sie Ihr Universitätszeugnis hier ab",
+    "processing": "Zeugnis wird verarbeitet",
+    "processingDescription": "Dies kann einen Moment dauern, während wir Ihr Bild analysieren und die Noten extrahieren",
+    "ocrProcessing": "OCR-Verarbeitung wird gestartet...",
+    "analyzingGrades": "Noten werden analysiert",
+    "calculatingAverage": "Durchschnitt wird berechnet",
+    "loading": "Laden...",
+    "loadingResults": "Ergebnisse werden geladen...",
+    "results": "Ihre Ergebnisse",
+    "dropOrClick": "oder klicken Sie zum Durchsuchen",
+    "browseFiles": "Dateien durchsuchen",
+    "supportedFormats": "Unterstützt Universitätszeugnisbilder oder Screenshots (JPG, PNG, JPEG)",
+    "supportedLanguages": "Unterstützt Zeugnisse auf Deutsch, Englisch und Norwegisch",
+    "processingComplete": "Zeugnis verarbeitet",
+    "processingError": "Fehler bei der Verarbeitung des Zeugnisses",
+    "tryAnotherImage": "Anderes Bild versuchen",
+    "uploadAnotherImage": "Anderes Bild hochladen",
+    "chooseAnotherFile": "Andere Datei auswählen",
+    "uploadLimitError": "Upload-Limit konnte nicht geladen werden",
+    "uploadLimitLoadError": "Informationen zum Upload-Limit konnten nicht geladen werden.",
+    "fetchLimitError": "Status des Upload-Limits konnte nicht abgerufen werden.",
+    "uploadLimitReached": "Upload-Limit erreicht",
+    "noUploadsRemaining": "Sie haben keine Uploads mehr übrig.",
+    "imageFormatError": "Bitte laden Sie eine Bilddatei hoch (JPG, PNG)",
+    "noGradeData": "Es konnten keine Notendaten extrahiert werden. Bitte überprüfen Sie das Format.",
+    "foundCoursesAverage": "{count} Kurse gefunden. Durchschnitt: {average}/5.",
+    "failedToSaveUpload": "Ihr Upload-Versuch konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.",
+    "transcriptAnalyzingProblem": "Es gab ein Problem bei der Analyse Ihres Zeugnisses.",
+    "notAvailable": "N/V",
+    "checkingAuth": "Authentifizierung wird überprüft...",
+    "fetchingUploadLimit": "Upload-Limit wird abgerufen...",
+    "usedAllUploads": "Sie haben alle Ihre {count} Uploads für diesen Zeitraum verwendet.",
+    "nextUploadAvailable": "Ihr nächster Upload ist verfügbar nach",
+    "documentBeingProcessed": "Ihr Dokument wird verarbeitet.",
+    "uploadsRemaining": "Sie haben {remaining} von {total} Uploads übrig.",
+    "cycleEndDate": " Ihr aktueller Zyklus endet am {date}.",
+    "firstUploadCycle": " Dies ist Ihr erster Upload-Zyklus.",
+    "loadingUploadLimit": "Informationen zum Upload-Limit werden geladen..."
+  },
+  "errors": {
+    "pageNotFound": "Ups! Seite nicht gefunden",
+    "backToHome": "Zurück zur Startseite"
+  },
+  "gradeDisplay": {
+    "summary": "Zusammenfassung",
+    "details": "Details",
+    "averageGrade": "Durchschnittsnote",
+    "letterGrade": "Buchstabennote",
+    "average": "Durchschnitt",
+    "gradeOverview": "Notenübersicht",
+    "detailsDescription": "Hier ist eine detaillierte Übersicht über Ihre Kurse und Noten.",
+    "courseName": "Kursname",
+    "credits": "Credits",
+    "grade": "Note",
+    "totalCredits": "Gesamtcredits",
+    "convertGPA": "GPA umrechnen in:",
+    "countryScales": "Länderskalen",
+    "originalScale": "Original",
+    "convertedScale": "Umgerechnet",
+    "equivalentGrade": "Äquivalente Note",
+    "institution": "Institution",
+    "country": "Land"
+  },
+  "courseTable": {
+    "courseOverview": "Kursübersicht",
+    "average": "Durchschnitt",
+    "totalCredits": "Gesamte Leistungspunkte",
+    "courseCode": "Kurscode",
+    "courseName": "Kursname",
+    "semester": "Semester",
+    "credits": "Leistungspunkte",
+    "grade": "Note"
+  },
+  "features": {
+    "title": "Wie es funktioniert",
+    "description": "Unigpacalc macht die Berechnung Ihres Notendurchschnitts einfach und intuitiv",
+    "step1": {
+      "title": "Zeugnis hochladen",
+      "description": "Ziehen Sie Ihr Universitätszeugnis im Bildformat per Drag & Drop."
+    },
+    "step2": {
+      "title": "Sofortige Analyse",
+      "description": "Unsere KI-Technologie extrahiert Ihre Noten und berechnet den Durchschnitt sofort."
+    },
+    "step3": {
+      "title": "Ergebnisse ansehen",
+      "description": "Sehen Sie Ihre Kurse, Leistungspunkte und Durchschnittsnote in einer übersichtlichen Tabelle."
+    }
+  },
+  "footer": {
+    "language": "Sprache",
+    "copyright": "© {year} Unigpacalc. Alle Rechte vorbehalten."
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "description": "Füllen Sie das Kontaktformular aus, um uns zu kontaktieren.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Betreff",
+      "message": "Nachricht",
+      "submit": "Senden",
+      "sending": "Senden...",
+      "nameRequired": "Name ist erforderlich",
+      "emailRequired": "Email ist erforderlich",
+      "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "subjectRequired": "Betreff ist erforderlich",
+      "messageRequired": "Nachricht ist erforderlich",
+      "messageShort": "Nachricht muss mindestens 10 Zeichen lang sein",
+      "success": "Vielen Dank für Ihre Nachricht!",
+      "successDescription": "Wir haben Ihre Nachricht erhalten und werden uns schnellstmöglich um Ihre Anfrage kümmern.",
+      "error": "Ein Fehler ist aufgetreten",
+      "errorDescription": "Ein Fehler ist aufgetreten beim Senden der Nachricht. Bitte versuchen Sie es später erneut.",
+      "newMessage": "Neue Nachricht senden",
+      "tryAgain": "Erneut versuchen"
+    }
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "lastUpdated": "Letzte Aktualisierung: 21. April 2025",
+    "acceptance": {
+      "title": "1. Annahme der Bedingungen",
+      "content": "Durch den Zugriff auf oder die Nutzung von UniGPACalc stimmen Sie zu, an diese Nutzungsbedingungen gebunden zu sein. Wenn Sie mit diesen Bedingungen nicht einverstanden sind, nutzen Sie bitte unseren Service nicht."
+    },
+    "description": {
+      "title": "2. Beschreibung des Dienstes",
+      "content": "UniGPACalc bietet einen webbasierten GPA-Berechnungsservice, der es Benutzern ermöglicht, ihren Notendurchschnitt basierend auf dem norwegischen Notensystem zu berechnen. Der Service umfasst manuelle Noteneingabe und die Verarbeitung von Zeugnisbildern."
+    },
+    "responsibilities": {
+      "title": "3. Benutzerverantwortlichkeiten",
+      "content": "Bei der Nutzung unseres Service stimmen Sie zu:",
+      "items": [
+        "Genaue Informationen bei der Verwendung des Rechners anzugeben",
+        "Den Service nicht für illegale oder unbefugte Zwecke zu nutzen",
+        "Nicht zu versuchen, den Service oder seine Server zu stören oder zu unterbrechen",
+        "Nicht zu versuchen, auf Daten zuzugreifen, die nicht für Sie bestimmt sind"
+      ]
+    },
+    "intellectual": {
+      "title": "4. Geistiges Eigentum",
+      "content": "Alle Inhalte, Funktionen und Funktionalitäten auf UniGPACalc, einschließlich, aber nicht beschränkt auf Text, Grafiken, Logos, Symbole und Software, sind Eigentum von oder lizenziert an uns und durch Urheberrechte, Marken und andere Gesetze zum geistigen Eigentum geschützt."
+    },
+    "disclaimer": {
+      "title": "5. Haftungsausschluss",
+      "content": "Der Service wird \"wie er ist\" und \"wie verfügbar\" ohne Garantien jeglicher Art, weder ausdrücklich noch implizit, bereitgestellt. Wir garantieren nicht die Genauigkeit der GPA-Berechnungen und empfehlen Benutzern, die Ergebnisse über ihre Bildungseinrichtung zu überprüfen."
+    },
+    "limitation": {
+      "title": "6. Haftungsbeschränkung",
+      "content": "In keinem Fall haftet UniGPACalc oder seine verbundenen Unternehmen für indirekte, zufällige, besondere, Folge- oder Strafschäden, einschließlich, aber nicht beschränkt auf Gewinnverluste, Datenverluste oder andere immaterielle Verluste, die aus Ihrer Nutzung oder Unfähigkeit zur Nutzung des Dienstes resultieren."
+    },
+    "changes": {
+      "title": "7. Änderungen der Bedingungen",
+      "content": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Wenn wir Änderungen vornehmen, werden wir dies durch Aktualisierung des Datums oben in diesen Bedingungen bekannt geben. Ihre fortgesetzte Nutzung des Dienstes nach solchen Änderungen stellt Ihre Annahme der neuen Bedingungen dar."
+    },
+    "contact": {
+      "title": "8. Kontaktieren Sie uns",
+      "content": "Wenn Sie Fragen zu diesen Bedingungen haben, kontaktieren Sie uns bitte über unser Kontaktformular."
+    }
+  },
+  "privacy": {
+    "title": "Datenschutzrichtlinie",
+    "lastUpdated": "Letzte Aktualisierung: 21. April 2025",
+    "introduction": {
+      "title": "1. Einführung",
+      "content": "Willkommen bei UniGPACalc. Wir respektieren Ihre Privatsphäre und verpflichten uns, Ihre persönlichen Daten zu schützen. Diese Datenschutzrichtlinie informiert Sie darüber, wie wir Ihre persönlichen Daten bei Ihrem Besuch auf unserer Website behandeln und informiert Sie über Ihre Datenschutzrechte und wie das Gesetz Sie schützt."
+    },
+    "dataCollection": {
+      "title": "2. Die Daten, die wir sammeln",
+      "content": "Wenn Sie unseren GPA-Rechner verwenden, können wir die folgenden Arten von Informationen sammeln:",
+      "items": [
+        "Kursnamen und Noten, die Sie manuell eingeben",
+        "Zeugnisbilder, die Sie zur Verarbeitung hochladen",
+        "Nutzungsstatistiken und Interaktionsdaten"
+      ]
+    },
+    "dataUsage": {
+      "title": "3. Wie wir Ihre Daten verwenden",
+      "content": "Wir verwenden Ihre Daten auf folgende Weise:",
+      "items": [
+        "Um den GPA-Berechnungsservice bereitzustellen",
+        "Um unsere Algorithmen und Texterkennung zu verbessern",
+        "Um Nutzungsmuster zu analysieren und unseren Service zu verbessern"
+      ]
+    },
+    "security": {
+      "title": "4. Datensicherheit",
+      "content": "Wir implementieren angemessene Sicherheitsmaßnahmen, um Ihre persönlichen Daten vor versehentlichem Verlust, unbefugtem Zugriff oder Verarbeitung zu schützen. Ihre Zeugnisdaten werden auf unseren sicheren Servern verarbeitet und nicht an Dritte weitergegeben."
+    },
+    "rights": {
+      "title": "5. Ihre Rechte",
+      "content": "Unter bestimmten Umständen haben Sie gemäß den Datenschutzgesetzen Rechte in Bezug auf Ihre persönlichen Daten, einschließlich:",
+      "items": [
+        "Das Recht, Zugang zu Ihren persönlichen Daten zu verlangen",
+        "Das Recht, die Korrektur Ihrer persönlichen Daten zu verlangen",
+        "Das Recht, die Löschung Ihrer persönlichen Daten zu verlangen",
+        "Das Recht, Ihre Einwilligung zu widerrufen"
+      ]
+    },
+    "contact": {
+      "title": "6. Kontaktieren Sie uns",
+      "content": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie oder unseren Datenschutzpraktiken haben, kontaktieren Sie uns bitte über unser Kontaktformular."
+    }
+  },
+  "AuthModal": {
+    "title": "Anmelden oder Registrieren",
+    "signInWithGoogle": "Mit Google anmelden",
+    "signInWithMicrosoft": "Mit Microsoft anmelden",
+    "signInWithApple": "Mit Apple anmelden",
+    "termsAgreement": "Durch die Anmeldung stimmen Sie unseren Nutzungsbedingungen und der Datenschutzrichtlinie zu.",
+    "microsoftSignInNotImplemented": "Microsoft-Anmeldung noch nicht implementiert.",
+    "appleSignInNotImplemented": "Apple-Anmeldung noch nicht implementiert.",
+    "closeModalAltText": "Dialog schließen"
+  },
+  "AuthBtn": {
+    "login": "Anmelden",
+    "logout": "Abmelden"
+  },
+  "Navbar": {
+    "title": "UNI GPA CALC"
+  },
+  "FileDropZone": {
+    "checkingAuth": "Authentifizierung wird überprüft...",
+    "fetchingLimit": "Upload-Limit wird abgerufen...",
+    "authRequiredTitle": "Authentifizierung erforderlich",
+    "authRequiredDescription": "Bitte melden Sie sich an oder registrieren Sie sich, um Ihr Zeugnis hochzuladen.",
+    "limitReachedTitle": "Upload-Limit erreicht",
+    "limitReachedDescription": "Sie haben alle Ihre {maxUploads} Uploads für diesen Zeitraum verwendet.",
+    "nextUploadAvailableAfter": "Ihr nächster Upload wird verfügbar sein nach {date}.",
+    "processingErrorTitle": "Verarbeitungsfehler",
+    "tryAnotherImage": "Anderes Bild versuchen",
+    "fileSelected": "{fileName}",
+    "fileSizeKiloBytes": "{fileSize} KB",
+    "chooseAnotherFile": "Andere Datei auswählen",
+    "uploadTranscriptTitle": "Zeugnis hochladen",
+    "supportedFormats": "Unterstützte Formate: JPG, PNG",
+    "dropOrClickToUpload": "Drag & Drop oder Klicken zum Hochladen",
+    "ocrProcessing": "OCR-Verarbeitung",
+    "processing": "Verarbeitung...",
+    "analyzingGrades": "Noten werden analysiert",
+    "processingCompleteTitle": "Verarbeitung abgeschlossen",
+    "processingCompleteDescription": "{count} Kurse gefunden. Durchschnitt: {average}/5.",
+    "errorProcessingFile": "Bei der Analyse Ihres Zeugnisses ist ein Problem aufgetreten.",
+    "errorCouldNotExtract": "Aus dem Bild konnten keine Notendaten extrahiert werden. Bitte überprüfen Sie das Format und versuchen Sie es erneut.",
+    "errorPleaseUploadImage": "Bitte laden Sie eine Bilddatei hoch (JPG, PNG)",
+    "errorUploadLimitInfo": "Informationen zum Upload-Limit konnten nicht geladen werden.",
+    "errorFailedToFetchLimit": "Status des Upload-Limits konnte nicht abgerufen werden.",
+    "errorLoadingLimit": "Fehler beim Laden des Upload-Limits.",
+    "errorFailedToRecordUpload": "Ihr Upload-Versuch konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.",
+    "uploadsRemaining": "Sie haben {remaining} von {max} Uploads übrig.",
+    "firstUploadCycle": "Dies ist Ihr erster Upload-Zyklus.",
+    "currentCycleEnds": "Ihr aktueller Zyklus endet am {date}.",
+    "loadingLimitInfo": "Informationen zum Upload-Limit werden geladen..."
+  },
+  "LoggingOutPage": {
+    "title": "Abmeldung läuft",
+    "description": "Bitte warten Sie, während wir Sie sicher abmelden..."
+  },
+  "UserProfileActions": {
+    "userNotAuthenticated": "Benutzer nicht authentifiziert",
+    "couldNotFetchUploadStatus": "Upload-Status konnte nicht abgerufen werden.",
+    "failedToFetchProfile": "Profildaten konnten nicht abgerufen werden.",
+    "uploadLimitReachedCycle": "Upload-Limit für den aktuellen Zyklus erreicht.",
+    "failedToRecordUpload": "Upload konnte nicht erfasst werden."
+  },
+  "Common": {
+    "error": "Fehler",
+    "loading": "Laden..."
+  },
+  "auth": {
+    "authRequired": "Authentifizierung erforderlich",
+    "loginToUpload": "Bitte melden Sie sich an, um hochzuladen.",
+    "loginToChooseFile": "Bitte melden Sie sich an, um eine Datei auszuwählen.",
+    "loginToUploadTranscript": "Bitte melden Sie sich an oder registrieren Sie sich, um Ihr Zeugnis hochzuladen.",
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "signInWithGoogle": "Mit Google anmelden",
+    "signInWithMicrosoft": "Mit Microsoft anmelden",
+    "termsAgreement": "Durch die Anmeldung stimmen Sie unseren <terms>Nutzungsbedingungen</terms> und der <privacy>Datenschutzrichtlinie</privacy> zu.",
+    "closeModal": "Dialog schließen"
+  }
+} 

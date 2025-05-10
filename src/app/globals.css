@@ -1,0 +1,457 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Main brand colors */
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    /* Gradient definition variables */
+    --gradient-start: var(--primary);
+    --gradient-end: 262 83.3% 58.2%; /* Purple tone for better gradient */
+    --gradient-angle: to right;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Success/confirmation color */
+    --confirmation: 142.1 76.2% 36.3%;
+    --confirmation-foreground: 355 100% 100%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: var(--primary);
+  }
+
+  /* Animation keyframes */
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes gradient-x {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-gradient-x {
+    animation: gradient-x 3s ease infinite;
+    background-size: 200% 100%;
+    background-image: linear-gradient(var(--gradient-angle), 
+      hsl(var(--gradient-start)), 
+      hsl(var(--gradient-end)), 
+      hsl(var(--gradient-start)));
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    background-size: 200% 100%;
+    background-image: linear-gradient(
+      90deg, 
+      rgba(255, 255, 255, 0) 0%, 
+      rgba(255, 255, 255, 0.2) 25%, 
+      rgba(255, 255, 255, 0.2) 50%, 
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    /* Dark mode gradient may have different colors */
+    --gradient-start: var(--primary);
+    --gradient-end: 262 83.3% 58.2%;
+    --gradient-angle: to right;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --confirmation: 142.1 70.2% 45.3%;
+    --confirmation-foreground: 355 100% 100%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    --sidebar-background: 224 71% 4%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: var(--primary);
+  }
+  
+}
+
+@layer utilities {
+  /* Consistent gradient utilities */
+  .gradient-text {
+    background-image: linear-gradient(var(--gradient-angle), hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-border {
+    position: relative;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    background-image: linear-gradient(var(--background), var(--background)),
+                      linear-gradient(var(--gradient-angle), hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+  
+  /* Fallback for the gradient-button class used by the Button component */
+  .gradient-button {
+    background-image: linear-gradient(var(--gradient-angle), hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+  }
+}
+
+@layer components {
+  /* Button base styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+    disabled:opacity-50 disabled:pointer-events-none;
+    height: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: var(--radius);
+  }
+
+  .btn-sm {
+    height: 2.25rem;
+    border-radius: calc(var(--radius) - 2px);
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-lg {
+    height: 2.75rem;
+    border-radius: calc(var(--radius) + 2px);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-size: 1rem;
+  }
+
+  /* Primary button with gradient background */
+  .btn-primary {
+    @apply text-primary-foreground shadow-sm hover:shadow-md hover:-translate-y-[2px] transition-all;
+    background-image: linear-gradient(var(--gradient-angle), hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+  }
+
+  /* Secondary button with custom styling */
+  .btn-secondary {
+    @apply bg-background text-foreground border-2 border-primary/30 shadow-sm 
+    hover:shadow-md hover:bg-muted/50 transition-all hover:-translate-y-[2px];
+  }
+
+  /* Link styled as button */
+  a.btn-link {
+    @apply bg-background text-foreground border-2 border-primary/30 inline-flex items-center justify-center 
+    rounded-md text-sm font-medium transition-colors shadow-sm hover:shadow-md hover:bg-muted/50 
+    hover:-translate-y-[2px] transition-all;
+    height: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-card text-card-foreground rounded-lg border border-border shadow-sm overflow-hidden;
+  }
+
+  .card-hover {
+    @apply transition-shadow duration-200 hover:shadow-md;
+  }
+
+  /* Navbar */
+  .navbar {
+    @apply w-full px-6 py-4 flex items-center justify-between bg-background/90 backdrop-blur-md fixed top-0 z-50 border-b border-border/80;
+  }
+
+  .navbar-brand {
+    @apply text-xl font-bold;
+    background-image: linear-gradient(var(--gradient-angle), hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .navbar-links {
+    @apply flex gap-4 items-center;
+  }
+
+  /* File drop zone */
+  .file-drop-zone {
+    @apply border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center gap-4 transition-all;
+    background: linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box,
+                linear-gradient(var(--gradient-angle), hsl(var(--gradient-start)), hsl(var(--gradient-end))) border-box;
+    border-color: transparent;
+  }
+
+  .file-drop-zone.dragging {
+    @apply bg-primary/5;
+  }
+
+  .file-drop-zone:hover:not(.dragging) {
+    @apply bg-secondary/5;
+  }
+
+  .file-drop-zone.success {
+    background: linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box,
+                linear-gradient(var(--gradient-angle), hsl(var(--confirmation)), hsl(var(--confirmation))) border-box;
+    border-color: transparent;
+    @apply bg-confirmation/5;
+  }
+
+  .file-drop-zone.error {
+    background: linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box,
+                linear-gradient(var(--gradient-angle), hsl(var(--destructive)), hsl(var(--destructive))) border-box;
+    border-color: transparent;
+    @apply bg-destructive/5;
+  }
+
+  /* Dark mode specific styles */
+  .dark .file-drop-zone {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) padding-box,
+                linear-gradient(var(--gradient-angle), hsl(var(--gradient-start)), hsl(var(--gradient-end))) border-box;
+    border-color: transparent;
+  }
+
+  .dark .file-drop-zone.success {
+    background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)) padding-box,
+                linear-gradient(var(--gradient-angle), hsl(var(--confirmation)), hsl(var(--confirmation))) border-box;
+    border-color: transparent;
+    @apply bg-confirmation/10;
+  }
+
+  .dark .file-drop-zone.error {
+    background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)) padding-box,
+                linear-gradient(var(--gradient-angle), hsl(var(--destructive)), hsl(var(--destructive))) border-box;
+    border-color: transparent;
+    @apply bg-destructive/10;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.025em;
+  }
+}
+
+@theme inline {
+  /* Base colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Card colors */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  /* Popover colors */
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  /* Primary colors */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover, var(--primary));
+  --color-primary-active: var(--primary-active, var(--primary));
+
+  /* Secondary colors */
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-hover: var(--secondary-hover, var(--secondary));
+  --color-secondary-active: var(--secondary-active, var(--secondary));
+
+  /* Muted colors */
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  /* Accent colors */
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* Destructive colors */
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-hover: var(--destructive-hover, var(--destructive));
+  --color-destructive-active: var(--destructive-active, var(--destructive));
+
+  /* Border, input and ring colors */
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Confirmation colors */
+  --color-confirmation: var(--confirmation);
+  --color-confirmation-foreground: var(--confirmation-foreground);
+
+  /* Sidebar colors */
+  --color-sidebar-background: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Text colors (for compatibility) */
+  --color-text: var(--text, var(--foreground));
+  --color-text-muted: var(--text-muted, var(--muted-foreground));
+
+  /* Radius value */
+  --radius: var(--radius);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* Prose typography */
+.prose {
+  @apply text-foreground;
+}
+
+.prose h1, 
+.prose h2, 
+.prose h3, 
+.prose h4 {
+  @apply font-medium tracking-tight;
+}
+
+.prose p {
+  @apply leading-relaxed;
+}
+
+.button-outline {
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground)); /* or another appropriate foreground color */
+  background-color: transparent;
+}
+.button-outline:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}

@@ -1,0 +1,310 @@
+{
+  "app": {
+    "title": "Beregn ditt Universitet",
+    "titleHighlight": "GPA",
+    "description": "Last opp ditt karakterutskrift og få dine fag og gjennomsnittskarakter beregnet på sekunder."
+  },
+  "navigation": {
+    "home": "Hjem",
+    "privacy": "Personvern",
+    "terms": "Vilkår",
+    "contact": "Kontakt"
+  },
+  "calculator": {
+    "title": "GPA-kalkulator",
+    "addCourse": "Legg til fag",
+    "calculate": "Beregn",
+    "reset": "Nullstill",
+    "courseName": "Fagnavn",
+    "grade": "Karakter",
+    "credits": "Studiepoeng",
+    "result": "Din GPA er: {gpa}",
+    "emptyState": "Legg til fag for å beregne din GPA",
+    "uploadTranscript": "Slipp ditt universitetsutskrift her",
+    "processing": "Behandler...",
+    "processingDescription": "Dette kan ta et øyeblikk mens vi analyserer bildet ditt og henter ut karakterene",
+    "ocrProcessing": "Starter OCR-behandling...",
+    "analyzingGrades": "Analyserer karakterer",
+    "calculatingAverage": "Beregner gjennomsnitt",
+    "loading": "Laster...",
+    "loadingResults": "Laster resultater...",
+    "results": "Dine Resultater",
+    "dropOrClick": "Dra og slipp eller klikk for å laste opp",
+    "browseFiles": "Bla gjennom filer",
+    "supportedFormats": "Støttede formater: JPG, PNG",
+    "supportedLanguages": "Støtter både norske og engelske karakterutskrifter med beståtte fag",
+    "processingComplete": "Behandling fullført",
+    "processingError": "Behandlingsfeil",
+    "tryAnotherImage": "Prøv et annet bilde",
+    "uploadAnotherImage": "Last opp et annet bilde",
+    "chooseAnotherFile": "Velg en annen fil",
+    "uploadLimitError": "Kunne ikke laste opplastningsgrensen",
+    "uploadLimitLoadError": "Kunne ikke laste informasjon om opplastningsgrense.",
+    "fetchLimitError": "Kunne ikke hente status for opplastningsgrense.",
+    "uploadLimitReached": "Opplastningsgrense nådd",
+    "noUploadsRemaining": "Du har ingen opplastninger igjen.",
+    "imageFormatError": "Vennligst last opp en bildefil (JPG, PNG)",
+    "noGradeData": "Ingen karakterdata kunne hentes ut. Vennligst sjekk formatet.",
+    "foundCoursesAverage": "Fant {count} fag. Gjennomsnitt: {average}/5.",
+    "failedToSaveUpload": "Kunne ikke lagre opplastningsforsøket. Vennligst prøv igjen.",
+    "transcriptAnalyzingProblem": "Det oppstod et problem med å analysere utskriften din.",
+    "notAvailable": "Ikke tilgjengelig",
+    "checkingAuth": "Sjekker autentisering...",
+    "fetchingUploadLimit": "Henter opplastningsgrense...",
+    "usedAllUploads": "Du har brukt alle dine {count} opplastninger for denne perioden.",
+    "nextUploadAvailable": "Din neste opplastning vil være tilgjengelig etter",
+    "documentBeingProcessed": "Dokumentet ditt blir behandlet.",
+    "uploadsRemaining": "Du har {remaining} av {total} opplastninger igjen.",
+    "cycleEndDate": " Din nåværende syklus slutter den {date}.",
+    "firstUploadCycle": " Dette er din første opplastningssyklus.",
+    "loadingUploadLimit": "Laster informasjon om opplastningsgrense..."
+  },
+  "auth": {
+    "authRequired": "Autentisering påkrevd",
+    "loginToUpload": "Vennligst logg inn for å laste opp.",
+    "loginToChooseFile": "Vennligst logg inn for å velge en fil.",
+    "loginToUploadTranscript": "Vennligst logg inn eller registrer deg for å laste opp karakterutskriften din.",
+    "login": "Logg inn",
+    "logout": "Logg ut",
+    "signInWithGoogle": "Logg inn med Google",
+    "signInWithMicrosoft": "Logg inn med Microsoft",
+    "termsAgreement": "Ved å logge inn godtar du våre <terms>vilkår for bruk</terms> og <privacy>personvernpolicy</privacy>.",
+    "closeModal": "Lukk vindu"
+  },
+  "errors": {
+    "pageNotFound": "Oops! Siden ble ikke funnet",
+    "backToHome": "Tilbake til forsiden"
+  },
+  "error": {
+    "title": "Noe gikk galt",
+    "description": "Vi møtte en feil under behandling av din forespørsel. Du kan prøve igjen eller kontakte oss hvis problemet vedvarer.",
+    "tryAgain": "Prøv igjen",
+    "contactUs": "Kontakt oss",
+    "serverError": "Serverfeil"
+  },
+  "gradeDisplay": {
+    "summary": "Sammendrag",
+    "details": "Detaljer",
+    "averageGrade": "Gjennomsnittskarakter",
+    "letterGrade": "Bokstavkarakter",
+    "average": "Gjennomsnitt",
+    "gradeOverview": "Karakteroversikt",
+    "detailsDescription": "Her er en detaljert oversikt over dine emner og karakterer.",
+    "courseName": "Emnenavn",
+    "credits": "Studiepoeng",
+    "grade": "Karakter",
+    "totalCredits": "Totale studiepoeng",
+    "convertGPA": "Konverter karaktersnitt til:",
+    "countryScales": "Landsskalaer",
+    "originalScale": "Original",
+    "convertedScale": "Konvertert",
+    "equivalentGrade": "Tilsvarende karakter",
+    "institution": "Institusjon",
+    "country": "Land"
+  },
+  "courseTable": {
+    "courseOverview": "Emneoversikt",
+    "average": "Gjennomsnitt",
+    "totalCredits": "Totale studiepoeng",
+    "courseCode": "Emnekode",
+    "courseName": "Emnenavn",
+    "semester": "Semester",
+    "credits": "Studiepoeng",
+    "grade": "Karakter"
+  },
+  "features": {
+    "title": "Hvordan det fungerer",
+    "description": "Unigpacalc gjør det enkelt og intuitivt å beregne din gjennomsnittskarakter",
+    "step1": {
+      "title": "Last opp karakterutskrift",
+      "description": "Dra og slipp din universitets/høyskole karakterutskrift i bildeformat."
+    },
+    "step2": {
+      "title": "Øyeblikkelig analyse",
+      "description": "Vår AI-teknologi henter ut karakterene dine og beregner gjennomsnittet umiddelbart."
+    },
+    "step3": {
+      "title": "Se resultater",
+      "description": "Se emnene dine, studiepoeng og gjennomsnittskarakter i en oversiktlig tabell."
+    }
+  },
+  "footer": {
+    "language": "Språk",
+    "copyright": "© {year} Unigpacalc. Alle rettigheter reservert."
+  },
+  "contact": {
+    "title": "Kontakt Oss",
+    "description": "Fyll ut skjemaet nedenfor for å ta kontakt med oss.",
+    "form": {
+      "name": "Navn",
+      "email": "E-post",
+      "subject": "Emne",
+      "message": "Melding",
+      "submit": "Send melding",
+      "sending": "Sender...",
+      "nameRequired": "Navn er påkrevd",
+      "emailRequired": "E-post er påkrevd",
+      "emailInvalid": "Vennligst skriv inn en gyldig e-postadresse",
+      "subjectRequired": "Emne er påkrevd",
+      "messageRequired": "Melding er påkrevd",
+      "messageShort": "Meldingen må være minst 10 tegn",
+      "success": "Takk for din henvendelse!",
+      "successDescription": "Vi har mottatt din melding og vil ta kontakt med deg så snart som mulig.",
+      "error": "Noe gikk galt",
+      "errorDescription": "Det oppstod en feil under sending av skjemaet. Vennligst prøv igjen senere.",
+      "newMessage": "Send ny melding",
+      "tryAgain": "Prøv igjen"
+    }
+  },
+  "terms": {
+    "title": "Vilkår for bruk",
+    "lastUpdated": "Sist oppdatert: 21. april 2025",
+    "acceptance": {
+      "title": "1. Aksept av vilkår",
+      "content": "Ved å bruke UniGPACalc, godtar du å være bundet av disse vilkårene for bruk. Hvis du ikke godtar disse vilkårene, vennligst ikke bruk vår tjeneste."
+    },
+    "description": {
+      "title": "2. Beskrivelse av tjenesten",
+      "content": "UniGPACalc tilbyr en nettbasert karakterberegningstjeneste som gjør det mulig for brukere å beregne sitt karaktergjennomsnitt basert på det norske karaktersystemet. Tjenesten inkluderer manuell karakterregistrering og behandling av karakterutskriftsbilder."
+    },
+    "responsibilities": {
+      "title": "3. Brukerens ansvar",
+      "content": "Når du bruker vår tjeneste, samtykker du til å:",
+      "items": [
+        "Gi nøyaktig informasjon når du bruker kalkulatoren",
+        "Ikke bruke tjenesten til ulovlige eller uautoriserte formål",
+        "Ikke forsøke å forstyrre eller avbryte tjenesten eller dens servere",
+        "Ikke prøve å få tilgang til data som ikke er ment for deg"
+      ]
+    },
+    "intellectual": {
+      "title": "4. Immaterielle rettigheter",
+      "content": "Alt innhold, funksjoner og funksjonalitet på UniGPACalc, inkludert men ikke begrenset til tekst, grafikk, logoer, ikoner og programvare, eies av eller er lisensiert til oss og er beskyttet av opphavsrett, varemerke og andre lover om immaterielle rettigheter."
+    },
+    "disclaimer": {
+      "title": "5. Ansvarsfraskrivelse",
+      "content": "Tjenesten leveres 'som den er' og 'som tilgjengelig' uten garantier av noe slag, verken uttrykkelige eller underforståtte. Vi garanterer ikke nøyaktigheten av karakterberegninger og anbefaler at brukere verifiserer resultatene gjennom sin utdanningsinstitusjon."
+    },
+    "limitation": {
+      "title": "6. Ansvarsbegrensning",
+      "content": "Under ingen omstendigheter skal UniGPACalc eller dets tilknyttede selskaper være ansvarlige for indirekte, tilfeldige, spesielle, følgeskader eller straffbare skader, inkludert men ikke begrenset til tap av fortjeneste, data eller andre immaterielle tap, som følge av din bruk av eller manglende evne til å bruke tjenesten."
+    },
+    "changes": {
+      "title": "7. Endringer i vilkårene",
+      "content": "Vi forbeholder oss retten til å endre disse vilkårene når som helst. Hvis vi gjør endringer, vil vi varsle ved å oppdatere datoen øverst i disse vilkårene. Din fortsatte bruk av tjenesten etter slike endringer utgjør din aksept av de nye vilkårene."
+    },
+    "contact": {
+      "title": "8. Kontakt oss",
+      "content": "Hvis du har spørsmål om disse vilkårene, vennligst kontakt oss gjennom vårt kontaktskjema."
+    }
+  },
+  "privacy": {
+    "title": "Personvernerklæring",
+    "lastUpdated": "Sist oppdatert: 21. april 2025",
+    "introduction": {
+      "title": "1. Introduksjon",
+      "content": "Velkommen til UniGPACalc. Vi respekterer ditt personvern og er forpliktet til å beskytte dine personopplysninger. Denne personvernerklæringen vil informere deg om hvordan vi tar vare på dine personopplysninger når du besøker vår nettside og fortelle deg om dine personvernrettigheter og hvordan loven beskytter deg."
+    },
+    "dataCollection": {
+      "title": "2. Dataene vi samler inn",
+      "content": "Når du bruker vår karakterkalkulator, kan vi samle inn følgende typer informasjon:",
+      "items": [
+        "Emnenavn og karakterer du registrerer manuelt",
+        "Karakterutskriftsbilder du laster opp for behandling",
+        "Bruksstatistikk og interaksjonsdata"
+      ]
+    },
+    "dataUsage": {
+      "title": "3. Hvordan vi bruker dine data",
+      "content": "Vi bruker dine data på følgende måter:",
+      "items": [
+        "For å tilby karakterberegningtjenesten",
+        "For å forbedre våre algoritmer og tekstgjenkjenning",
+        "For å analysere bruksmønstre og forbedre vår tjeneste"
+      ]
+    },
+    "security": {
+      "title": "4. Datasikkerhet",
+      "content": "Vi implementerer passende sikkerhetstiltak for å beskytte dine personopplysninger mot utilsiktet tap, uautorisert tilgang eller behandling. Dine karakterutskriftsdata behandles på våre sikre servere og deles ikke med tredjeparter."
+    },
+    "rights": {
+      "title": "5. Dine rettigheter",
+      "content": "Under visse omstendigheter har du rettigheter i henhold til personvernlovgivningen i forhold til dine personopplysninger, inkludert:",
+      "items": [
+        "Retten til å be om tilgang til dine personopplysninger",
+        "Retten til å be om korrigering av dine personopplysninger",
+        "Retten til å be om sletting av dine personopplysninger",
+        "Retten til å trekke tilbake samtykke"
+      ]
+    },
+    "contact": {
+      "title": "6. Kontakt oss",
+      "content": "Hvis du har spørsmål om denne personvernerklæringen eller våre personvernrutiner, vennligst kontakt oss gjennom vårt kontaktskjema."
+    }
+  },
+  "AuthModal": {
+    "title": "Logg inn eller registrer deg",
+    "signInWithGoogle": "Logg inn med Google",
+    "signInWithMicrosoft": "Logg inn med Microsoft",
+    "signInWithApple": "Logg inn med Apple",
+    "termsAgreement": "Ved å logge inn godtar du våre vilkår for bruk og personvernerklæring.",
+    "microsoftSignInNotImplemented": "Microsoft-innlogging er ikke implementert ennå.",
+    "appleSignInNotImplemented": "Apple-innlogging er ikke implementert ennå.",
+    "closeModalAltText": "Lukk vindu"
+  },
+  "AuthBtn": {
+    "login": "Logg inn",
+    "logout": "Logg ut"
+  },
+  "Navbar": {
+    "title": "SNITT KALK"
+  },
+  "FileDropZone": {
+    "checkingAuth": "Sjekker autentisering...",
+    "fetchingLimit": "Henter opplastningsgrense...",
+    "authRequiredTitle": "Autentisering påkrevd",
+    "authRequiredDescription": "Vennligst logg inn eller registrer deg for å laste opp karakterutskriften din.",
+    "limitReachedTitle": "Opplastningsgrense nådd",
+    "limitReachedDescription": "Du har brukt alle {maxUploads} opplastninger for denne perioden.",
+    "nextUploadAvailableAfter": "Din neste opplastning vil være tilgjengelig etter {date}.",
+    "processingErrorTitle": "Behandlingsfeil",
+    "tryAnotherImage": "Prøv et annet bilde",
+    "fileSelected": "{fileName}",
+    "fileSizeKiloBytes": "{fileSize} KB",
+    "chooseAnotherFile": "Velg en annen fil",
+    "uploadTranscriptTitle": "Last opp karakterutskrift",
+    "supportedFormats": "Støttede formater: JPG, PNG",
+    "dropOrClickToUpload": "Dra og slipp eller klikk for å laste opp",
+    "ocrProcessing": "OCR-behandling",
+    "processing": "Behandler...",
+    "analyzingGrades": "Analyserer karakterer",
+    "processingCompleteTitle": "Behandling fullført",
+    "processingCompleteDescription": "Fant {count} fag. Gjennomsnitt: {average}/5.",
+    "errorProcessingFile": "Det oppstod et problem med å analysere karakterutskriften din.",
+    "errorCouldNotExtract": "Ingen karakterdata kunne hentes fra bildet. Vennligst sjekk formatet og prøv igjen.",
+    "errorPleaseUploadImage": "Vennligst last opp en bildefil (JPG, PNG)",
+    "errorUploadLimitInfo": "Kunne ikke laste informasjon om opplastningsgrense.",
+    "errorFailedToFetchLimit": "Kunne ikke hente status for opplastningsgrense.",
+    "errorLoadingLimit": "Feil ved lasting av opplastningsgrense.",
+    "errorFailedToRecordUpload": "Kunne ikke lagre opplastningsforsøket. Vennligst prøv igjen.",
+    "uploadsRemaining": "Du har {remaining} av {max} opplastninger igjen.",
+    "firstUploadCycle": "Dette er din første opplastningssyklus.",
+    "currentCycleEnds": "Din nåværende syklus slutter den {date}.",
+    "loadingLimitInfo": "Laster informasjon om opplastningsgrense..."
+  },
+  "LoggingOutPage": {
+    "title": "Logger ut",
+    "description": "Vennligst vent mens vi logger deg ut på en sikker måte..."
+  },
+  "UserProfileActions": {
+    "userNotAuthenticated": "Bruker ikke autentisert",
+    "couldNotFetchUploadStatus": "Kunne ikke hente opplastningsstatus.",
+    "failedToFetchProfile": "Kunne ikke hente profildata.",
+    "uploadLimitReachedCycle": "Opplastningsgrense nådd for denne syklusen.",
+    "failedToRecordUpload": "Kunne ikke registrere opplastning."
+  },
+  "Common": {
+    "error": "Feil",
+    "loading": "Laster..."
+  }
+} 

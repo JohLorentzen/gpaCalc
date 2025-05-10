@@ -1,0 +1,303 @@
+{
+  "app": {
+    "title": "Oblicz swój",
+    "titleHighlight": "GPA",
+    "description": "Prześlij swój uniwersytecki transkrypt i uzyskaj wyliczenie swoich kursów i średniej oceny w kilka sekund."
+  },
+  "navigation": {
+    "home": "Strona główna",
+    "privacy": "Prywatność",
+    "terms": "Warunki",
+    "contact": "Kontakt"
+  },
+  "calculator": {
+    "title": "Kalkulator GPA",
+    "addCourse": "Dodaj kurs",
+    "calculate": "Oblicz",
+    "reset": "Resetuj",
+    "courseName": "Nazwa kursu",
+    "grade": "Ocena",
+    "credits": "Punkty",
+    "result": "Twoje GPA wynosi: {gpa}",
+    "emptyState": "Dodaj kursy, aby obliczyć swoje GPA",
+    "uploadTranscript": "Upuść tutaj swój uniwersytecki transkrypt",
+    "processing": "Przetwarzanie transkryptu",
+    "processingDescription": "To może zająć chwilę, podczas gdy analizujemy Twój obraz i wyodrębniamy oceny",
+    "ocrProcessing": "Rozpoczynanie przetwarzania OCR...",
+    "analyzingGrades": "Analizowanie ocen",
+    "calculatingAverage": "Obliczanie średniej",
+    "loading": "Ładowanie...",
+    "loadingResults": "Ładowanie wyników...",
+    "results": "Twoje wyniki",
+    "dropOrClick": "lub kliknij, aby przeglądać",
+    "browseFiles": "Przeglądaj pliki",
+    "supportedFormats": "Obsługuje obrazy lub zrzuty ekranu transkryptów uniwersyteckich (JPG, PNG, JPEG)",
+    "supportedLanguages": "Obsługuje transkrypty w języku norweskim i angielskim z zaliczonymi kursami",
+    "processingComplete": "Transkrypt przetworzony",
+    "processingError": "Błąd przetwarzania transkryptu",
+    "tryAnotherImage": "Wypróbuj inny obraz",
+    "uploadAnotherImage": "Prześlij inny obraz",
+    "chooseAnotherFile": "Wybierz inny plik",
+    "uploadLimitError": "Nie można załadować limitu przesyłania",
+    "uploadLimitLoadError": "Nie można załadować informacji o limicie przesyłania.",
+    "fetchLimitError": "Nie można pobrać statusu limitu przesyłania.",
+    "uploadLimitReached": "Osiągnięto limit przesyłania",
+    "noUploadsRemaining": "Nie masz już dostępnych przesyłań.",
+    "imageFormatError": "Proszę przesłać plik obrazu (JPG, PNG)",
+    "noGradeData": "Nie można wyodrębnić danych ocen. Sprawdź format.",
+    "foundCoursesAverage": "Znaleziono {count} kursów. Średnia: {average}/5.",
+    "failedToSaveUpload": "Nie udało się zapisać próby przesłania. Spróbuj ponownie.",
+    "transcriptAnalyzingProblem": "Wystąpił problem podczas analizy transkryptu.",
+    "notAvailable": "Niedostępne",
+    "checkingAuth": "Sprawdzanie uwierzytelniania...",
+    "fetchingUploadLimit": "Pobieranie limitu przesyłania...",
+    "usedAllUploads": "Wykorzystałeś wszystkie {count} przesłania na ten okres.",
+    "nextUploadAvailable": "Twoje następne przesłanie będzie dostępne po",
+    "documentBeingProcessed": "Twój dokument jest przetwarzany.",
+    "uploadsRemaining": "Pozostało Ci {remaining} z {total} przesłań.",
+    "cycleEndDate": " Twój bieżący cykl kończy się {date}.",
+    "firstUploadCycle": " To jest Twój pierwszy cykl przesyłania.",
+    "loadingUploadLimit": "Ładowanie informacji o limicie przesyłania..."
+  },
+  "errors": {
+    "pageNotFound": "Ups! Strona nie znaleziona",
+    "backToHome": "Powrót do strony głównej"
+  },
+  "gradeDisplay": {
+    "summary": "Podsumowanie",
+    "details": "Szczegóły",
+    "averageGrade": "Średnia ocena",
+    "letterGrade": "Ocena literowa",
+    "average": "Średnia",
+    "gradeOverview": "Przegląd ocen",
+    "detailsDescription": "Oto szczegółowy przegląd Twoich kursów i ocen.",
+    "courseName": "Nazwa kursu",
+    "credits": "Punkty",
+    "grade": "Ocena",
+    "totalCredits": "Łączna liczba punktów",
+    "convertGPA": "Konwertuj GPA na:",
+    "countryScales": "Skale krajowe",
+    "originalScale": "Oryginalna",
+    "convertedScale": "Przekonwertowana",
+    "equivalentGrade": "Równoważna ocena",
+    "institution": "Instytucja",
+    "country": "Kraj"
+  },
+  "courseTable": {
+    "courseOverview": "Przegląd kursów",
+    "average": "Średnia",
+    "totalCredits": "Łączna liczba punktów",
+    "courseCode": "Kod kursu",
+    "courseName": "Nazwa kursu",
+    "semester": "Semestr",
+    "credits": "Punkty",
+    "grade": "Ocena"
+  },
+  "features": {
+    "title": "Jak to działa",
+    "description": "Unigpacalc ułatwia i intuicyjnie oblicza średnią ocen",
+    "step1": {
+      "title": "Prześlij transkrypt",
+      "description": "Przeciągnij i upuść transkrypt uniwersytecki w formacie obrazu."
+    },
+    "step2": {
+      "title": "Natychmiastowa analiza",
+      "description": "Nasza technologia AI wyciąga Twoje oceny i natychmiast oblicza średnią."
+    },
+    "step3": {
+      "title": "Zobacz wyniki",
+      "description": "Zobacz swoje kursy, punkty i średnią ocen w przejrzystej tabeli."
+    }
+  },
+  "footer": {
+    "language": "Język",
+    "copyright": "© {year} Unigpacalc. Wszelkie prawa zastrzeżone."
+  },
+  "contact": {
+    "title": "Kontakt",
+    "description": "Wypełnij poniższy formularz, aby się z nami skontaktować.",
+    "form": {
+      "name": "Imię",
+      "email": "Email",
+      "subject": "Temat",
+      "message": "Wiadomość",
+      "submit": "Wyślij wiadomość",
+      "sending": "Wysyłanie...",
+      "nameRequired": "Imię jest wymagane",
+      "emailRequired": "Email jest wymagany",
+      "emailInvalid": "Wprowadź prawidłowy adres email",
+      "subjectRequired": "Temat jest wymagany",
+      "messageRequired": "Wiadomość jest wymagana",
+      "messageShort": "Wiadomość musi mieć co najmniej 10 znaków",
+      "success": "Dziękujemy za Twoją wiadomość!",
+      "successDescription": "Otrzymaliśmy Twoją wiadomość i odpowiemy tak szybko, jak to możliwe.",
+      "error": "Coś poszło nie tak",
+      "errorDescription": "Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie później.",
+      "newMessage": "Wyślij nową wiadomość",
+      "tryAgain": "Spróbuj ponownie"
+    }
+  },
+  "terms": {
+    "title": "Warunki korzystania z usługi",
+    "lastUpdated": "Ostatnia aktualizacja: 21 kwietnia 2025",
+    "acceptance": {
+      "title": "1. Akceptacja warunków",
+      "content": "Korzystając z UniGPACalc, zgadzasz się przestrzegać niniejszych Warunków korzystania z usługi. Jeśli nie zgadzasz się z tymi warunkami, prosimy o niekorzystanie z naszej usługi."
+    },
+    "description": {
+      "title": "2. Opis usługi",
+      "content": "UniGPACalc dostarcza internetową usługę obliczania średniej ocen, która umożliwia użytkownikom obliczenie ich średniej ocen w oparciu o norweski system oceniania. Usługa obejmuje ręczne wprowadzanie ocen i przetwarzanie obrazów wykazu ocen."
+    },
+    "responsibilities": {
+      "title": "3. Obowiązki użytkownika",
+      "content": "Korzystając z naszej usługi, zgadzasz się:",
+      "items": [
+        "Dostarczać dokładne informacje podczas korzystania z kalkulatora",
+        "Nie używać usługi do celów nielegalnych lub nieautoryzowanych",
+        "Nie próbować ingerować w działanie usługi lub jej serwerów",
+        "Nie próbować uzyskać dostępu do danych, które nie są przeznaczone dla Ciebie"
+      ]
+    },
+    "intellectual": {
+      "title": "4. Własność intelektualna",
+      "content": "Cała zawartość, funkcje i funkcjonalności UniGPACalc, w tym między innymi tekst, grafika, logo, ikony i oprogramowanie, są własnością lub są licencjonowane przez nas i są chronione prawami autorskimi, znakami towarowymi i innymi prawami własności intelektualnej."
+    },
+    "disclaimer": {
+      "title": "5. Wyłączenie odpowiedzialności",
+      "content": "Usługa jest dostarczana \"tak jak jest\" i \"zgodnie z dostępnością\" bez żadnych gwarancji, zarówno wyraźnych, jak i dorozumianych. Nie gwarantujemy dokładności obliczeń średniej ocen i zalecamy, aby użytkownicy weryfikowali wyniki za pośrednictwem swojej instytucji edukacyjnej."
+    },
+    "limitation": {
+      "title": "6. Ograniczenie odpowiedzialności",
+      "content": "W żadnym wypadku UniGPACalc ani jego podmioty stowarzyszone nie ponoszą odpowiedzialności za szkody pośrednie, przypadkowe, szczególne, wtórne lub karne, w tym między innymi utratę zysków, danych lub inne straty niematerialne, wynikające z korzystania lub niemożności korzystania z usługi."
+    },
+    "changes": {
+      "title": "7. Zmiany w warunkach",
+      "content": "Zastrzegamy sobie prawo do modyfikacji tych warunków w dowolnym momencie. Jeśli wprowadzimy zmiany, powiadomimy o tym, aktualizując datę na górze tych warunków. Dalsze korzystanie z usługi po takich zmianach stanowi akceptację nowych warunków."
+    },
+    "contact": {
+      "title": "8. Kontakt z nami",
+      "content": "Jeśli masz jakiekolwiek pytania dotyczące niniejszych Warunków, skontaktuj się z nami za pomocą naszego formularza kontaktowego."
+    }
+  },
+  "privacy": {
+    "title": "Polityka prywatności",
+    "lastUpdated": "Ostatnia aktualizacja: 21 kwietnia 2025",
+    "introduction": {
+      "title": "1. Wprowadzenie",
+      "content": "Witamy w UniGPACalc. Szanujemy Twoją prywatność i zobowiązujemy się do ochrony Twoich danych osobowych. Ta polityka prywatności poinformuje Cię o tym, jak dbamy o Twoje dane osobowe, gdy odwiedzasz naszą stronę internetową, oraz o Twoich prawach do prywatności i o tym, jak chroni Cię prawo."
+    },
+    "dataCollection": {
+      "title": "2. Dane, które zbieramy",
+      "content": "Gdy korzystasz z naszego kalkulatora średniej ocen, możemy zbierać następujące rodzaje informacji:",
+      "items": [
+        "Nazwy kursów i oceny, które wprowadzasz ręcznie",
+        "Obrazy wykazu ocen, które przesyłasz do przetworzenia",
+        "Statystyki użytkowania i dane interakcji"
+      ]
+    },
+    "dataUsage": {
+      "title": "3. Jak wykorzystujemy Twoje dane",
+      "content": "Wykorzystujemy Twoje dane w następujący sposób:",
+      "items": [
+        "Do świadczenia usługi obliczania średniej ocen",
+        "Do ulepszania naszych algorytmów i rozpoznawania tekstu",
+        "Do analizowania wzorców użytkowania i poprawy naszej usługi"
+      ]
+    },
+    "security": {
+      "title": "4. Bezpieczeństwo danych",
+      "content": "Wdrażamy odpowiednie środki bezpieczeństwa, aby chronić Twoje dane osobowe przed przypadkową utratą, nieautoryzowanym dostępem lub przetwarzaniem. Twoje dane z wykazu ocen są przetwarzane na naszych bezpiecznych serwerach i nie są udostępniane osobom trzecim."
+    },
+    "rights": {
+      "title": "5. Twoje prawa",
+      "content": "W pewnych okolicznościach masz prawa wynikające z przepisów o ochronie danych w odniesieniu do Twoich danych osobowych, w tym:",
+      "items": [
+        "Prawo do żądania dostępu do Twoich danych osobowych",
+        "Prawo do żądania poprawienia Twoich danych osobowych",
+        "Prawo do żądania usunięcia Twoich danych osobowych",
+        "Prawo do wycofania zgody"
+      ]
+    },
+    "contact": {
+      "title": "6. Kontakt z nami",
+      "content": "Jeśli masz jakiekolwiek pytania dotyczące tej polityki prywatności lub naszych praktyk dotyczących prywatności, skontaktuj się z nami za pomocą naszego formularza kontaktowego."
+    }
+  },
+  "AuthModal": {
+    "title": "Zaloguj się lub Zarejestruj",
+    "signInWithGoogle": "Zaloguj się przez Google",
+    "signInWithMicrosoft": "Zaloguj się przez Microsoft",
+    "signInWithApple": "Zaloguj się przez Apple",
+    "termsAgreement": "Logując się, akceptujesz nasze Warunki korzystania z usługi i Politykę prywatności.",
+    "microsoftSignInNotImplemented": "Logowanie przez Microsoft jeszcze nie zaimplementowane.",
+    "appleSignInNotImplemented": "Logowanie przez Apple jeszcze nie zaimplementowane.",
+    "closeModalAltText": "Zamknij okno"
+  },
+  "AuthBtn": {
+    "login": "Zaloguj się",
+    "logout": "Wyloguj się"
+  },
+  "Navbar": {
+    "title": "UNI GPA CALC"
+  },
+  "FileDropZone": {
+    "checkingAuth": "Sprawdzanie uwierzytelniania...",
+    "fetchingLimit": "Pobieranie limitu przesyłania...",
+    "authRequiredTitle": "Wymagane uwierzytelnienie",
+    "authRequiredDescription": "Zaloguj się lub zarejestruj, aby przesłać swój transkrypt.",
+    "limitReachedTitle": "Osiągnięto limit przesyłania",
+    "limitReachedDescription": "Wykorzystałeś wszystkie {maxUploads} przesłania na ten okres.",
+    "nextUploadAvailableAfter": "Twoje następne przesłanie będzie dostępne po {date}.",
+    "processingErrorTitle": "Błąd przetwarzania",
+    "tryAnotherImage": "Wypróbuj inny obraz",
+    "fileSelected": "{fileName}",
+    "fileSizeKiloBytes": "{fileSize} KB",
+    "chooseAnotherFile": "Wybierz inny plik",
+    "uploadTranscriptTitle": "Prześlij transkrypt",
+    "supportedFormats": "Obsługiwane formaty: JPG, PNG",
+    "dropOrClickToUpload": "Upuść lub kliknij, aby przesłać",
+    "ocrProcessing": "Przetwarzanie OCR",
+    "processing": "Przetwarzanie...",
+    "analyzingGrades": "Analizowanie ocen",
+    "processingCompleteTitle": "Przetwarzanie zakończone",
+    "processingCompleteDescription": "Znaleziono {count} kursów. Średnia: {average}/5.",
+    "errorProcessingFile": "Wystąpił problem podczas analizy Twojego transkryptu.",
+    "errorCouldNotExtract": "Nie można wyodrębnić danych ocen z obrazu. Sprawdź format i spróbuj ponownie.",
+    "errorPleaseUploadImage": "Proszę przesłać plik obrazu (JPG, PNG)",
+    "errorUploadLimitInfo": "Nie można załadować informacji o limicie przesyłania.",
+    "errorFailedToFetchLimit": "Nie można pobrać statusu limitu przesyłania.",
+    "errorLoadingLimit": "Błąd ładowania limitu przesyłania.",
+    "errorFailedToRecordUpload": "Nie udało się zapisać próby przesłania. Spróbuj ponownie.",
+    "uploadsRemaining": "Pozostało Ci {remaining} z {max} przesłań.",
+    "firstUploadCycle": "To jest Twój pierwszy cykl przesyłania.",
+    "currentCycleEnds": "Twój bieżący cykl kończy się {date}.",
+    "loadingLimitInfo": "Ładowanie informacji o limicie przesyłania..."
+  },
+  "LoggingOutPage": {
+    "title": "Wylogowywanie",
+    "description": "Proszę czekać, trwa bezpieczne wylogowywanie..."
+  },
+  "UserProfileActions": {
+    "userNotAuthenticated": "Użytkownik nie uwierzytelniony",
+    "couldNotFetchUploadStatus": "Nie można pobrać statusu przesyłania.",
+    "failedToFetchProfile": "Nie udało się pobrać danych profilu.",
+    "uploadLimitReachedCycle": "Osiągnięto limit przesyłania dla bieżącego cyklu.",
+    "failedToRecordUpload": "Nie udało się zarejestrować przesłania."
+  },
+  "Common": {
+    "error": "Błąd",
+    "loading": "Ładowanie..."
+  },
+  "auth": {
+    "authRequired": "Wymagane uwierzytelnienie",
+    "loginToUpload": "Zaloguj się, aby przesłać.",
+    "loginToChooseFile": "Zaloguj się, aby wybrać plik.",
+    "loginToUploadTranscript": "Zaloguj się lub zarejestruj, aby przesłać swój transkrypt.",
+    "login": "Zaloguj się",
+    "logout": "Wyloguj się",
+    "signInWithGoogle": "Zaloguj się przez Google",
+    "signInWithMicrosoft": "Zaloguj się przez Microsoft",
+    "termsAgreement": "Logując się, akceptujesz nasze <terms>Warunki korzystania z usługi</terms> i <privacy>Politykę prywatności</privacy>.",
+    "closeModal": "Zamknij okno"
+  }
+} 

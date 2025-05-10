@@ -1,20 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { useToast } from '@/components/ui/use-toast';
-import { useSession } from 'next-auth/react';
+import { createClient } from '@/utils/supabase/client';
+import { User } from '@supabase/supabase-js';
 
 export default function ProfilePage() {
   const router = useRouter();
   const { toast } = useToast();
-  const { data: session } = useSession();
+  const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const t = useTranslations('profile');
+  const supabase = createClient();
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => setUser(user));
+  }, [supabase]);
 
   const handleDeleteAccount = async () => {
     try {
@@ -33,7 +39,7 @@ export default function ProfilePage() {
         description: t('toast.accountDeleted.description'),
       });
       router.push('/');
-    } catch (error) {
+    } catch {
       toast({
         title: t('toast.error.title'),
         description: t('toast.error.deleteAccount'),
@@ -60,7 +66,7 @@ export default function ProfilePage() {
         title: t('toast.dataExportRequested.title'),
         description: t('toast.dataExportRequested.description'),
       });
-    } catch (error) {
+    } catch {
       toast({
         title: t('toast.error.title'),
         description: t('toast.error.dataExport'),
@@ -71,7 +77,7 @@ export default function ProfilePage() {
     }
   };
 
-  if (!session) {
+  if (!user) {
     return (
       <div className="container mx-auto py-8 animate-fade-in">
         <h1 className="text-3xl font-bold mb-8 gradient-text">{t('title')}</h1>
@@ -94,11 +100,11 @@ export default function ProfilePage() {
             <div className="space-y-4">
               <div>
                 <h3 className="font-medium text-primary">{t('accountInfo.email')}</h3>
-                <p className="text-muted-foreground">{session.user?.email}</p>
+                <p className="text-muted-foreground">{user.email}</p>
               </div>
               <div>
                 <h3 className="font-medium text-primary">{t('accountInfo.name')}</h3>
-                <p className="text-muted-foreground">{session.user?.name || t('accountInfo.notProvided')}</p>
+                <p className="text-muted-foreground">{user.user_metadata?.full_name || t('accountInfo.notProvided')}</p>
               </div>
             </div>
           </CardContent>

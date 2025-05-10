@@ -55,8 +55,8 @@
     "nextUploadAvailable": "Your next upload will be available after",
     "documentBeingProcessed": "Your document is being processed.",
     "uploadsRemaining": "You have {remaining} of {total} uploads remaining.",
-    "cycleEndDate": " Your current cycle ends on {date}.",
-    "firstUploadCycle": " This is your first upload cycle.",
+    "cycleEndDate": "Your current cycle ends on {date}.",
+    "firstUploadCycle": "This is your first upload cycle.",
     "loadingUploadLimit": "Loading upload limit information..."
   },
   "errors": {
@@ -103,15 +103,15 @@
   "features": {
     "title": "How It Works",
     "description": "Unigpacalc makes it easy and intuitive to calculate your grade point average",
-    "step1": {
+    "feature1": {
       "title": "Upload Transcript",
       "description": "Drag and drop your university/college transcript in image format."
     },
-    "step2": {
+    "feature2": {
       "title": "Instant Analysis",
       "description": "Our AI technology extracts your grades and calculates the average immediately."
     },
-    "step3": {
+    "feature3": {
       "title": "View Results",
       "description": "See your courses, credits, and grade point average in a clear table."
     }

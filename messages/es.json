@@ -1,8 +1,8 @@
 {
   "app": {
-    "title": "Calcula tu Promedio",
-    "titleHighlight": "Universitario",
-    "description": "Sube tu expediente académico y obtén tus cursos y nota media calculados en segundos."
+    "title": "Calcula tu Universitario",
+    "titleHighlight": "GPA",
+    "description": "Sube tu expediente académico y obtén tus cursos y promedio calculados en segundos."
   },
   "navigation": {
     "home": "Inicio",
@@ -11,53 +11,53 @@
     "contact": "Contacto"
   },
   "calculator": {
-    "title": "Calculadora de Promedio",
-    "addCourse": "Añadir Curso",
+    "title": "Calculadora GPA",
+    "addCourse": "Añadir curso",
     "calculate": "Calcular",
     "reset": "Reiniciar",
-    "courseName": "Nombre del Curso",
+    "courseName": "Nombre del curso",
     "grade": "Nota",
     "credits": "Créditos",
-    "result": "Tu promedio es: {gpa}",
-    "emptyState": "Añade cursos para calcular tu promedio",
-    "uploadTranscript": "Arrastra aquí tu expediente académico",
-    "processing": "Procesando expediente",
-    "processingDescription": "Esto puede tardar un momento mientras analizamos tu imagen y extraemos las calificaciones",
+    "result": "Tu GPA es: {gpa}",
+    "emptyState": "Añade cursos para calcular tu GPA",
+    "uploadTranscript": "Suelta tu expediente académico aquí",
+    "processing": "Procesando...",
+    "processingDescription": "Esto puede tomar un momento mientras analizamos tu imagen y extraemos las notas",
     "ocrProcessing": "Iniciando procesamiento OCR...",
-    "analyzingGrades": "Analizando calificaciones",
+    "analyzingGrades": "Analizando notas",
     "calculatingAverage": "Calculando promedio",
     "loading": "Cargando...",
     "loadingResults": "Cargando resultados...",
-    "results": "Tus Resultados",
-    "dropOrClick": "o haz clic para buscar",
-    "browseFiles": "Explorar archivos",
-    "supportedFormats": "Compatible con imágenes o capturas de expedientes universitarios (JPG, PNG, JPEG)",
-    "supportedLanguages": "Compatible con expedientes en español, inglés y noruego",
+    "results": "Tus resultados",
+    "dropOrClick": "Soltar o Hacer clic para subir",
+    "browseFiles": "Examinar archivos",
+    "supportedFormats": "Formatos soportados: JPG, PNG",
+    "supportedLanguages": "Soporta expedientes académicos en español e inglés con cursos aprobados",
     "processingComplete": "Expediente procesado",
-    "processingError": "Error al procesar el expediente",
-    "tryAnotherImage": "Prueba con otra imagen",
+    "processingError": "Error de procesamiento",
+    "tryAnotherImage": "Probar otra imagen",
     "uploadAnotherImage": "Subir otra imagen",
-    "chooseAnotherFile": "Seleccionar otro archivo",
+    "chooseAnotherFile": "Elegir otro archivo",
     "uploadLimitError": "No se pudo cargar el límite de subidas",
-    "uploadLimitLoadError": "No se pudo cargar la información del límite de subidas.",
-    "fetchLimitError": "No se pudo obtener el estado del límite de subidas.",
+    "uploadLimitLoadError": "No se pudieron cargar las información del límite de subidas.",
+    "fetchLimitError": "Error al obtener el estado del límite de subidas.",
     "uploadLimitReached": "Límite de subidas alcanzado",
-    "noUploadsRemaining": "No tienes subidas restantes.",
+    "noUploadsRemaining": "No te quedan subidas disponibles.",
     "imageFormatError": "Por favor, sube un archivo de imagen (JPG, PNG)",
-    "noGradeData": "No se pudieron extraer datos de calificaciones. Por favor, comprueba el formato.",
-    "foundCoursesAverage": "Se encontraron {count} cursos. Promedio: {average}/5.",
-    "failedToSaveUpload": "No se pudo guardar el intento de subida. Por favor, inténtalo de nuevo.",
-    "transcriptAnalyzingProblem": "Hubo un problema al analizar tu expediente.",
-    "notAvailable": "N/D",
-    "checkingAuth": "Comprobando autenticación...",
+    "noGradeData": "No se pudieron extraer datos de notas. Por favor, verifica el formato.",
+    "foundCoursesAverage": "{count} cursos encontrados. Promedio: {average}/5.",
+    "failedToSaveUpload": "Error al guardar tu intento de subida. Por favor, inténtalo de nuevo.",
+    "transcriptAnalyzingProblem": "Ocurrió un problema al analizar tu expediente académico.",
+    "notAvailable": "N/A",
+    "checkingAuth": "Verificando autenticación...",
     "fetchingUploadLimit": "Obteniendo límite de subidas...",
-    "usedAllUploads": "Has usado todas tus {count} subidas para el período actual.",
+    "usedAllUploads": "Has usado tus {count} subidas para el período actual.",
     "nextUploadAvailable": "Tu próxima subida estará disponible después de",
     "documentBeingProcessed": "Tu documento está siendo procesado.",
-    "uploadsRemaining": "Te quedan {remaining} de {total} subidas.",
-    "cycleEndDate": " Tu ciclo actual finaliza el {date}.",
-    "firstUploadCycle": " Este es tu primer ciclo de subidas.",
-    "loadingUploadLimit": "Cargando información sobre el límite de subidas..."
+    "uploadsRemaining": "Te quedan {remaining} subidas de {total}.",
+    "cycleEndDate": "Tu ciclo actual termina el {date}.",
+    "firstUploadCycle": "Este es tu primer ciclo de subidas.",
+    "loadingUploadLimit": "Cargando información del límite de subidas..."
   },
   "errors": {
     "pageNotFound": "¡Ups! Página no encontrada",
@@ -94,19 +94,19 @@
     "grade": "Nota"
   },
   "features": {
-    "title": "Cómo Funciona",
-    "description": "Unigpacalc hace que sea fácil e intuitivo calcular tu promedio académico",
-    "step1": {
-      "title": "Sube tu Expediente",
-      "description": "Arrastra y suelta tu expediente universitario en formato de imagen."
+    "title": "Cómo funciona",
+    "description": "Unigpacalc hace que calcular tu promedio sea fácil e intuitivo",
+    "feature1": {
+      "title": "Sube el expediente",
+      "description": "Arrastra y suelta tu expediente académico en formato imagen."
     },
-    "step2": {
-      "title": "Análisis Instantáneo",
-      "description": "Nuestra tecnología de IA extrae tus calificaciones y calcula el promedio inmediatamente."
+    "feature2": {
+      "title": "Análisis instantáneo",
+      "description": "Nuestra tecnología de IA extrae tus notas y calcula el promedio instantáneamente."
     },
-    "step3": {
-      "title": "Ver Resultados",
-      "description": "Mira tus cursos, créditos y promedio en una tabla clara."
+    "feature3": {
+      "title": "Ver resultados",
+      "description": "Consulta tus cursos, créditos y promedio en una tabla clara."
     }
   },
   "footer": {
@@ -241,37 +241,37 @@
     "title": "UNI GPA CALC"
   },
   "FileDropZone": {
-    "checkingAuth": "Comprobando autenticación...",
+    "checkingAuth": "Verificando autenticación...",
     "fetchingLimit": "Obteniendo límite de subidas...",
     "authRequiredTitle": "Autenticación requerida",
     "authRequiredDescription": "Por favor, inicia sesión o regístrate para subir tu expediente académico.",
     "limitReachedTitle": "Límite de subidas alcanzado",
-    "limitReachedDescription": "Has utilizado todas tus {maxUploads} subidas para el período actual.",
-    "nextUploadAvailableAfter": "Tu próxima subida estará disponible después de {date}.",
+    "limitReachedDescription": "Has usado tus {maxUploads} subidas para el período actual.",
+    "nextUploadAvailableAfter": "Tu próxima subida estará disponible después del {date}.",
     "processingErrorTitle": "Error de procesamiento",
-    "tryAnotherImage": "Probar con otra imagen",
+    "tryAnotherImage": "Probar otra imagen",
     "fileSelected": "{fileName}",
     "fileSizeKiloBytes": "{fileSize} KB",
     "chooseAnotherFile": "Elegir otro archivo",
-    "uploadTranscriptTitle": "Subir expediente académico",
-    "supportedFormats": "Formatos compatibles: JPG, PNG",
-    "dropOrClickToUpload": "Arrastra o haz clic para subir",
+    "uploadTranscriptTitle": "Subir expediente",
+    "supportedFormats": "Formatos soportados: JPG, PNG",
+    "dropOrClickToUpload": "Soltar o Hacer clic para subir",
     "ocrProcessing": "Procesamiento OCR",
     "processing": "Procesando...",
-    "analyzingGrades": "Analizando calificaciones",
+    "analyzingGrades": "Analizando notas",
     "processingCompleteTitle": "Procesamiento completado",
-    "processingCompleteDescription": "Se encontraron {count} cursos. Promedio: {average}/5.",
-    "errorProcessingFile": "Hubo un problema al analizar tu expediente académico.",
-    "errorCouldNotExtract": "No se pudieron extraer datos de calificaciones de la imagen. Por favor, comprueba el formato e inténtalo de nuevo.",
+    "processingCompleteDescription": "{count} cursos encontrados. Promedio: {average}/5.",
+    "errorProcessingFile": "Ocurrió un problema al analizar tu expediente académico.",
+    "errorCouldNotExtract": "No se pudieron extraer datos de notas de la imagen. Por favor, verifica el formato e inténtalo de nuevo.",
     "errorPleaseUploadImage": "Por favor, sube un archivo de imagen (JPG, PNG)",
-    "errorUploadLimitInfo": "No se pudo cargar información sobre el límite de subidas.",
-    "errorFailedToFetchLimit": "No se pudo obtener el estado del límite de subidas.",
-    "errorLoadingLimit": "Error al cargar límite de subidas.",
-    "errorFailedToRecordUpload": "No se pudo guardar tu intento de subida. Por favor, inténtalo de nuevo.",
-    "uploadsRemaining": "Te quedan {remaining} de {max} subidas.",
+    "errorUploadLimitInfo": "No se pudieron cargar las información del límite de subidas.",
+    "errorFailedToFetchLimit": "Error al obtener el estado del límite de subidas.",
+    "errorLoadingLimit": "Error al cargar el límite de subidas.",
+    "errorFailedToRecordUpload": "Error al guardar tu intento de subida. Por favor, inténtalo de nuevo.",
+    "uploadsRemaining": "Te quedan {remaining} subidas de {max}.",
     "firstUploadCycle": "Este es tu primer ciclo de subidas.",
-    "currentCycleEnds": "Tu ciclo actual finaliza el {date}.",
-    "loadingLimitInfo": "Cargando información sobre el límite de subidas..."
+    "currentCycleEnds": "Tu ciclo actual termina el {date}.",
+    "loadingLimitInfo": "Cargando información del límite de subidas..."
   },
   "LoggingOutPage": {
     "title": "Cerrando sesión",
@@ -297,7 +297,7 @@
     "logout": "Cerrar sesión",
     "signInWithGoogle": "Iniciar sesión con Google",
     "signInWithMicrosoft": "Iniciar sesión con Microsoft",
-    "termsAgreement": "Al iniciar sesión, aceptas nuestros <terms>Términos de Servicio</terms> y <privacy>Política de Privacidad</privacy>.",
+    "termsAgreement": "Al iniciar sesión, aceptas nuestros <terms>términos de uso</terms> y nuestra <privacy>política de privacidad</privacy>.",
     "closeModal": "Cerrar ventana"
   },
   "profile": {

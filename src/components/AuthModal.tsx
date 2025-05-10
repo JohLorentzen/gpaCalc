@@ -43,7 +43,15 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, locale }) => {
   // };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center h-screen w-screen p-4 bg-black/70 backdrop-blur-sm">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center h-screen w-screen p-4 bg-black/70 backdrop-blur-sm"
+      onClick={(e) => {
+        // Only close if clicking the overlay (not the modal content)
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
+    >
       <div className="bg-white text-text p-6 rounded-lg shadow-xl w-full max-w-md dark:bg-gray-900">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-semibold">{modalTitle}</h2>
@@ -54,7 +62,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, locale }) => {
         <div className="space-y-4">
           <Button 
             variant="outline" 
-            className="w-full flex items-center justify-center gap-2"
+            className="w-full flex items-center justify-center gap-2 hover:bg-gradient-to-r hover:from-purple-500 hover:to-blue-500 hover:text-white transition-all duration-200"
             onClick={handleGoogleSignIn}
           >
             {/* Actual Google multi-color logo SVG */}
@@ -69,7 +77,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, locale }) => {
           </Button>
           <Button 
             variant="outline" 
-            className="w-full flex items-center justify-center gap-2"
+            className="w-full flex items-center justify-center gap-2 hover:bg-gradient-to-r hover:from-purple-500 hover:to-blue-500 hover:text-white transition-all duration-200"
             onClick={handleMicrosoftSignIn}
             // disabled // You can enable this once implemented
           >

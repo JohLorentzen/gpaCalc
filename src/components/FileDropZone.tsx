@@ -10,6 +10,7 @@ import { createClient } from '@/utils/supabase/client';
 import { User } from '@supabase/supabase-js';
 import { getUploadStatus, recordUpload } from '@/lib/user-profile-actions';
 import { useTranslations } from 'next-intl';
+import AuthModal from './AuthModal';
 
 // Define a type for the status returned by getUploadStatus if direct import is an issue
 type FetchedUploadStatus = Awaited<ReturnType<typeof getUploadStatus>>;
@@ -17,6 +18,7 @@ type FetchedUploadStatus = Awaited<ReturnType<typeof getUploadStatus>>;
 interface FileDropZoneProps {
   onFileProcessed: (average: number, details?: GradeResult) => void;
   onProcessingStart?: () => void;
+  locale: string;
 }
 
 interface ClientUploadStatus {
@@ -28,7 +30,7 @@ interface ClientUploadStatus {
 
 const MAX_UPLOADS_PER_CYCLE = 6;
 
-const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessingStart }) => {
+const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessingStart, locale }) => {
   const t = useTranslations('calculator');
   const tErrors = useTranslations('errors');
   const tAuth = useTranslations('auth');
@@ -43,6 +45,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
 
   const [user, setUser] = useState<User | null>(null);
   const [loadingUser, setLoadingUser] = useState(true);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   
   const [uploadLimitStatus, setUploadLimitStatus] = useState<ClientUploadStatus | null>(null);
   const [isLoadingLimitStatus, setIsLoadingLimitStatus] = useState(false);
@@ -104,19 +107,19 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
-    if (!user || uploadLimitStatus?.limitReached) return; 
+    if (uploadLimitStatus?.limitReached) return; 
     setIsDragging(true);
   };
 
   const handleDragLeave = (e: React.DragEvent) => {
     e.preventDefault();
-    if (!user || uploadLimitStatus?.limitReached) return;
+    if (uploadLimitStatus?.limitReached) return;
     setIsDragging(false);
   };
 
   const processFile = async (fileToProcess: File) => {
     if (!user) {
-      toast({ title: tAuth('authRequired'), description: tAuth('loginToUpload'), variant: "default" });
+      setIsAuthModalOpen(true);
       return;
     }
     if (uploadLimitStatus?.limitReached) {
@@ -178,7 +181,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
     e.preventDefault();
     setIsDragging(false);
     if (!user) {
-      toast({ title: tAuth('authRequired'), description: tAuth('loginToUpload'), variant: "default" });
+      setIsAuthModalOpen(true);
       return;
     }
     if (uploadLimitStatus?.limitReached) {
@@ -194,7 +197,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!user) {
-      toast({ title: tAuth('authRequired'), description: tAuth('loginToUpload'), variant: "default" });
+      setIsAuthModalOpen(true);
       return;
     }
      if (uploadLimitStatus?.limitReached) {
@@ -210,7 +213,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
 
   const handleButtonClick = () => {
     if (!user) {
-      toast({ title: tAuth('authRequired'), description: tAuth('loginToChooseFile'), variant: "default" });
+      setIsAuthModalOpen(true);
       return;
     }
     if (uploadLimitStatus?.limitReached) {
@@ -236,18 +239,6 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
         <div className="flex flex-col items-center justify-center h-full p-4">
           <div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div>
           <p className="mt-4 text-muted-foreground">{loadingUser ? t('checkingAuth') : t('fetchingUploadLimit')}</p>
-        </div>
-      );
-    }
-
-    if (!user) {
-      return (
-        <div className="flex flex-col items-center justify-center h-full text-center p-4">
-          <LogIn className="w-12 h-12 text-muted-foreground mb-4" />
-          <h3 className="text-lg font-semibold mb-2">{tAuth('authRequired')}</h3>
-          <p className="text-sm text-muted-foreground px-4">
-            {tAuth('loginToUploadTranscript')}
-          </p>
         </div>
       );
     }
@@ -346,9 +337,9 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
         className={cn(
           "file-drop-zone",
           "transform hover:scale-[1.01] transition-all",
-          user && !uploadLimitStatus?.limitReached && isDragging ? "dragging" : "",
+          !uploadLimitStatus?.limitReached && isDragging ? "dragging" : "",
           {
-            'opacity-50 cursor-not-allowed': user && uploadLimitStatus?.limitReached
+            'opacity-50 cursor-not-allowed': uploadLimitStatus?.limitReached
           }
         )}
         onDragOver={handleDragOver}
@@ -361,7 +352,7 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
           onChange={handleFileChange}
           className="hidden"
           accept="image/jpeg,image/png"
-          disabled={Boolean(user && (uploadLimitStatus?.limitReached || isLoadingLimitStatus || isProcessing))}
+          disabled={Boolean(uploadLimitStatus?.limitReached || isLoadingLimitStatus || isProcessing)}
         />
         {renderContent()}
       </div>
@@ -390,6 +381,11 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
                {t('loadingUploadLimit')}
            </div>
       )}
+      <AuthModal 
+        isOpen={isAuthModalOpen} 
+        onClose={() => setIsAuthModalOpen(false)} 
+        locale={locale} 
+      />
     </div>
   );
 };

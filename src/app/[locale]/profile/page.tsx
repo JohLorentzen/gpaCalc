@@ -54,6 +54,7 @@ export default function ProfilePage() {
     try {
       setIsLoading(true);
       const response = await fetch('/api/profile/export', {
+        
         method: 'POST',
       });
 

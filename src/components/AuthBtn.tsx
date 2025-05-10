@@ -7,6 +7,7 @@ import { signout } from "@/lib/auth-actions";
 import { User } from "@supabase/supabase-js";
 import AuthModal from "./AuthModal";
 import { useTranslations } from 'next-intl';
+import ProfileMenu from "./ProfileMenu";
 
 interface AuthBtnProps {
   locale: string;
@@ -46,16 +47,7 @@ const AuthBtn = ({ locale }: AuthBtnProps) => {
   }, [supabase.auth, pathname]);
 
   if (user) {
-    return (
-      <Button
-        className="text-white"
-        onClick={() => {
-          router.push(`/${locale}/logging-out`);
-        }}
-      >
-        {t('logout')}
-      </Button>
-    );
+    return <ProfileMenu user={user} locale={locale} />;
   }
 
   return (

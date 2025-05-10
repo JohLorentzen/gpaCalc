@@ -1,33 +1,49 @@
 import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { createClient } from '@/utils/supabase/server';
 
 export async function POST() {
   try {
-    const session = await getServerSession(authOptions);
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
 
-    if (!session) {
+    if (!user) {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
       );
     }
 
-    // TODO: Implement data export logic
-    // This should:
-    // 1. Gather all user data
-    // 2. Format it appropriately
-    // 3. Send it to the user's email
-    // 4. Log the export request
+    // Fetch the user's profile row
+    const { data: profile, error } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', user.id)
+      .single();
 
-    return NextResponse.json(
-      { message: 'Data export request received' },
-      { status: 200 }
-    );
+    if (error || !profile) {
+      return NextResponse.json(
+        { error: 'Profile not found' },
+        { status: 404 }
+      );
+    }
+
+    // Convert profile object to CSV
+    const fields = Object.keys(profile);
+    const values = fields.map(f => JSON.stringify(profile[f] ?? ''));
+    const csv = `${fields.join(',')}
+${values.join(',')}`;
+
+    return new NextResponse(csv, {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/csv',
+        'Content-Disposition': 'attachment; filename="profile_export.csv"',
+      },
+    });
   } catch (error) {
-    console.error('Error requesting data export:', error);
+    console.error('Error exporting profile as CSV:', error);
     return NextResponse.json(
-      { error: 'Failed to process data export request' },
+      { error: 'Failed to export profile data' },
       { status: 500 }
     );
   }

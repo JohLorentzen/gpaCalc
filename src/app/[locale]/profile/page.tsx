@@ -62,6 +62,17 @@ export default function ProfilePage() {
         throw new Error(error.message || 'Failed to request data export');
       }
 
+      // Get the CSV as a blob and trigger download
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'profile_export.csv';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+
       toast({
         title: t('toast.dataExportRequested.title'),
         description: t('toast.dataExportRequested.description'),
@@ -116,50 +127,52 @@ export default function ProfilePage() {
             <CardDescription>{t('dataManagement.description')}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <Button
-              variant="outline"
-              onClick={handleRequestData}
-              disabled={isLoading}
-              className="btn btn-primary w-full sm:w-auto"
-            >
-              {isLoading ? (
-                <span className="flex items-center">
-                  <span className="animate-spin mr-2">⟳</span>
-                  {t('dataManagement.exportButton')}
-                </span>
-              ) : (
-                t('dataManagement.exportButton')
-              )}
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                variant="outline"
+                onClick={handleRequestData}
+                disabled={isLoading}
+                className="btn btn-primary w-full sm:w-auto"
+              >
+                {isLoading ? (
+                  <span className="flex items-center">
+                    <span className="animate-spin mr-2">⟳</span>
+                    {t('dataManagement.exportButton')}
+                  </span>
+                ) : (
+                  t('dataManagement.exportButton')
+                )}
+              </Button>
 
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button 
-                  variant="destructive" 
-                  disabled={isLoading}
-                  className="btn btn-primary w-full sm:w-auto"
-                >
-                  {t('dataManagement.deleteButton')}
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>{t('deleteAccount.title')}</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    {t('deleteAccount.description')}
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>{t('deleteAccount.cancel')}</AlertDialogCancel>
-                  <AlertDialogAction
-                    onClick={handleDeleteAccount}
-                    className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button
+                    variant="destructive"
+                    disabled={isLoading}
+                    className="w-full sm:w-auto border-destructive text-destructive hover:bg-destructive/10"
                   >
-                    {t('deleteAccount.confirm')}
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+                    {t('dataManagement.deleteButton')}
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent className="bg-background text-foreground dark:bg-background dark:text-foreground">
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>{t('deleteAccount.title')}</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      {t('deleteAccount.description')}
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>{t('deleteAccount.cancel')}</AlertDialogCancel>
+                    <AlertDialogAction
+                      onClick={handleDeleteAccount}
+                      className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                    >
+                      {t('deleteAccount.confirm')}
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
           </CardContent>
         </Card>
       </div>

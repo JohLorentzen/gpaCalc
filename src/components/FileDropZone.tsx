@@ -150,6 +150,9 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
       if (!data.result || !data.result.entries || data.result.entries.length === 0) {
         throw new Error(t('noGradeData'));
       }
+      
+      // Only record the upload AFTER we have successfully analyzed the transcript
+      // and found valid data - this prevents charging a credit for failed analyses
       const recordResult = await recordUpload();
       if (recordResult.success) {
         onFileProcessed(data.result.average, data.result);

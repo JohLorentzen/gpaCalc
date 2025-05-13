@@ -3,6 +3,9 @@ import { getTranslations } from 'next-intl/server';
 import { hasLocale } from 'next-intl';
 import { routing } from '@/i18n/routing';
 
+// Define the OG image URL from Supabase
+const OG_IMAGE_URL = "https://xauigkarhbwvuzweekbi.supabase.co/storage/v1/object/public/images//Screenshot%202025-05-13%20at%2012.43.58.png";
+
 /**
  * Creates metadata for the main layout
  */
@@ -11,9 +14,13 @@ export async function generateLayoutMetadata(params: { locale: string }): Promis
   
   // Ensure the locale is valid
   if (!hasLocale(routing.locales, locale)) {
+    // Default to Norwegian metadata if locale is invalid
     return {
-      title: "GPA Calculator",
-      description: "Calculate your GPA based on the Norwegian grading system",
+      title: "Karakterkalkulator | Beregn ditt karaktersnitt",
+      description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet. Last opp karakterutskrift eller legg inn karakterer manuelt.",
+      openGraph: {
+        images: [{ url: OG_IMAGE_URL }],
+      },
     };
   }
 
@@ -31,11 +38,13 @@ export async function generateLayoutMetadata(params: { locale: string }): Promis
         siteName: "UniGPACalc",
         locale: locale,
         type: "website",
+        images: [{ url: OG_IMAGE_URL }],
       },
       twitter: {
         card: "summary_large_image",
         title: "GPA Calculator | Norwegian Grading System",
-        description: "Free tool to calculate your GPA based on the Norwegian grading system"
+        description: "Free tool to calculate your GPA based on the Norwegian grading system",
+        images: [{ url: OG_IMAGE_URL }],
       },
       alternates: {
         canonical: `https://unigpacalc.com/${locale}`,
@@ -60,11 +69,13 @@ export async function generateLayoutMetadata(params: { locale: string }): Promis
         siteName: "UniGPACalc",
         locale: locale,
         type: "website",
+        images: [{ url: OG_IMAGE_URL }],
       },
       twitter: {
         card: "summary_large_image",
         title: "Karakterkalkulator | Norsk Karaktersystem",
-        description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet"
+        description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet",
+        images: [{ url: OG_IMAGE_URL }],
       },
       alternates: {
         canonical: `https://unigpacalc.com/${locale}`,
@@ -79,16 +90,40 @@ export async function generateLayoutMetadata(params: { locale: string }): Promis
     },
     // Additional languages metadata follows the same pattern
     es: {
-      // Spanish metadata
-      // ...same structure as above
+      title: "Calculadora de GPA | Conversión Rápida y Gratuita de Notas Noruegas",
+      description: "Calcula tu GPA con nuestra calculadora gratuita del sistema noruego. Sube tu expediente o ingresa calificaciones manualmente para conversión instantánea y análisis académico.",
+      keywords: ["calculadora GPA", "sistema noruego de calificaciones", "conversión de notas", "calculadora académica", "análisis de expediente"],
+      openGraph: {
+        title: "Calculadora de GPA | Conversión de Notas Noruegas",
+        description: "Calcula tu GPA con nuestra calculadora gratuita del sistema noruego. Sube tu expediente para resultados instantáneos.",
+        images: [{ url: OG_IMAGE_URL }],
+        url: `https://unigpacalc.com/${locale}`,
+        type: "website"
+      }
     },
     fr: {
-      // French metadata
-      // ...same structure as above
+      title: "Calculateur de GPA | Conversion Rapide et Gratuite de Notes Norvégiennes",
+      description: "Calculez votre GPA avec notre calculateur gratuit du système norvégien. Téléchargez votre relevé de notes ou entrez vos notes manuellement pour une conversion instantanée et une analyse académique.",
+      keywords: ["calculateur GPA", "système norvégien de notation", "conversion de notes", "calculateur académique", "analyse de relevé"],
+      openGraph: {
+        title: "Calculateur de GPA | Conversion de Notes Norvégiennes",
+        description: "Calculez votre GPA avec notre calculateur gratuit du système norvégien. Téléchargez votre relevé pour des résultats instantánés.",
+        images: [{ url: OG_IMAGE_URL }],
+        url: `https://unigpacalc.com/${locale}`,
+        type: "website"
+      }
     },
     de: {
-      // German metadata
-      // ...same structure as above
+      title: "GPA-Rechner | Schnelle & Kostenlose Umrechnung Norwegischer Noten",
+      description: "Berechnen Sie Ihren GPA mit unserem kostenlosen norwegischen Notenrechner. Laden Sie Ihr Zeugnis hoch oder geben Sie Noten manuell ein für sofortige Umrechnung und akademische Analyse.",
+      keywords: ["GPA-Rechner", "norwegisches Benotungssystem", "Notenumrechnung", "akademischer Rechner", "Zeugnisanalyse"],
+      openGraph: {
+        title: "GPA-Rechner | Umrechnung Norwegischer Noten",
+        description: "Berechnen Sie Ihren GPA mit unserem kostenlosen norwegischen Notenrechner. Laden Sie Ihr Zeugnis für sofortige Ergebnisse hoch.",
+        images: [{ url: OG_IMAGE_URL }],
+        url: `https://unigpacalc.com/${locale}`,
+        type: "website"
+      }
     }
   };
 
@@ -102,6 +137,22 @@ export async function generateLayoutMetadata(params: { locale: string }): Promis
 export async function generateHomeMetadata(params: { locale: string }): Promise<Metadata> {
   const { locale } = params;
   
+  // If locale is invalid, default to Norwegian
+  if (!hasLocale(routing.locales, locale)) {
+    return {
+      title: "Karakterkalkulator | Rask og Gratis Karakterberegning",
+      description: "Beregn ditt karaktersnitt med vår gratis norske karakterkalkulator. Last opp karakterutskrift eller legg inn karakterer manuelt for øyeblikkelig konvertering og akademisk analyse.",
+      keywords: ["karakterkalkulator", "norsk karaktersystem", "karakterberegning", "akademisk kalkulator", "karakterutskrift"],
+      openGraph: {
+        title: "Karakterkalkulator | Norsk Karakterberegning",
+        description: "Beregn ditt karaktersnitt med vår gratis norske karakterkalkulator. Last opp karakterutskrift for øyeblikkelige resultater.",
+        images: [{ url: OG_IMAGE_URL }],
+        url: `https://unigpacalc.com/no`,
+        type: "website"
+      }
+    };
+  }
+  
   const metadataByLocale: Record<string, Metadata> = {
     en: {
       title: "GPA Calculator | Fast & Free Norwegian Grade Conversion",
@@ -110,7 +161,7 @@ export async function generateHomeMetadata(params: { locale: string }): Promise<
       openGraph: {
         title: "GPA Calculator | Norwegian Grade Conversion",
         description: "Calculate your GPA with our free Norwegian grade calculator. Upload your transcript for instant results.",
-        images: [{ url: '/og-image.jpg' }],
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}`,
         type: "website"
       }
@@ -122,7 +173,7 @@ export async function generateHomeMetadata(params: { locale: string }): Promise<
       openGraph: {
         title: "Karakterkalkulator | Norsk Karakterberegning",
         description: "Beregn ditt karaktersnitt med vår gratis norske karakterkalkulator. Last opp karakterutskrift for øyeblikkelige resultater.",
-        images: [{ url: '/og-image.jpg' }],
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}`,
         type: "website"
       }
@@ -134,7 +185,7 @@ export async function generateHomeMetadata(params: { locale: string }): Promise<
       openGraph: {
         title: "Calculadora de GPA | Conversión de Notas Noruegas",
         description: "Calcula tu GPA con nuestra calculadora gratuita del sistema noruego. Sube tu expediente para resultados instantáneos.",
-        images: [{ url: '/og-image.jpg' }],
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}`,
         type: "website"
       }
@@ -145,8 +196,8 @@ export async function generateHomeMetadata(params: { locale: string }): Promise<
       keywords: ["calculateur GPA", "système norvégien de notation", "conversion de notes", "calculateur académique", "analyse de relevé"],
       openGraph: {
         title: "Calculateur de GPA | Conversion de Notes Norvégiennes",
-        description: "Calculez votre GPA avec notre calculateur gratuit du système norvégien. Téléchargez votre relevé pour des résultats instantanés.",
-        images: [{ url: '/og-image.jpg' }],
+        description: "Calculez votre GPA avec notre calculateur gratuit du système norvégien. Téléchargez votre relevé pour des résultats instantánés.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}`,
         type: "website"
       }
@@ -158,7 +209,7 @@ export async function generateHomeMetadata(params: { locale: string }): Promise<
       openGraph: {
         title: "GPA-Rechner | Umrechnung Norwegischer Noten",
         description: "Berechnen Sie Ihren GPA mit unserem kostenlosen norwegischen Notenrechner. Laden Sie Ihr Zeugnis für sofortige Ergebnisse hoch.",
-        images: [{ url: '/og-image.jpg' }],
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}`,
         type: "website"
       }
@@ -184,6 +235,7 @@ export async function generatePrivacyMetadata(params: { locale: string }): Promi
       openGraph: {
         title: "Privacy Policy | GPA Calculator",
         description: "Our privacy policy explains how we handle your data when using our GPA calculator service.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/personvern`,
         type: "article"
       }
@@ -195,6 +247,7 @@ export async function generatePrivacyMetadata(params: { locale: string }): Promi
       openGraph: {
         title: "Personvernerklæring | Karakterkalkulator",
         description: "Vår personvernerklæring forklarer hvordan vi håndterer dine data når du bruker vår karakterkalkulator.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/personvern`,
         type: "article"
       }
@@ -206,6 +259,7 @@ export async function generatePrivacyMetadata(params: { locale: string }): Promi
       openGraph: {
         title: "Política de Privacidad | Calculadora de GPA",
         description: "Nuestra política de privacidad explica cómo manejamos tus datos al usar nuestro servicio de calculadora de GPA.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/personvern`,
         type: "article"
       }
@@ -217,6 +271,7 @@ export async function generatePrivacyMetadata(params: { locale: string }): Promi
       openGraph: {
         title: "Politique de Confidentialité | Calculateur de GPA",
         description: "Notre politique de confidentialité explique comment nous traitons vos données lors de l'utilisation de notre service de calculateur de GPA.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/personvern`,
         type: "article"
       }
@@ -228,6 +283,7 @@ export async function generatePrivacyMetadata(params: { locale: string }): Promi
       openGraph: {
         title: "Datenschutzrichtlinie | GPA-Rechner",
         description: "Unsere Datenschutzrichtlinie erklärt, wie wir Ihre Daten bei der Nutzung unseres GPA-Rechners verarbeiten.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/personvern`,
         type: "article"
       }
@@ -253,6 +309,7 @@ export async function generateTermsMetadata(params: { locale: string }): Promise
       openGraph: {
         title: "Terms of Service | GPA Calculator",
         description: "Read our terms of service for using the GPA Calculator tool.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/vilkar`,
         type: "article"
       }
@@ -264,6 +321,7 @@ export async function generateTermsMetadata(params: { locale: string }): Promise
       openGraph: {
         title: "Vilkår for bruk | Karakterkalkulator",
         description: "Les våre vilkår for bruk av Karakterkalkulatoren.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/vilkar`,
         type: "article"
       }
@@ -275,6 +333,7 @@ export async function generateTermsMetadata(params: { locale: string }): Promise
       openGraph: {
         title: "Términos de Servicio | Calculadora de GPA",
         description: "Lea nuestros términos de servicio para usar la herramienta Calculadora de GPA.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/vilkar`,
         type: "article"
       }
@@ -286,6 +345,7 @@ export async function generateTermsMetadata(params: { locale: string }): Promise
       openGraph: {
         title: "Conditions d'Utilisation | Calculateur de GPA",
         description: "Lisez nos conditions d'utilisation pour utiliser l'outil Calculateur de GPA.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/vilkar`,
         type: "article"
       }
@@ -297,6 +357,7 @@ export async function generateTermsMetadata(params: { locale: string }): Promise
       openGraph: {
         title: "Nutzungsbedingungen | GPA-Rechner",
         description: "Lesen Sie unsere Nutzungsbedingungen für die Verwendung des GPA-Rechners.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/vilkar`,
         type: "article"
       }
@@ -322,6 +383,7 @@ export async function generateContactMetadata(params: { locale: string }): Promi
       openGraph: {
         title: "Contact Us | GPA Calculator",
         description: "Get in touch with us about the GPA Calculator. We're here to help with your questions and feedback.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/kontakt`,
         type: "website"
       }
@@ -333,6 +395,7 @@ export async function generateContactMetadata(params: { locale: string }): Promi
       openGraph: {
         title: "Kontakt Oss | Karakterkalkulator",
         description: "Ta kontakt med oss angående Karakterkalkulatoren. Vi er her for å hjelpe deg med dine spørsmål og tilbakemeldinger.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/kontakt`,
         type: "website"
       }
@@ -344,6 +407,7 @@ export async function generateContactMetadata(params: { locale: string }): Promi
       openGraph: {
         title: "Contáctenos | Calculadora de GPA",
         description: "Póngase en contacto con nosotros sobre la Calculadora de GPA. Estamos aquí para ayudar con sus preguntas y comentarios.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/kontakt`,
         type: "website"
       }
@@ -355,6 +419,7 @@ export async function generateContactMetadata(params: { locale: string }): Promi
       openGraph: {
         title: "Contactez-Nous | Calculateur de GPA",
         description: "Contactez-nous au sujet du Calculateur de GPA. Nous sommes là pour vous aider avec vos questions et commentaires.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/kontakt`,
         type: "website"
       }
@@ -366,6 +431,7 @@ export async function generateContactMetadata(params: { locale: string }): Promi
       openGraph: {
         title: "Kontaktieren Sie Uns | GPA-Rechner",
         description: "Nehmen Sie Kontakt mit uns auf bezüglich des GPA-Rechners. Wir sind hier, um Ihnen bei Ihren Fragen und Rückmeldungen zu helfen.",
+        images: [{ url: OG_IMAGE_URL }],
         url: `https://unigpacalc.com/${locale}/kontakt`,
         type: "website"
       }

@@ -49,6 +49,7 @@ export default async function LocaleLayout(props: Props) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        {/* Open Graph image will be set by metadata */}
         {/* Google AdSense Script */}
         
       </head>

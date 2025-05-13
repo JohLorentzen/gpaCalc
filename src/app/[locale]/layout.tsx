@@ -50,6 +50,9 @@ export default async function LocaleLayout(props: Props) {
     <html lang={locale} suppressHydrationWarning>
       <head>
         {/* Open Graph image will be set by metadata */}
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" sizes="any" type="image/x-icon" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         {/* Google AdSense Script */}
         
       </head>

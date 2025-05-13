@@ -17,6 +17,15 @@ const nextConfig = {
     // Let the build proceed even if TypeScript has errors
     ignoreBuildErrors: true,
   },
+  // Priority for static files
+  async rewrites() {
+    return [
+      {
+        source: '/favicon.ico',
+        destination: '/public/favicon.ico',
+      },
+    ];
+  },
   // Add additional configuration for resolving paths
   webpack: (config) => {
     config.resolve.alias = {

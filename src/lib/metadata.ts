@@ -76,24 +76,24 @@ export async function generateLayoutMetadata(params: { locale: string }): Promis
       }
     },
     no: {
-      title: "Karakterkalkulator | Beregn ditt karaktersnitt",
-      description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet. Last opp karakterutskrift eller legg inn karakterer manuelt.",
-      keywords: ["karakterkalkulator", "snittkarakter", "norsk karaktersystem", "universitetskarakterer", "akademisk kalkulator"],
-      authors: [{ name: "UniGPACalc" }],
+      title: "Universitets snitt kalkulator | Beregn ditt snitt med AI",
+      description: "Automatisk beregning av ditt universitets eller høyskole snitt. Last opp bilde av din karakterutskrift og få snittet ditt på sekunder.",
+      keywords: ["karakterkalkulator", "snittkarakter", "norsk karaktersystem", "universitetskarakterer", "akademisk kalkulator", "høyskolekarakterer", "snittkalkulator", "snittkalk", "snittkalk.no"],
+      authors: [{ name: "Snittkalk.no" }],
       icons: sharedIcons,
       openGraph: {
-        title: "Karakterkalkulator | Norsk Karaktersystem",
-        description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet. Last opp karakterutskrift eller legg inn karakterer manuelt.",
+        title: "Universitets snitt kalkulator | Beregn ditt snitt med AI",
+        description: "Automatisk beregning av ditt universitets eller høyskole snitt. Last opp bilde av din karakterutskrift og få snittet ditt på sekunder.",
         url: NORWEGIAN_DOMAIN,
-        siteName: "Snittkalk",
+        siteName: "SNITTKALK.NO",
         locale: locale,
         type: "website",
         images: [{ url: OG_IMAGE_URL }],
       },
       twitter: {
         card: "summary_large_image",
-        title: "Karakterkalkulator | Norsk Karaktersystem",
-        description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet",
+        title: "Universitets snitt kalkulator | Beregn ditt snitt med AI",
+        description: "Automatisk beregning av ditt universitets eller høyskole snitt. Last opp bilde av din karakterutskrift og få snittet ditt på sekunder.",
         images: [{ url: OG_IMAGE_URL }],
       },
       alternates: {
@@ -162,15 +162,16 @@ export async function generateHomeMetadata(params: { locale: string }): Promise<
   // If locale is invalid, default to Norwegian
   if (!hasLocale(routing.locales, locale)) {
     return {
-      title: "Karakterkalkulator | Rask og Gratis Karakterberegning",
-      description: "Beregn ditt karaktersnitt med vår gratis norske karakterkalkulator. Last opp karakterutskrift eller legg inn karakterer manuelt for øyeblikkelig konvertering og akademisk analyse.",
+      title: "Karakterkalkulator | Norsk Karaktersystem",
+      description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet. Last opp karakterutskrift eller legg inn karakterer manuelt.",
       keywords: ["karakterkalkulator", "norsk karaktersystem", "karakterberegning", "akademisk kalkulator", "karakterutskrift"],
       icons: sharedIcons,
       openGraph: {
-        title: "Karakterkalkulator | Norsk Karakterberegning",
-        description: "Beregn ditt karaktersnitt med vår gratis norske karakterkalkulator. Last opp karakterutskrift for øyeblikkelige resultater.",
+        title: "Karakterkalkulator | Norsk Karaktersystem",
+        description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet. Last opp karakterutskrift eller legg inn karakterer manuelt.",
         images: [{ url: OG_IMAGE_URL }],
         url: NORWEGIAN_DOMAIN,
+        siteName: "SNITTKALK.NO",
         type: "website"
       }
     };
@@ -194,15 +195,16 @@ export async function generateHomeMetadata(params: { locale: string }): Promise<
       }
     },
     no: {
-      title: "Karakterkalkulator | Rask og Gratis Karakterberegning",
-      description: "Beregn ditt karaktersnitt med vår gratis norske karakterkalkulator. Last opp karakterutskrift eller legg inn karakterer manuelt for øyeblikkelig konvertering og akademisk analyse.",
+      title: "Karakterkalkulator | Norsk Karaktersystem",
+      description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet. Last opp karakterutskrift eller legg inn karakterer manuelt.",
       keywords: ["karakterkalkulator", "norsk karaktersystem", "karakterberegning", "akademisk kalkulator", "karakterutskrift"],
       icons: sharedIcons,
       openGraph: {
-        title: "Karakterkalkulator | Norsk Karakterberegning",
-        description: "Beregn ditt karaktersnitt med vår gratis norske karakterkalkulator. Last opp karakterutskrift for øyeblikkelige resultater.",
+        title: "Karakterkalkulator | Norsk Karaktersystem",
+        description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet. Last opp karakterutskrift eller legg inn karakterer manuelt.",
         images: [{ url: OG_IMAGE_URL }],
         url: NORWEGIAN_DOMAIN,
+        siteName: "SNITTKALK.NO",
         type: "website"
       }
     },
@@ -285,6 +287,7 @@ export async function generatePrivacyMetadata(params: { locale: string }): Promi
         description: "Vår personvernerklæring forklarer hvordan vi håndterer dine data når du bruker vår karakterkalkulator.",
         images: [{ url: OG_IMAGE_URL }],
         url: `${NORWEGIAN_DOMAIN}/personvern`,
+        siteName: "SNITTKALK.NO",
         type: "article"
       }
     },
@@ -367,6 +370,7 @@ export async function generateTermsMetadata(params: { locale: string }): Promise
         description: "Les våre vilkår for bruk av Karakterkalkulatoren.",
         images: [{ url: OG_IMAGE_URL }],
         url: `${NORWEGIAN_DOMAIN}/vilkar`,
+        siteName: "SNITTKALK.NO",
         type: "article"
       }
     },
@@ -449,6 +453,7 @@ export async function generateContactMetadata(params: { locale: string }): Promi
         description: "Ta kontakt med oss angående Karakterkalkulatoren. Vi er her for å hjelpe deg med dine spørsmål og tilbakemeldinger.",
         images: [{ url: OG_IMAGE_URL }],
         url: `${NORWEGIAN_DOMAIN}/kontakt`,
+        siteName: "SNITTKALK.NO",
         type: "website"
       }
     },

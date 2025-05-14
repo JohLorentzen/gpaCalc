@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { getTranslations } from 'next-intl/server';
 import { hasLocale } from 'next-intl';
 import { routing } from '@/i18n/routing';
 
 // Define the OG image URL from Supabase
 const OG_IMAGE_URL = "https://xauigkarhbwvuzweekbi.supabase.co/storage/v1/object/public/images//Screenshot%202025-05-13%20at%2012.43.58.png";
+
+// Define Norwegian domain
+const NORWEGIAN_DOMAIN = "https://snittkalk.no";
+const INTERNATIONAL_DOMAIN = "https://unigpacalc.com";
 
 // Define shared icons configuration for all locales
 const sharedIcons = {
@@ -14,10 +17,6 @@ const sharedIcons = {
   shortcut: '/favicon.ico',
   apple: '/favicon.ico',
 };
-
-// Define Norwegian domain
-const NORWEGIAN_DOMAIN = "https://snittkalk.no";
-const INTERNATIONAL_DOMAIN = "https://unigpacalc.com";
 
 /**
  * Creates metadata for the main layout
@@ -29,17 +28,14 @@ export async function generateLayoutMetadata(params: { locale: string }): Promis
   if (!hasLocale(routing.locales, locale)) {
     // Default to Norwegian metadata if locale is invalid
     return {
-      title: "Karakterkalkulator | Beregn ditt karaktersnitt",
-      description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet. Last opp karakterutskrift eller legg inn karakterer manuelt.",
+      title: "Snittkalkulator - Universitets og høyskole karakterer",
+      description: "Automatisk beregning av ditt universitets eller høyskole snitt. Last opp bilde av din karakterutskrift og få snittet ditt på sekunder.",
       icons: sharedIcons,
       openGraph: {
         images: [{ url: OG_IMAGE_URL }],
       },
     };
   }
-
-  // Get domain based on locale
-  const domain = locale === 'no' ? NORWEGIAN_DOMAIN : INTERNATIONAL_DOMAIN;
 
   // Locale-specific metadata
   const metadataByLocale: Record<string, Metadata> = {
@@ -76,23 +72,22 @@ export async function generateLayoutMetadata(params: { locale: string }): Promis
       }
     },
     no: {
-      title: "Universitets snitt kalkulator | Beregn ditt snitt med AI",
+      title: "Snittkalkulator - Universitets og høyskole karakterer",
       description: "Automatisk beregning av ditt universitets eller høyskole snitt. Last opp bilde av din karakterutskrift og få snittet ditt på sekunder.",
-      keywords: ["karakterkalkulator", "snittkarakter", "norsk karaktersystem", "universitetskarakterer", "akademisk kalkulator", "høyskolekarakterer", "snittkalkulator", "snittkalk", "snittkalk.no"],
+      keywords: ["karakterkalkulator", "norsk karaktersystem", "karakterberegning", "akademisk kalkulator", "karakterutskrift"],
       authors: [{ name: "Snittkalk.no" }],
       icons: sharedIcons,
       openGraph: {
-        title: "Universitets snitt kalkulator | Beregn ditt snitt med AI",
+        title: "Snittkalkulator - Universitets og høyskole karakterer",
         description: "Automatisk beregning av ditt universitets eller høyskole snitt. Last opp bilde av din karakterutskrift og få snittet ditt på sekunder.",
+        images: [{ url: OG_IMAGE_URL }],
         url: NORWEGIAN_DOMAIN,
         siteName: "SNITTKALK.NO",
-        locale: locale,
-        type: "website",
-        images: [{ url: OG_IMAGE_URL }],
+        type: "website"
       },
       twitter: {
         card: "summary_large_image",
-        title: "Universitets snitt kalkulator | Beregn ditt snitt med AI",
+        title: "Snittkalkulator - Universitets og høyskole karakterer",
         description: "Automatisk beregning av ditt universitets eller høyskole snitt. Last opp bilde av din karakterutskrift og få snittet ditt på sekunder.",
         images: [{ url: OG_IMAGE_URL }],
       },
@@ -162,13 +157,13 @@ export async function generateHomeMetadata(params: { locale: string }): Promise<
   // If locale is invalid, default to Norwegian
   if (!hasLocale(routing.locales, locale)) {
     return {
-      title: "Karakterkalkulator | Norsk Karaktersystem",
-      description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet. Last opp karakterutskrift eller legg inn karakterer manuelt.",
+      title: "Snittkalkulator - Universitets og høyskole karakterer",
+      description: "Automatisk beregning av ditt universitets eller høyskole snitt. Last opp bilde av din karakterutskrift og få snittet ditt på sekunder.",
       keywords: ["karakterkalkulator", "norsk karaktersystem", "karakterberegning", "akademisk kalkulator", "karakterutskrift"],
       icons: sharedIcons,
       openGraph: {
-        title: "Karakterkalkulator | Norsk Karaktersystem",
-        description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet. Last opp karakterutskrift eller legg inn karakterer manuelt.",
+        title: "Snittkalkulator - Universitets og høyskole karakterer",
+        description: "Automatisk beregning av ditt universitets eller høyskole snitt. Last opp bilde av din karakterutskrift og få snittet ditt på sekunder.",
         images: [{ url: OG_IMAGE_URL }],
         url: NORWEGIAN_DOMAIN,
         siteName: "SNITTKALK.NO",
@@ -176,9 +171,6 @@ export async function generateHomeMetadata(params: { locale: string }): Promise<
       }
     };
   }
-  
-  // Get domain based on locale
-  const domain = locale === 'no' ? NORWEGIAN_DOMAIN : INTERNATIONAL_DOMAIN;
   
   const metadataByLocale: Record<string, Metadata> = {
     en: {
@@ -195,13 +187,13 @@ export async function generateHomeMetadata(params: { locale: string }): Promise<
       }
     },
     no: {
-      title: "Karakterkalkulator | Norsk Karaktersystem",
-      description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet. Last opp karakterutskrift eller legg inn karakterer manuelt.",
+      title: "Snittkalkulator - Universitets og høyskole karakterer",
+      description: "Automatisk beregning av ditt universitets eller høyskole snitt. Last opp bilde av din karakterutskrift og få snittet ditt på sekunder.",
       keywords: ["karakterkalkulator", "norsk karaktersystem", "karakterberegning", "akademisk kalkulator", "karakterutskrift"],
       icons: sharedIcons,
       openGraph: {
-        title: "Karakterkalkulator | Norsk Karaktersystem",
-        description: "Gratis verktøy for å beregne ditt karaktersnitt i det norske karaktersystemet. Last opp karakterutskrift eller legg inn karakterer manuelt.",
+        title: "Snittkalkulator - Universitets og høyskole karakterer",
+        description: "Automatisk beregning av ditt universitets eller høyskole snitt. Last opp bilde av din karakterutskrift og få snittet ditt på sekunder.",
         images: [{ url: OG_IMAGE_URL }],
         url: NORWEGIAN_DOMAIN,
         siteName: "SNITTKALK.NO",
@@ -257,11 +249,6 @@ export async function generateHomeMetadata(params: { locale: string }): Promise<
  */
 export async function generatePrivacyMetadata(params: { locale: string }): Promise<Metadata> {
   const { locale } = params;
-  
-  const t = await getTranslations({ locale, namespace: 'navigation' });
-  
-  // Get domain based on locale
-  const domain = locale === 'no' ? NORWEGIAN_DOMAIN : INTERNATIONAL_DOMAIN;
   
   const metadataByLocale: Record<string, Metadata> = {
     en: {
@@ -341,11 +328,6 @@ export async function generatePrivacyMetadata(params: { locale: string }): Promi
 export async function generateTermsMetadata(params: { locale: string }): Promise<Metadata> {
   const { locale } = params;
   
-  const t = await getTranslations({ locale, namespace: 'navigation' });
-  
-  // Get domain based on locale
-  const domain = locale === 'no' ? NORWEGIAN_DOMAIN : INTERNATIONAL_DOMAIN;
-  
   const metadataByLocale: Record<string, Metadata> = {
     en: {
       title: "Terms of Service | GPA Calculator",
@@ -423,11 +405,6 @@ export async function generateTermsMetadata(params: { locale: string }): Promise
  */
 export async function generateContactMetadata(params: { locale: string }): Promise<Metadata> {
   const { locale } = params;
-  
-  const tNav = await getTranslations({ locale, namespace: 'navigation' });
-  
-  // Get domain based on locale
-  const domain = locale === 'no' ? NORWEGIAN_DOMAIN : INTERNATIONAL_DOMAIN;
   
   const metadataByLocale: Record<string, Metadata> = {
     en: {

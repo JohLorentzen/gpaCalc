@@ -20,8 +20,13 @@ export async function GET(
   // Determine the correct domain for the redirect
   let redirectOrigin = origin;
   
+  // First check if we're in a preview environment
+  if (process.env.NEXT_PUBLIC_PREVIEW_URL) {
+    redirectOrigin = process.env.NEXT_PUBLIC_PREVIEW_URL;
+    console.log(`Using preview URL for redirect: ${redirectOrigin}`);
+  }
   // In production, always redirect to the configured domain or snittkalk.no as default
-  if (process.env.NODE_ENV !== 'development') {
+  else if (process.env.NODE_ENV !== 'development') {
     if (process.env.NEXT_PUBLIC_SITE_DOMAIN === 'unigpacalc.com') {
       redirectOrigin = 'https://unigpacalc.com';
     } else {

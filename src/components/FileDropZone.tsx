@@ -140,11 +140,29 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
       formData.append('file', fileToProcess);
       setProcessingStage(t('processing'));
       const response = await fetch('/api/ocr', { method: 'POST', body: formData });
+      
+      const responseText = await response.text();
+      console.log("Raw API response:", responseText);
+
       if (!response.ok) {
-        const errData = await response.json();
+        let errData;
+        try {
+          errData = JSON.parse(responseText);
+        } catch (e) {
+          errData = { error: "Failed to parse error response from API." }
+        }
         throw new Error(errData.error || errData.details || `${tErrors('title')}: ${response.status} ${response.statusText}`);
       }
-      const data = await response.json();
+
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (e) {
+        throw new Error("Failed to parse successful response from API.");
+      }
+      
+      console.log("Parsed API data:", data);
+
       if (data.error) throw new Error(data.error);
       setProcessingStage(t('analyzingGrades'));
       if (!data.result || !data.result.entries || data.result.entries.length === 0) {

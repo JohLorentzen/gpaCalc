@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
 
     // Send image to OpenAI API
     const response = await openai.chat.completions.create({
-      model: "gpt-4.1-nano",
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "user",
@@ -53,6 +53,8 @@ export async function POST(req: NextRequest) {
           ],
         },
       ],
+      max_tokens: 1000,
+      temperature: 0,
     });
 
     // Extract JSON from the response

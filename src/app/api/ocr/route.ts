@@ -36,17 +36,19 @@ export async function POST(req: NextRequest) {
     const base64Image = buffer.toString('base64');
 
     // Send image to OpenAI API
-    const response = await openai.responses.create({
-      model: "gpt-4.1-nano-2025-04-14",
-      input: [
+    const response = await openai.chat.completions.create({
+      model: "gpt-4.1-nano",
+      messages: [
         {
           role: "user",
           content: [
-            { type: "input_text", text: "Extract information from this transcript image. First, identify the university/college name and country. Then, extract all courses and grades from the transcript. Be accurate about term/semester information and credit values. Handle both English and Norwegian transcripts. For pass/fail courses, use 'Pass'/'Passed' or 'Fail'/'Failed' consistently. Return ONLY valid JSON without any explanations. The schema should be: {university: string, country: string, courses: Array<{course, title, term, credits, grade}>}. If credits are not available, use null. If university or country cannot be determined, use null for those fields." },
+            { type: "text", text: "Extract information from this transcript image. First, identify the university/college name and country. Then, extract all courses and grades from the transcript. Be accurate about term/semester information and credit values. Handle both English and Norwegian transcripts. For pass/fail courses, use 'Pass'/'Passed' or 'Fail'/'Failed' consistently. Return ONLY valid JSON without any explanations. The schema should be: {university: string, country: string, courses: Array<{course, title, term, credits, grade}>}. If credits are not available, use null. If university or country cannot be determined, use null for those fields." },
             {
-              type: "input_image",
-              image_url: `data:image/jpeg;base64,${base64Image}`,
-              detail: "high",
+              type: "image_url",
+              image_url: {
+                url: `data:image/jpeg;base64,${base64Image}`,
+                detail: "low",
+              },
             },
           ],
         },
@@ -57,7 +59,7 @@ export async function POST(req: NextRequest) {
     let jsonData;
     
     // First, try to extract JSON from markdown code blocks
-    const jsonMatch = response.output_text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+    const jsonMatch = response.choices[0].message.content?.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
     if (jsonMatch && jsonMatch[1]) {
       try {
         jsonData = JSON.parse(jsonMatch[1]);
@@ -65,18 +67,18 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({
           error: 'Failed to parse JSON from API response',
           details: error instanceof Error ? error.message : 'Unknown parsing error',
-          rawText: response.output_text
+          rawText: response.choices[0].message.content
         }, { status: 400 });
       }
     } else {
       // If no code blocks found, try to parse the entire response as JSON
       try {
-        jsonData = JSON.parse(response.output_text);
+        jsonData = JSON.parse(response.choices[0].message.content || '{}');
       } catch (error) {
         return NextResponse.json({
           error: 'No valid JSON found in API response',
           details: error instanceof Error ? error.message : 'Unknown parsing error',
-          rawText: response.output_text
+          rawText: response.choices[0].message.content
         }, { status: 400 });
       }
     }
@@ -84,7 +86,7 @@ export async function POST(req: NextRequest) {
     if (!jsonData || !jsonData.courses || !Array.isArray(jsonData.courses) || jsonData.courses.length === 0) {
       return NextResponse.json({
         error: 'No course data could be extracted from the image',
-        rawText: response.output_text
+        rawText: response.choices[0].message.content
       }, { status: 400 });
     }
     

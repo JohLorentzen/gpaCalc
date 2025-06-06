@@ -171,6 +171,12 @@ export async function signInWithMicrosoft(locale: string) {
 // Helper function to get the current request host
 function getRequestHost() {
   try {
+    // Check for preview environment first by checking for a PREVIEW_URL env variable
+    if (process.env.NEXT_PUBLIC_PREVIEW_URL) {
+      console.log(`Using preview URL for auth redirect: ${process.env.NEXT_PUBLIC_PREVIEW_URL}`);
+      return process.env.NEXT_PUBLIC_PREVIEW_URL;
+    }
+
     // Always use the configured site domain if available, regardless of environment
     if (process.env.NEXT_PUBLIC_SITE_DOMAIN) {
       if (process.env.NEXT_PUBLIC_SITE_DOMAIN === 'snittkalk.no') {

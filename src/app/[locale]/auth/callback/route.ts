@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
+import { cookies } from 'next/headers';
 
 export async function GET(
   request: Request,
@@ -20,8 +21,13 @@ export async function GET(
   // Determine the correct domain for the redirect
   let redirectOrigin = origin;
   
+  // First check if we're in a preview environment
+  if (process.env.NEXT_PUBLIC_PREVIEW_URL) {
+    redirectOrigin = process.env.NEXT_PUBLIC_PREVIEW_URL;
+    console.log(`Using preview URL for redirect: ${redirectOrigin}`);
+  }
   // In production, always redirect to the configured domain or snittkalk.no as default
-  if (process.env.NODE_ENV !== 'development') {
+  else if (process.env.NODE_ENV !== 'development') {
     if (process.env.NEXT_PUBLIC_SITE_DOMAIN === 'unigpacalc.com') {
       redirectOrigin = 'https://unigpacalc.com';
     } else {
@@ -32,13 +38,43 @@ export async function GET(
   }
 
   if (code) {
-    const supabase = createClient();
-    const { error } = await supabase.auth.exchangeCodeForSession(code);
-    if (!error) {
-      console.log(`Successful auth callback, redirecting to: ${redirectOrigin}${next}`);
-      return NextResponse.redirect(`${redirectOrigin}${next}`);
-    } else {
-      console.error('Error exchanging code for session:', error);
+    try {
+      const cookieStore = cookies();
+      const supabase = createClient();
+      
+      // Exchange the code for a session
+      const { error } = await supabase.auth.exchangeCodeForSession(code);
+      
+      if (!error) {
+        console.log(`Successful auth callback, redirecting to: ${redirectOrigin}${next}`);
+        
+        // Create redirect response
+        const redirectUrl = `${redirectOrigin}${next}`;
+        const response = NextResponse.redirect(redirectUrl);
+        
+        // Copy all auth-related cookies to the redirect response
+        const supabaseCookies = cookieStore.getAll();
+        for (const cookie of supabaseCookies) {
+          if (cookie.name.includes('supabase') || cookie.name.includes('auth')) {
+            // Use same cookie settings but ensure it works cross-domain
+            response.cookies.set({
+              name: cookie.name,
+              value: cookie.value,
+              path: '/',
+              secure: true,
+              sameSite: 'lax',
+              httpOnly: true,
+              maxAge: 60 * 60 * 24 * 7, // 1 week
+            });
+          }
+        }
+        
+        return response;
+      } else {
+        console.error('Error exchanging code for session:', error);
+      }
+    } catch (err) {
+      console.error('Error in auth callback processing:', err);
     }
   }
 

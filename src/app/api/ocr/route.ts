@@ -34,19 +34,28 @@ export async function POST(req: NextRequest) {
 
     // Convert buffer to base64
     const base64Image = buffer.toString('base64');
+    
+    // Check if image is too large and might cause timeout
+    const imageSizeKB = buffer.length / 1024;
+    if (imageSizeKB > 4000) { // If larger than 4MB
+      return NextResponse.json({
+        error: 'Image too large',
+        details: 'Please upload an image smaller than 4MB to avoid processing timeouts. You can resize or compress the image before uploading.'
+      }, { status: 400 });
+    }
 
     // Send image to OpenAI API
     const response = await openai.responses.create({
-      model: "gpt-4.1-nano-2025-04-14",
+      model: "gpt-4o-mini", // Using faster model
       input: [
         {
           role: "user",
           content: [
-            { type: "input_text", text: "Extract information from this transcript image. First, identify the university/college name and country. Then, extract all courses and grades from the transcript. Be accurate about term/semester information and credit values. Handle both English and Norwegian transcripts. For pass/fail courses, use 'Pass'/'Passed' or 'Fail'/'Failed' consistently. Return ONLY valid JSON without any explanations. The schema should be: {university: string, country: string, courses: Array<{course, title, term, credits, grade}>}. If credits are not available, use null. If university or country cannot be determined, use null for those fields." },
+            { type: "input_text", text: "Extract course information from this transcript image. Return ONLY valid JSON with this exact schema: {university: string|null, country: string|null, courses: Array<{course: string, title: string, term: string, credits: number|null, grade: string}>}. For pass/fail courses, use 'Pass' or 'Fail'. If information cannot be determined, use null." },
             {
               type: "input_image",
               image_url: `data:image/jpeg;base64,${base64Image}`,
-              detail: "high",
+              detail: "low", // Reduced detail for faster processing
             },
           ],
         },

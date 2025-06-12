@@ -56,50 +56,52 @@ export async function POST(req: NextRequest) {
     // Extract JSON from the response
     let jsonData;
     
+    // Helper function to extract and parse JSON from text
+    const extractAndParseJson = (text: string) => {
+      // First try to parse the entire text as JSON
+      try {
+        return JSON.parse(text.trim());
+      } catch {
+        // If that fails, try to find JSON by looking for { and }
+        const jsonStart = text.indexOf('{');
+        const jsonEnd = text.lastIndexOf('}');
+        
+        if (jsonStart !== -1 && jsonEnd !== -1 && jsonStart < jsonEnd) {
+          try {
+            const extractedJson = text.substring(jsonStart, jsonEnd + 1);
+            return JSON.parse(extractedJson);
+          } catch (innerError) {
+            throw new Error(`Failed to parse extracted JSON: ${innerError instanceof Error ? innerError.message : 'Unknown error'}`);
+          }
+        } else {
+          throw new Error('No valid JSON structure found in response');
+        }
+      }
+    };
+    
     // First, try to extract JSON from markdown code blocks
     const jsonMatch = response.output_text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
     if (jsonMatch && jsonMatch[1]) {
       try {
-        jsonData = JSON.parse(jsonMatch[1].trim());
+        jsonData = extractAndParseJson(jsonMatch[1]);
       } catch (error) {
         return NextResponse.json({
-          error: 'Failed to parse JSON from API response',
+          error: 'Failed to parse JSON from markdown code block',
           details: error instanceof Error ? error.message : 'Unknown parsing error',
-          rawText: response.output_text
+          rawText: response.output_text,
+          extractedText: jsonMatch[1]
         }, { status: 400 });
       }
     } else {
-      // If no code blocks found, try to parse the entire response as JSON
-      // First trim any leading/trailing whitespace
-      const trimmedResponse = response.output_text.trim();
-      
+      // If no code blocks found, try to extract JSON from the entire response
       try {
-        jsonData = JSON.parse(trimmedResponse);
+        jsonData = extractAndParseJson(response.output_text);
       } catch (error) {
-        // Try to find JSON within the response text by looking for { and }
-        const jsonStart = trimmedResponse.indexOf('{');
-        const jsonEnd = trimmedResponse.lastIndexOf('}');
-        
-        if (jsonStart !== -1 && jsonEnd !== -1 && jsonStart < jsonEnd) {
-          try {
-            const extractedJson = trimmedResponse.substring(jsonStart, jsonEnd + 1);
-            jsonData = JSON.parse(extractedJson);
-          } catch (innerError) {
-            return NextResponse.json({
-              error: 'No valid JSON found in API response',
-              details: innerError instanceof Error ? innerError.message : 'Unknown parsing error',
-              rawText: response.output_text,
-              trimmedText: trimmedResponse
-            }, { status: 400 });
-          }
-        } else {
-          return NextResponse.json({
-            error: 'No valid JSON found in API response',
-            details: error instanceof Error ? error.message : 'Unknown parsing error',
-            rawText: response.output_text,
-            trimmedText: trimmedResponse
-          }, { status: 400 });
-        }
+        return NextResponse.json({
+          error: 'No valid JSON found in API response',
+          details: error instanceof Error ? error.message : 'Unknown parsing error',
+          rawText: response.output_text
+        }, { status: 400 });
       }
     }
     

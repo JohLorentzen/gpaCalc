@@ -141,23 +141,23 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
       setProcessingStage(t('processing'));
       const response = await fetch('/api/ocr', { method: 'POST', body: formData });
       if (!response.ok) {
+        const errorText = await response.text();
         let errData;
         try {
-          errData = await response.json();
+          errData = JSON.parse(errorText);
+          throw new Error(errData.error || errData.details || `${tErrors('title')}: ${response.status} ${response.statusText}`);
         } catch (jsonError) {
-          // If response isn't valid JSON, use the response text
-          const errorText = await response.text();
+          // If response isn't valid JSON, use the response text directly
           throw new Error(`Server error (${response.status}): ${errorText || response.statusText}`);
         }
-        throw new Error(errData.error || errData.details || `${tErrors('title')}: ${response.status} ${response.statusText}`);
       }
       
+      const responseText = await response.text();
       let data;
       try {
-        data = await response.json();
+        data = JSON.parse(responseText);
       } catch (jsonError) {
         // If response isn't valid JSON, use the response text
-        const responseText = await response.text();
         throw new Error(`Invalid server response: ${responseText}`);
       }
       

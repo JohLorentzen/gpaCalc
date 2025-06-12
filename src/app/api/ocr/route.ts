@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
     const jsonMatch = response.output_text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
     if (jsonMatch && jsonMatch[1]) {
       try {
-        jsonData = JSON.parse(jsonMatch[1]);
+        jsonData = JSON.parse(jsonMatch[1].trim());
       } catch (error) {
         return NextResponse.json({
           error: 'Failed to parse JSON from API response',
@@ -70,14 +70,36 @@ export async function POST(req: NextRequest) {
       }
     } else {
       // If no code blocks found, try to parse the entire response as JSON
+      // First trim any leading/trailing whitespace
+      const trimmedResponse = response.output_text.trim();
+      
       try {
-        jsonData = JSON.parse(response.output_text);
+        jsonData = JSON.parse(trimmedResponse);
       } catch (error) {
-        return NextResponse.json({
-          error: 'No valid JSON found in API response',
-          details: error instanceof Error ? error.message : 'Unknown parsing error',
-          rawText: response.output_text
-        }, { status: 400 });
+        // Try to find JSON within the response text by looking for { and }
+        const jsonStart = trimmedResponse.indexOf('{');
+        const jsonEnd = trimmedResponse.lastIndexOf('}');
+        
+        if (jsonStart !== -1 && jsonEnd !== -1 && jsonStart < jsonEnd) {
+          try {
+            const extractedJson = trimmedResponse.substring(jsonStart, jsonEnd + 1);
+            jsonData = JSON.parse(extractedJson);
+          } catch (innerError) {
+            return NextResponse.json({
+              error: 'No valid JSON found in API response',
+              details: innerError instanceof Error ? innerError.message : 'Unknown parsing error',
+              rawText: response.output_text,
+              trimmedText: trimmedResponse
+            }, { status: 400 });
+          }
+        } else {
+          return NextResponse.json({
+            error: 'No valid JSON found in API response',
+            details: error instanceof Error ? error.message : 'Unknown parsing error',
+            rawText: response.output_text,
+            trimmedText: trimmedResponse
+          }, { status: 400 });
+        }
       }
     }
     

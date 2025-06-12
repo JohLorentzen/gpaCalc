@@ -141,10 +141,26 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
       setProcessingStage(t('processing'));
       const response = await fetch('/api/ocr', { method: 'POST', body: formData });
       if (!response.ok) {
-        const errData = await response.json();
+        let errData;
+        try {
+          errData = await response.json();
+        } catch (jsonError) {
+          // If response isn't valid JSON, use the response text
+          const errorText = await response.text();
+          throw new Error(`Server error (${response.status}): ${errorText || response.statusText}`);
+        }
         throw new Error(errData.error || errData.details || `${tErrors('title')}: ${response.status} ${response.statusText}`);
       }
-      const data = await response.json();
+      
+      let data;
+      try {
+        data = await response.json();
+      } catch (jsonError) {
+        // If response isn't valid JSON, use the response text
+        const responseText = await response.text();
+        throw new Error(`Invalid server response: ${responseText}`);
+      }
+      
       if (data.error) throw new Error(data.error);
       setProcessingStage(t('analyzingGrades'));
       if (!data.result || !data.result.entries || data.result.entries.length === 0) {

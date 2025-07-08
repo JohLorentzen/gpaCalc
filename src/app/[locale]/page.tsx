@@ -77,6 +77,8 @@ export default function Page() {
       const gradesData: Grades = {
         average: details.average,
         totalCredits: details.totalCredits,
+        university: details.university,
+        country: details.country,
         courses: courses
       };
 

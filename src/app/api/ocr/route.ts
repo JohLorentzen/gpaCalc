@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
           content: [
             {
               type: "text",
-              text: "Extract course information from this transcript image. Return ONLY valid JSON with this exact schema: {university: string|null, country: string|null, courses: Array<{course: string, title: string, term: string, credits: number|null, grade: string}>}. For pass/fail courses, use 'Passed' or 'Failed'. If information cannot be determined, use null."
+              text: "Extract course information from this transcript image. Return ONLY valid JSON with this exact schema: {university: string|null, country: string|null, courses: Array<{course: string, title: string, term: string, credits: number|null, grade: string}>}. Important: For each course, provide at least the course code and title. For pass/fail courses, use 'Passed' or 'Failed'. Use 'Unknown' for missing course codes or grades, never return null for course or title fields. If credits cannot be determined, use null."
             },
             {
               type: "image_url",
@@ -132,15 +132,26 @@ export async function POST(req: NextRequest) {
     let totalCredits = 0;
     let countableCredits = 0;
     
-    const processedCourses = jsonData.courses.map((course: {
-      course: string;
-      title: string;
-      term: string;
-      credits: number | null;
-      grade: string;
-    }) => {
-      const credits = course.credits || 0;
-      const grade = course.grade.trim();
+    const processedCourses = jsonData.courses
+      .filter((course: {
+        course?: string | null;
+        title?: string | null;
+        term?: string | null;
+        credits?: number | null;
+        grade?: string | null;
+      }) => {
+        // Filter out completely invalid courses
+        return course && (course.course || course.title);
+      })
+      .map((course: {
+        course?: string | null;
+        title?: string | null;
+        term?: string | null;
+        credits?: number | null;
+        grade?: string | null;
+      }) => {
+        const credits = course.credits || 0;
+        const grade = course.grade ? course.grade.trim() : 'Unknown';
       
       // Check if course should be excluded from GPA calculation
       const passFailGrades = ['Passed', 'Failed', 'Bestått', 'ikke godkjent', 'Godkjent', 'Pass', 'Fail'];
@@ -176,16 +187,24 @@ export async function POST(req: NextRequest) {
       }
       
       return {
-        courseCode: course.course,
-        courseName: course.title,
-        term: course.term,
+        courseCode: course.course || 'Unknown',
+        courseName: course.title || 'Unknown Course',
+        term: course.term || 'Unknown',
         credits: credits,
-        grade: course.grade,
+        grade: grade,
         gradeValue: gradeValue,
         includedInGpa: includedInGpa
       };
     });
     
+    // Check if we have any valid courses after processing
+    if (processedCourses.length === 0) {
+      return NextResponse.json({
+        error: 'No valid course data found',
+        details: 'The uploaded image did not contain any recognizable course information. Please ensure the image is clear and contains a valid transcript.'
+      }, { status: 400 });
+    }
+
     // Calculate GPA average
     const average = countableCredits > 0 ? totalGradePoints / countableCredits : 0;
     

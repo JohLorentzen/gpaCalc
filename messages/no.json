@@ -48,6 +48,7 @@
     "foundCoursesAverage": "Fant {count} kurs. Gjennomsnitt: {average}/5.",
     "failedToSaveUpload": "Kunne ikke lagre din opplastingsforsøk. Vennligst prøv igjen.",
     "transcriptAnalyzingProblem": "Det var et problem med å analysere din utskrift.",
+    "processingTimeout": "Behandlingstimeout. Prøv med et mindre eller klarere bilde.",
     "notAvailable": "N/A",
     "checkingAuth": "Sjekker autentisering...",
     "fetchingUploadLimit": "Henter opplastingsgrense...",

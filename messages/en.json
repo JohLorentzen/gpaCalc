@@ -48,6 +48,7 @@
     "foundCoursesAverage": "Found {count} courses. Average: {average}/5.",
     "failedToSaveUpload": "Failed to save your upload attempt. Please try again.",
     "transcriptAnalyzingProblem": "There was a problem analyzing your transcript.",
+    "processingTimeout": "Processing timeout. Please try with a smaller or clearer image.",
     "notAvailable": "N/A",
     "checkingAuth": "Checking authentication...",
     "fetchingUploadLimit": "Fetching upload limit...",

@@ -139,15 +139,30 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
       const formData = new FormData();
       formData.append('file', fileToProcess);
       setProcessingStage(t('processing'));
-      const response = await fetch('/api/ocr', { method: 'POST', body: formData });
+      const response = await fetch('/api/ocr', { 
+        method: 'POST', 
+        body: formData,
+        // Add client-side timeout slightly longer than server timeout
+        signal: AbortSignal.timeout(35000) // 35 seconds
+      });
+      
       if (!response.ok) {
         const errorText = await response.text();
         let errData;
         try {
           errData = JSON.parse(errorText);
+          
+          // Handle specific timeout errors
+          if (response.status === 408 || errData.error === 'Processing timeout') {
+            throw new Error(t('processingTimeout') || 'Processing timeout. Please try with a smaller or clearer image.');
+          }
+          
           throw new Error(errData.error || errData.details || `${tErrors('title')}: ${response.status} ${response.statusText}`);
         } catch (jsonError) {
           // If response isn't valid JSON, use the response text directly
+          if (response.status === 408) {
+            throw new Error(t('processingTimeout') || 'Processing timeout. Please try with a smaller or clearer image.');
+          }
           throw new Error(`Server error (${response.status}): ${errorText || response.statusText}`);
         }
       }
@@ -187,7 +202,19 @@ const FileDropZone: React.FC<FileDropZoneProps> = ({ onFileProcessed, onProcessi
 
     } catch (err) {
       console.error("Error processing file:", err);
-      const errorMessage = err instanceof Error ? err.message : t('transcriptAnalyzingProblem');
+      
+      let errorMessage: string;
+      if (err instanceof Error) {
+        // Handle timeout errors specifically
+        if (err.name === 'TimeoutError' || err.message.includes('timeout')) {
+          errorMessage = t('processingTimeout') || 'Processing timeout. Please try with a smaller or clearer image.';
+        } else {
+          errorMessage = err.message;
+        }
+      } else {
+        errorMessage = t('transcriptAnalyzingProblem');
+      }
+      
       setError(errorMessage);
       toast({ title: t('processingError'), description: `${errorMessage}`, variant: "destructive" });
     } finally {

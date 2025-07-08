@@ -25,6 +25,19 @@ const nextConfig = {
     };
     return config;
   },
+  // Configure API routes
+  experimental: {
+    // Increase timeout for serverless functions to handle OCR processing
+    serverComponentsExternalPackages: ['openai'],
+  },
+  // Configure maximum duration for API routes
+  api: {
+    // This will be inherited by API routes
+    responseLimit: false,
+    bodyParser: {
+      sizeLimit: '10mb', // Increase body parser limit for image uploads
+    },
+  },
 };
 
 export default withNextIntl(nextConfig); 

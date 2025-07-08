@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import type { ChatCompletion } from 'openai/resources/chat/completions';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -32,20 +33,35 @@ export async function POST(req: NextRequest) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // Check if image is too large
+    // Check if image is too large - reduce limit to prevent timeouts
     const imageSizeKB = buffer.length / 1024;
-    if (imageSizeKB > 4000) {
+    if (imageSizeKB > 2000) {
       return NextResponse.json({
         error: 'Image too large',
-        details: 'Please upload an image smaller than 4MB to avoid processing timeouts.'
+        details: 'Please upload an image smaller than 2MB to avoid processing timeouts.'
       }, { status: 400 });
     }
 
-    // Convert buffer to base64
-    const base64Image = buffer.toString('base64');
+    // Optimize image format for faster processing
+    let base64Image: string;
+    let mimeType = 'image/jpeg';
+    
+    // Convert to JPEG if it's PNG to reduce size for OpenAI processing
+    if (fileType === 'image/png') {
+      // For now, just use the original base64. In a production app, you might want to convert PNG to JPEG
+      base64Image = buffer.toString('base64');
+      mimeType = 'image/png';
+    } else {
+      base64Image = buffer.toString('base64');
+      mimeType = 'image/jpeg';
+    }
 
-    // Send image to OpenAI API
-    const response = await openai.chat.completions.create({
+    // Send image to OpenAI API with timeout
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => reject(new Error('OpenAI API timeout after 25 seconds')), 25000);
+    });
+
+    const openaiPromise = openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
         {
@@ -58,16 +74,18 @@ export async function POST(req: NextRequest) {
             {
               type: "image_url",
               image_url: {
-                url: `data:image/jpeg;base64,${base64Image}`,
+                url: `data:${mimeType};base64,${base64Image}`,
                 detail: "low"
               }
             }
           ]
         }
       ],
-      max_tokens: 2000,
+      max_tokens: 1500, // Reduced for faster processing
       temperature: 0
     });
+
+    const response = await Promise.race([openaiPromise, timeoutPromise]) as ChatCompletion;
 
     // Extract JSON from the response
     const responseText = response.choices[0]?.message?.content || '';
@@ -188,6 +206,15 @@ export async function POST(req: NextRequest) {
     
   } catch (error) {
     console.error('OCR processing error:', error);
+    
+    // Handle timeout errors specifically
+    if (error instanceof Error && error.message.includes('timeout')) {
+      return NextResponse.json({ 
+        error: 'Processing timeout',
+        details: 'The image processing took too long. Please try with a smaller image or simpler transcript format.'
+      }, { status: 408 });
+    }
+    
     return NextResponse.json({ 
       error: 'Error processing image',
       details: error instanceof Error ? error.message : 'Unknown error'
@@ -205,4 +232,8 @@ export async function GET() {
   }
   
   return NextResponse.json({ status: 'OCR API is working' });
-} 
+}
+
+// Configure the runtime and maximum duration for this API route
+export const runtime = 'nodejs';
+export const maxDuration = 30; // 30 seconds timeout 

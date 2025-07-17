@@ -185,7 +185,8 @@ const GradeDisplay = ({ gradeData }: { gradeData: Grades }) => {
               <Table>
                 <TableHeader>
                   <TableRow className="bg-muted/50">
-                    <TableHead className="w-[50%] font-semibold">{t('courseName')}</TableHead>
+                    <TableHead className="w-[40%] font-semibold">{t('courseName')}</TableHead>
+                    <TableHead className="text-center font-semibold">Term</TableHead>
                     <TableHead className="text-center font-semibold">{t('credits')}</TableHead>
                     <TableHead className="text-center font-semibold">{t('grade')}</TableHead>
                   </TableRow>
@@ -197,7 +198,13 @@ const GradeDisplay = ({ gradeData }: { gradeData: Grades }) => {
                     
                     return (
                       <TableRow key={index} className="hover:bg-muted/30 transition-colors">
-                        <TableCell className="font-medium">{course.courseName}</TableCell>
+                        <TableCell className="font-medium">
+                          <div>
+                            <div className="font-semibold">{course.courseCode}</div>
+                            <div className="text-sm text-muted-foreground">{course.courseName}</div>
+                          </div>
+                        </TableCell>
+                        <TableCell className="text-center text-sm text-muted-foreground">{course.term || '-'}</TableCell>
                         <TableCell className="text-center">{displayCredits}</TableCell>
                         <TableCell className="text-center font-semibold" style={{ 
                           color: ['A', 'B', 'C', 'D', 'E', 'F'].includes(course.grade || '') 

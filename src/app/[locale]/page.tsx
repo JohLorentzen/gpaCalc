@@ -34,7 +34,7 @@ const ResultsSection = ({ gradeData }: { gradeData: Grades }) => {
   return (
     <section className="py-16 px-6">
       <div className="max-w-4xl mx-auto">
-        <GradeDisplay grades={gradeData} />
+        <GradeDisplay gradeData={gradeData} />
       </div>
     </section>
   );

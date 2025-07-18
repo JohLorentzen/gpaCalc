@@ -33,12 +33,12 @@ export async function POST(req: NextRequest) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // Check if image is too large - reduce limit to prevent timeouts
+    // Check if image is too large - increase limit for better OCR quality
     const imageSizeKB = buffer.length / 1024;
-    if (imageSizeKB > 2000) {
+    if (imageSizeKB > 4000) {
       return NextResponse.json({
         error: 'Image too large',
-        details: 'Please upload an image smaller than 2MB to avoid processing timeouts.'
+        details: 'Please upload an image smaller than 4MB to avoid processing timeouts.'
       }, { status: 400 });
     }
 
@@ -69,18 +69,20 @@ export async function POST(req: NextRequest) {
           content: [
             {
               type: "text",
-              text: "Extract information from this transcript image. First, identify the university/college name and country. Then, extract all courses and grades from the transcript. Be accurate about term/semester information and credit values. Handle both English and Norwegian transcripts. For pass/fail courses, use 'Pass'/'Passed' or 'Fail'/'Failed' consistently. Return ONLY valid JSON without any explanations. The schema should be: {university: string, country: string, courses: Array<{course, title, term, credits, grade}>}. If credits are not available, use null. If university or country cannot be determined, use null for those fields."
+              text: "Extract ALL course information from this Norwegian university transcript. You MUST extract EVERY single course listed in the document - do not skip any rows or sections. Return ONLY valid JSON with this exact schema: {university: string|null, country: string|null, courses: Array<{course: string, title: string, term: string, credits: number|null, grade: string}>}.\n\nCRITICAL INSTRUCTIONS:\n1. Extract ALL courses from the ENTIRE document - scan every section including 'Obligatoriske emner', 'Valgfag', 'Valgbaar', 'Bacheloroppgave'\n2. Course codes: Copy exactly as shown (e.g., IDATT1001, IMAT2021, ISTT1003) - be precise with letters and numbers\n3. Norwegian terms: Keep 'høst' and 'vår' as-is, do NOT translate to English\n4. Credits: From 'Studiepoeng' column - if '-' then use null, otherwise use the exact number (including decimals like 7.5)\n5. Grades: 'Bestått' stays as 'Bestått', letter grades A-F stay as-is\n6. Course titles: Extract complete titles, including multi-line ones\n7. Verify you have extracted EVERY row from the course table\n8. Pay special attention to course codes - they must be EXACTLY as shown in the image\n\nExample format: {\"course\": \"IDATT2202\", \"title\": \"Operativsystemer\", \"term\": \"2023 høst\", \"credits\": 7.5, \"grade\": \"A\"}"
             },
             {
               type: "image_url",
               image_url: {
                 url: `data:${mimeType};base64,${base64Image}`,
-                detail: "low"
+                detail: "high"
               }
             }
           ]
         }
       ],
+      max_tokens: 2500,
+      temperature: 0,
       response_format: { type: "json_object" }
     });
 
@@ -91,22 +93,9 @@ export async function POST(req: NextRequest) {
     
     let jsonData;
     try {
-      // Try to extract JSON from markdown code blocks first
-      const jsonMatch = responseText.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
-      if (jsonMatch && jsonMatch[1]) {
-        jsonData = JSON.parse(jsonMatch[1].trim());
-      } else {
-        // Try to find JSON by looking for { and }
-        const jsonStart = responseText.indexOf('{');
-        const jsonEnd = responseText.lastIndexOf('}');
-        
-        if (jsonStart !== -1 && jsonEnd !== -1 && jsonStart < jsonEnd) {
-          const extractedJson = responseText.substring(jsonStart, jsonEnd + 1);
-          jsonData = JSON.parse(extractedJson);
-        } else {
-          throw new Error('No valid JSON found in response');
-        }
-      }
+      // Since we're using json_object response format, parse directly
+      jsonData = JSON.parse(responseText);
+      console.log(`OCR extracted ${jsonData.courses?.length || 0} courses`);
     } catch (error) {
       return NextResponse.json({
         error: 'Failed to parse JSON from API response',

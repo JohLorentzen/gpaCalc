@@ -62,14 +62,14 @@ export async function POST(req: NextRequest) {
     });
 
     const openaiPromise = openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o-nano",
       messages: [
         {
           role: "user",
           content: [
             {
               type: "text",
-              text: "Extract course information from this transcript image. Return ONLY valid JSON with this exact schema: {university: string|null, country: string|null, courses: Array<{course: string, title: string, term: string, credits: number|null, grade: string}>}. Important: For each course, provide at least the course code and title. For pass/fail courses, use 'Passed' or 'Failed'. Use 'Unknown' for missing course codes or grades, never return null for course or title fields. If credits cannot be determined, use null."
+              text: "Extract information from this transcript image. First, identify the university/college name and country. Then, extract all courses and grades from the transcript. Be accurate about term/semester information and credit values. Handle both English and Norwegian transcripts. For pass/fail courses, use 'Pass'/'Passed' or 'Fail'/'Failed' consistently. Return ONLY valid JSON without any explanations. The schema should be: {university: string, country: string, courses: Array<{course, title, term, credits, grade}>}. If credits are not available, use null. If university or country cannot be determined, use null for those fields."
             },
             {
               type: "image_url",
@@ -81,8 +81,7 @@ export async function POST(req: NextRequest) {
           ]
         }
       ],
-      max_tokens: 1500, // Reduced for faster processing
-      temperature: 0
+      response_format: { type: "json_object" }
     });
 
     const response = await Promise.race([openaiPromise, timeoutPromise]) as ChatCompletion;

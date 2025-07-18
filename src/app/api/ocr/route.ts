@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
     });
 
     const openaiPromise = openai.chat.completions.create({
-      model: "gpt-4o-nano",
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "user",

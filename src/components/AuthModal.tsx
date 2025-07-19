@@ -75,21 +75,6 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, locale }) => {
             </svg>
             {t('signInWithGoogle')}
           </Button>
-          <Button 
-            variant="outline" 
-            className="w-full flex items-center justify-center gap-2 hover:bg-gradient-to-r hover:from-purple-500 hover:to-blue-500 hover:text-white transition-all duration-200"
-            onClick={handleMicrosoftSignIn}
-            // disabled // You can enable this once implemented
-          >
-            {/* Microsoft Blue (for the simplified logo) */}
-            <svg width="18" height="18" viewBox="0 0 24 24">
-              <rect x="1" y="1" width="10" height="10" fill="#F25022"/> {/* Red */}
-              <rect x="13" y="1" width="10" height="10" fill="#7FBA00"/> {/* Green */}
-              <rect x="1" y="13" width="10" height="10" fill="#00A4EF"/> {/* Blue */}
-              <rect x="13" y="13" width="10" height="10" fill="#FFB900"/> {/* Yellow */}
-            </svg>
-            {t('signInWithMicrosoft')}
-          </Button>
          
         </div>
         <p className="text-xs text-muted-foreground mt-6 text-center">
